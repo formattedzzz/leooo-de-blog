@@ -7,8 +7,8 @@ function createWindow () {
     width: 1280,
     height: 720
   })
-  window.webContents.openDevTools()
   window.loadFile('./index.html')
+  window.webContents.openDevTools()
   window.on('closed', () => {
     console.log('window closed')
     window = null
