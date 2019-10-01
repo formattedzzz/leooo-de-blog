@@ -1,0 +1,15 @@
+{
+  "name": "fe-note",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ELECTRON/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cd ELECTRON && electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^6.0.10"
+  }
+}
