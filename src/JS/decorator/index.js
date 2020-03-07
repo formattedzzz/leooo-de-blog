@@ -1,19 +1,19 @@
 function fast(target, name, descriptor) {
-	target.speed = 20;
+  target.speed = 20;
 
-	let run = descriptor.value;
-	descriptor.value = function() {
-		run();
-		console.log(`speed ${this.speed}`);
-	};
-	return descriptor;
+  let run = descriptor.value;
+  descriptor.value = function() {
+    run();
+    console.log(`speed ${this.speed}`);
+  };
+  return descriptor;
 }
 
 class Rabbit {
-	@fast
-	run() {
-		console.log("running~");
-	}
+  @fast
+  run() {
+    console.log("running~");
+  }
 }
 
 var bunny = new Rabbit();

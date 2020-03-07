@@ -6,12 +6,12 @@
 
 ```py
 def decorator(f):
-   print "my decorator"
-   return f
+  print "my decorator"
+  return f
 
 @decorator
 def myfunc():
-   print "my function"
+  print "my function"
 
 myfunc()
 # my decorator
@@ -26,16 +26,16 @@ import 'package:flutter/material.dart';
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
-   @override
-   Widget build(BuildContext context) {
-      return new MaterialApp(
-         title: 'App Demo',
-         theme: new ThemeData(
-            primarySwatch: Colors.blue,
-         ),
-         home: new MyHomePage(title: 'Flutter Demo Home Page'),
-      );
-   }
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+        title: 'App Demo',
+        theme: new ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: new MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
 }
 ```
 
