@@ -45,16 +45,16 @@ class MyApp extends StatelessWidget {
 // stroe/index.js
 import { observable, computed, action } from "mobx";
 class Appstore {
-	@observable store = {
-		num: 0,
-		todos: [1, 2, 3]
-	};
-	@computed get todotext() {
-		return this.store.todos.join("T");
-	}
-	@action add(num) {
-		this.store.todos.push(num);
-	}
+  @observable store = {
+    num: 0,
+    todos: [1, 2, 3]
+  };
+  @computed get todotext() {
+    return this.store.todos.join("T");
+  }
+  @action add(num) {
+    this.store.todos.push(num);
+  }
 }
 export default new Appstore();
 
@@ -64,10 +64,10 @@ import ReactDOM from "react-dom";
 import Store from "@/stroe/index.js";
 import { Provider } from "mobx-react";
 ReactDOM.render(
-	<Provider store={Store}>
-		<RouteView></RouteView>
-	</Provider>,
-	document.getElementById("root")
+  <Provider store={Store}>
+    <RouteView></RouteView>
+  </Provider>,
+  document.getElementById("root")
 );
 
 // component.jsx
@@ -75,21 +75,21 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 @connect(
-	state => ({
-		...state
-	}),
-	dispatch => ({
-		dispatch
-	})
+  state => ({
+    ...state
+  }),
+  dispatch => ({
+    dispatch
+  })
 )
 class CounterUI extends Component {
-	state = {};
-	componentDidMount() {
-		console.log(this.props);
-	}
-	render() {
-		return <div>CounterUI</div>;
-	}
+  state = {};
+  componentDidMount() {
+    console.log(this.props);
+  }
+  render() {
+    return <div>CounterUI</div>;
+  }
 }
 export default CounterUI;
 ```
@@ -102,8 +102,8 @@ export default CounterUI;
 ```js
 // 给空类Cat加一个isAnimal的静态属性
 function isAnimal(target) {
-	target.isAnimal = true;
-	return target;
+  target.isAnimal = true;
+  return target;
 }
 
 @isAnimal
@@ -118,26 +118,26 @@ Cat = isAnimal(function Cat() {});
 
 ```js
 function fast(target, name, descriptor) {
-	// target === Rabbit.prototype
-	// descriptor 形如对象参数 {
-	// 	value: null,
-	// 	enumerable: false,
-	// 	configurable: true,
-	// 	writable: true
-	// };
-	target.speed = 20;
-	let run = descriptor.value;
-	descriptor.value = function() {
-		run();
-		console.log(`speed ${this.speed}`);
-	};
-	return descriptor;
+  // target === Rabbit.prototype
+  // descriptor 形如对象参数 {
+  // value: null,
+  // enumerable: false,
+  // configurable: true,
+  // writable: true
+  // };
+  target.speed = 20;
+  let run = descriptor.value;
+  descriptor.value = function() {
+    run();
+    console.log(`speed ${this.speed}`);
+  };
+  return descriptor;
 }
 class Rabbit {
-	@fast
-	run() {
-		console.log("running~");
-	}
+  @fast
+  run() {
+    console.log("running~");
+  }
 }
 
 var bunny = new Rabbit();
@@ -164,67 +164,67 @@ babel --plugins transform-decorators-legacy index.js > index_prod.js && node ind
 var _desc, _value, _class;
 
 function _applyDecoratedDescriptor(
-	target,
-	property,
-	decorators,
-	descriptor,
-	context
+  target,
+  property,
+  decorators,
+  descriptor,
+  context
 ) {
-	var desc = {};
-	Object["ke" + "ys"](descriptor).forEach(function(key) {
-		desc[key] = descriptor[key];
-	});
-	desc.enumerable = !!desc.enumerable;
-	desc.configurable = !!desc.configurable;
+  var desc = {};
+  Object["ke" + "ys"](descriptor).forEach(function(key) {
+    desc[key] = descriptor[key];
+  });
+  desc.enumerable = !!desc.enumerable;
+  desc.configurable = !!desc.configurable;
 
-	if ("value" in desc || desc.initializer) {
-		desc.writable = true;
-	}
+  if ("value" in desc || desc.initializer) {
+    desc.writable = true;
+  }
 
-	desc = decorators
-		.slice()
-		.reverse()
-		.reduce(function(desc, decorator) {
-			return decorator(target, property, desc) || desc;
-		}, desc);
+  desc = decorators
+    .slice()
+    .reverse()
+    .reduce(function(desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
 
-	if (context && desc.initializer !== void 0) {
-		desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-		desc.initializer = undefined;
-	}
+  if (context && desc.initializer !== void 0) {
+    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+    desc.initializer = undefined;
+  }
 
-	if (desc.initializer === void 0) {
-		Object["define" + "Property"](target, property, desc);
-		desc = null;
-	}
+  if (desc.initializer === void 0) {
+    Object["define" + "Property"](target, property, desc);
+    desc = null;
+  }
 
-	return desc;
+  return desc;
 }
 
 function fast(target, name, descriptor) {
-	target.speed = 20;
-	let run = descriptor.value;
-	descriptor.value = function() {
-		run();
-		console.log(`speed ${this.speed}`);
-	};
-	return descriptor;
+  target.speed = 20;
+  let run = descriptor.value;
+  descriptor.value = function() {
+    run();
+    console.log(`speed ${this.speed}`);
+  };
+  return descriptor;
 }
 
 let Rabbit =
-	((_class = class Rabbit {
-		run() {
-			console.log("running~");
-		}
-	}),
-	_applyDecoratedDescriptor(
-		_class.prototype,
-		"run",
-		[fast],
-		Object.getOwnPropertyDescriptor(_class.prototype, "run"),
-		_class.prototype
-	),
-	_class);
+  ((_class = class Rabbit {
+    run() {
+      console.log("running~");
+    }
+  }),
+  _applyDecoratedDescriptor(
+    _class.prototype,
+    "run",
+    [fast],
+    Object.getOwnPropertyDescriptor(_class.prototype, "run"),
+    _class.prototype
+  ),
+  _class);
 
 var bunny = new Rabbit();
 
@@ -244,19 +244,19 @@ console.log(bunny.speed); // 20
 import { override } from "core-decorators";
 // 限制重载提示
 class Parent {
-	speak(first, second) {}
+  speak(first, second) {}
 }
 class Child extends Parent {
-	@override
-	speak() {}
-	// SyntaxError: Child#speak() does not properly override Parent#speak(first, second)
+  @override
+  speak() {}
+  // SyntaxError: Child#speak() does not properly override Parent#speak(first, second)
 }
 // or
 class Child extends Parent {
-	@override
-	speaks() {}
-	// SyntaxError: No descriptor matching Child#speaks() was found on the prototype chain.
-	// Did you mean "speak"?
+  @override
+  speaks() {}
+  // SyntaxError: No descriptor matching Child#speaks() was found on the prototype chain.
+  // Did you mean "speak"?
 }
 ```
 
@@ -264,16 +264,16 @@ class Child extends Parent {
 import { deprecate } from "core-decorators";
 
 class Person {
-	@deprecate
-	facepalm() {}
+  @deprecate
+  facepalm() {}
 
-	@deprecate("We stopped facepalming")
-	facepalmHard() {}
+  @deprecate("We stopped facepalming")
+  facepalmHard() {}
 
-	@deprecate("We stopped facepalming", {
-		url: "http://knowyourmeme.com/memes/facepalm"
-	})
-	facepalmHarder() {}
+  @deprecate("We stopped facepalming", {
+    url: "http://knowyourmeme.com/memes/facepalm"
+  })
+  facepalmHarder() {}
 }
 
 let person = new Person();

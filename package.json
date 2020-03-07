@@ -10,13 +10,5 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {},
-	"dependencies": {
-		"husky": "^3.0.4",
-		"lint-md-cli": "^0.1.1"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "npx lint-md ./src"
-		}
-	}
+	"dependencies": {}
 }
