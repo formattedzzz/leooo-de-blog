@@ -24,3 +24,5 @@ bunny.run();
 // speed 20
 
 console.log(bunny.speed); // 20
+
+new RegExp
