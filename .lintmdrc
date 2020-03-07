@@ -1,0 +1,12 @@
+{
+  "excludeFiles": ["./src/OTHER/block-chain.md"],
+  "rules": {
+    "no-empty-code": 1,
+    "no-long-code": [2, {
+      "length": 100,
+      "exclude": ["dot"]
+    }],
+    "no-space-in-emphasis": 0,
+    "no-emphasis-as-header": 0,
+  }
+}
