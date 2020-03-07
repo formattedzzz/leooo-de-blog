@@ -1,4 +1,4 @@
-### 装饰器 decorator
+# 装饰器 decorator
 
 在多个不同类之间共享或者扩展一些方法或者行为 我觉得可以简单理解为——类中的混入 mixin
 
@@ -97,7 +97,7 @@ export default CounterUI;
 其中 connect 就是一个函数 其返回值为一个高阶组件 (component) => {}
 被高阶组件处理过的 `component` `props`中注入了 `dispatch` 方法
 
-#### 作用于类本身的 decorator
+## 作用于类本身的 decorator
 
 ```js
 // 给空类Cat加一个isAnimal的静态属性
@@ -114,7 +114,7 @@ console.log(Cat.isAnimal); // true
 Cat = isAnimal(function Cat() {});
 ```
 
-#### 作用于类属性的 decorator
+## 作用于类属性的 decorator
 
 ```js
 function fast(target, name, descriptor) {
@@ -238,7 +238,7 @@ console.log(bunny.speed); // 20
 很显然 `babel-plugin-transform-decorators-legacy` 转义的考虑了多个装饰器的情况
 通过 `Object.getOwnPropertyDescriptor` 方法拿到原有属性的 `descriptor` 来构造统一方法 `_applyDecoratedDescriptor`
 
-#### 更多玩法
+## 更多玩法
 
 ```js
 import { override } from "core-decorators";

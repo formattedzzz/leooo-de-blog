@@ -1,4 +1,4 @@
-#### 币加索的区块链时光
+# 币加索的区块链时光
 
 hash 碰撞 collsion resistance
 

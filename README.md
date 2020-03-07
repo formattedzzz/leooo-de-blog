@@ -1,4 +1,4 @@
-## 零碎时间 5 分钟学习法 学习笔记
+# 零碎时间 5 分钟学习法 学习笔记
 
 - [文本益处的一般思路](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
 - [固定定位的潜在问题](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/heap-sort/index.md)
