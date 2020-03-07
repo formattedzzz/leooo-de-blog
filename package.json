@@ -1,15 +1,22 @@
 {
-  "name": "fe-note",
-  "version": "1.0.0",
-  "description": "",
-  "main": "/ELECTRON/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cd ELECTRON && electron index.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "electron": "^6.0.10"
-  }
+	"name": "fe-note",
+	"version": "1.0.0",
+	"description": "",
+	"main": "/ELECTRON/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "cd ELECTRON && electron index.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {},
+	"dependencies": {
+		"husky": "^3.0.4",
+		"lint-md-cli": "^0.1.1"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "npx lint-md ./src"
+		}
+	}
 }

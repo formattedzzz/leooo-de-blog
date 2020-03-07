@@ -466,7 +466,7 @@ protocal fork 中又分成 hard fork 跟 soft fork
 
 **hard fork**   只有百分百节点都更新了协议 区块链就不会出现永久性的分岔
 
-#### 插入一些问题：
+#### 插入一些问题
 
 - UTXO 的形成一个跟哈希 填到 coinbase 域里有什么用？
 
