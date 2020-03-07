@@ -1,3 +1,5 @@
 {
-   "javascript.implicitProjectConfig.experimentalDecorators": true
+   "javascript.implicitProjectConfig.experimentalDecorators": true,
+   "editor.tabSize": 3,
+   "prettier.useTabs": true
 }
