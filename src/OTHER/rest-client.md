@@ -6,7 +6,7 @@
 @form = application/x-www-form-urlencoded
 @file = multipart/form-data
 @httpVersion = HTTP/1.1
-@token = 
+@token =
 
 ### get-api 示例
 GET https://wx.nnleo.cn/views/users {{httpVersion}}
