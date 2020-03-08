@@ -8,5 +8,6 @@
     }],
     "no-space-in-emphasis": 0,
     "no-emphasis-as-header": 0,
+    "no-long-code": 0,
   }
 }
