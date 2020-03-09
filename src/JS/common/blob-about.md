@@ -14,7 +14,7 @@ file 和其他类型之间的转换是一个异步的过程，是通过 fileRead
 转换的结果在 reader 的 onload 事件中获取，代码如下：
 
 - file to base64 dataUrl 除去 MIME 信息以外才是 base64 的数据
-
+  
   ```js
   let reader = new FileReader(file);
   reader.onload = event => console.log(event.target.result);
@@ -22,7 +22,7 @@ file 和其他类型之间的转换是一个异步的过程，是通过 fileRead
   ```
 
 - file to arrayBuffer
-
+  
   ```js
   let reader = new FileReader(file);
   reader.onload = event => console.log(event.target.result);
@@ -30,13 +30,13 @@ file 和其他类型之间的转换是一个异步的过程，是通过 fileRead
   ```
 
 - file to binaryString
-
+  
   ```js
   reader.readAsBinaryString(file);
   ```
 
 - base64 to file
-
+  
   ```js
   function dataURLtoFile(dataurl, filename) {
     let arr = dataurl.split(","),
@@ -52,7 +52,7 @@ file 和其他类型之间的转换是一个异步的过程，是通过 fileRead
   ```
 
 - URL.createObjectURL
-
+  
   ```js
   // 文件上传时通过转换为bloburl来实现预览
   $(".test-file").change(function(e) {

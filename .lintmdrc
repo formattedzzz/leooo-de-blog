@@ -1,11 +1,9 @@
 {
-  "excludeFiles": ["./src/OTHER/block-chain.md", "./src/OTHER/online-interview.md"],
+  "excludeFiles": ["./src/OTHER/block-chain.md"],
   "rules": {
     "no-empty-code": 0,
-    "no-long-code": 0,
+    "no-long-code": 1,
     "no-space-in-emphasis": 0,
-    "no-emphasis-as-header": 0,
-    "space-round-alphabet": 0,
-    "space-round-number": 0,
+    "no-emphasis-as-header": 0
   }
 }

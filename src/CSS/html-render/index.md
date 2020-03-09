@@ -22,7 +22,7 @@ console.log(document.querySelector(".div2"));
 console.log("main1-ended");
 
 // main2.js
-console.log('main2 excuted');
+console.log("main2 excuted");
 ```
 
 ```html
@@ -50,7 +50,7 @@ console.log('main2 excuted');
     <div class="div2">这是一个div</div>
     <script>
       window.onload = function() {
-        console.log('onload');
+        console.log("onload");
       };
       console.log("inline脚本2");
     </script>
@@ -71,10 +71,14 @@ console.log('main2 excuted');
 接下来我们把 `defer` 属性去掉来看下 index1.html 的表现行为
 
 ```html
-- <script src="main1.js" defer></script>
-- <script src="main2.js" defer></script>
-+ <script src="main1.js" ></script>
-+ <script src="main2.js" ></script>
+-
+<script src="main1.js" defer></script>
+-
+<script src="main2.js" defer></script>
++
+<script src="main1.js"></script>
++
+<script src="main2.js"></script>
 ```
 
 执行到头部 \<script> 标签 main1、main2 进入同步下载并执行 页面行为上一刷新变进入 3 秒卡死期
@@ -85,10 +89,14 @@ console.log('main2 excuted');
 接下来我们换到 `async` 属性 `async` 是在 `defer` 的基础上进行的 来看看谁先加载完谁先执行的表现
 
 ```html
-- <script src="main1.js" defer></script>
-- <script src="main2.js" defer></script>
-+ <script src="main1.js" async></script>
-+ <script src="main2.js" async></script>
+-
+<script src="main1.js" defer></script>
+-
+<script src="main2.js" defer></script>
++
+<script src="main1.js" async></script>
++
+<script src="main2.js" async></script>
 ```
 
 ## CSS 下载慢与渲染

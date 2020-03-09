@@ -1,7 +1,11 @@
 # 简易函数处理
 
+## 间隔防抖
+
+比如你点击抢票 点一次抢票之后的一段时间（假设是 5 秒钟）内你都不能再点 如果点了 你又得再等 5 秒钟
+
 ```js
-// 首次触发便执行依次 之后每次触发距上次触发大于delay才会执行 近似理解为delay时间段之内只能触发一次
+// 首次触发便执行依次 之后每次触发距上次操作大于delay才会执行 近似理解为delay时间段之内只能触发一次
 function debounceStart(fn, delay, ctx) {
   var timer = null;
   var canRun = true;
@@ -17,8 +21,13 @@ function debounceStart(fn, delay, ctx) {
     }, delay);
   };
 }
+```
 
-// 不断有人上车 只有最后一个人上车之后再过delay才会执行
+## 尾防抖
+
+不断有人上车 只有最后一个人上车之后再过 delay 才会执行
+
+```js
 function debounceEnd(fn, delay, ctx) {
   var timer = null;
   return function() {
@@ -29,7 +38,13 @@ function debounceEnd(fn, delay, ctx) {
     }, delay);
   };
 }
+```
 
+## 间隔节流
+
+你一直快速的点鼠标 但你需要的函数还是只能每一段时间才能执行一次
+
+```js
 // 首次触发便执行依次 之后每次触发距上次执行大于delay才会执行 注意这里时距离上次执行
 function throttle(fn, inter, ctx) {
   var canRun = true;
@@ -44,7 +59,9 @@ function throttle(fn, inter, ctx) {
     }
   };
 }
+```
 
+```js
 var handle = debounceStart(function() {
   console.log(1);
 }, 1000);
@@ -56,4 +73,39 @@ var handle2 = throttle(function() {
 }, 1000);
 
 window.onscroll = handle2;
+```
+
+## 柯里化
+
+```js
+const currying = (fn, ...args) => {
+  if (args.length >= fn.length) {
+    // 如果参数够了 就直接执行 并返回执行值
+    return fn(...args);
+  } else {
+    // 如果不够就返回一个参数 并把返回函数的参数塞进去颗粒化
+    return (...args2) => currying(fn, ...args, ...args2);
+  }
+};
+
+// let testFn = (a, b, c) => {
+//   let res = a + b + c;
+//   return res;
+// }
+
+const getUrl = (protocol, domain, port, path) => {
+  return `${protocol}://${domain}:${port}/${path}`;
+};
+const getBaiduUrl = currying(getUrl, "https", "www.baidu.com", "80");
+console.log(getBaiduUrl("test.html"));
+console.log(getBaiduUrl("test2.html"));
+
+function name(params) {}
+name.prototype = {
+  a: 1,
+  add() {
+    this.a++;
+  },
+  log() {}
+};
 ```
