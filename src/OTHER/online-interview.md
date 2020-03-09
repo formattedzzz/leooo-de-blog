@@ -210,7 +210,8 @@ class EventEmitter {
   }
   once(name, func, id = "") {
     console.log(this.storeOnce[name], this.cached[name]);
-    // this.storeOnce[name] ? this.storeOnce[name].push({func, id}) : (this.storeOnce[name] = [func])
+    // this.storeOnce[name] ? this.storeOnce[name].push({func, id}) :
+    // (this.storeOnce[name] = [func])
     if (this.storeOnce[name]) {
       if (id !== "" && !this.storeOnce[name].some(v => v.id === id)) {
         this.storeOnce[name].push({ func, id });

@@ -22,29 +22,24 @@ Number(null) === 0;
 
 - Boolean Number String Regexp Date 以此类推
 
-  123.toString()
-  {a:1,b:2}.toString()
-  function() {}.toString() 是会直接报错的
+  123.toString()、 {a:1,b:2}.toString()、 function() {}.toString() 是会直接报错的
   应该(123).toString() ({a:1,b:2}).toString()这样 写成字面量的形式调用
 
-```js
-([1, 2.5, 3].toString() ===
-  "1,2.5,3"[
-    // 去掉[]及空格 跟String([]) 等价
-    (1, 3, [12, 2.4, [4, 5, 6]])
-  ].join(",")) ===
-  [1, 3, [12, 2.4, [4, 5, 6]]]
-    .toString()(
-      // [1, 3,[12, 2.4, [4,5,6]]].join('') 不带分隔符结果大相径庭
-      { a: 1 }
-    )
-    .toString()(
-      // '[object object]'
-      []
-    )
-    .toString(); // ''
-// 所以说为什么object.prototype.toString()可以用来判断类型
-```
+  ```js
+  [1, 2.5, 3].toString();    // "1,2.5,3";
+  // 去掉[]及空格 跟String([]) 等价
+  [1, 3, [12, 2.4, [4, 5, 6]]].join(",") === [1, 3, [12, 2.4, [4, 5, 6]]].toString();
+
+  // [1, 3,[12, 2.4, [4,5,6]]].join('') 不带分隔符结果大相径庭
+
+  ({ a: 1 }.toString());    // '[object object]'
+
+  [].toString();            // ''
+
+  null == undefined         // true
+  ```
+
+>所以说为什么 object.prototype.toString 方法可以用来判断类型.
 
 在转换不同的数据类型时 相等操作符遵循下列基本规则：
 

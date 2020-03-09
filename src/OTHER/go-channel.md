@@ -58,20 +58,20 @@ func testChannel2() {
   遍历读值时 无比先**把通道关闭** 不然 channel 读完会一直等 造成死锁
 
 ```go
-    chan3 := make(chan int, 1)
-    fmt.Println("===>", 1)
-    chan3 <- 9
-    go func() {
-        fmt.Println("===>", 2)
-        fmt.Println(<-chan3)
-    }()
-    fmt.Println("===>", 3)
-    // 这里会阻塞 因为已经满了 回跳到其他线程接收完
-    chan3 <- 10
-    fmt.Println("===>", 4)
+chan3 := make(chan int, 1)
+fmt.Println("===>", 1)
+chan3 <- 9
+go func() {
+    fmt.Println("===>", 2)
     fmt.Println(<-chan3)
-    fmt.Println("===>", 5)
-}
+}()
+fmt.Println("===>", 3)
+// 这里会阻塞 因为已经满了 回跳到其他线程接收完
+chan3 <- 10
+fmt.Println("===>", 4)
+fmt.Println(<-chan3)
+fmt.Println("===>", 5)
+
 ===> 1
 ===> 3
 ===> 2

@@ -10,62 +10,64 @@ file instanceof File; // true
 file instanceof Blob; // true
 ```
 
-file 和其他类型之间的转换是一个异步的过程，是通过 fileReader 来实现的，转换的结果在 reader 的 onload 事件中获取，代码如下：
+file 和其他类型之间的转换是一个异步的过程，是通过 fileReader 来实现的
+转换的结果在 reader 的 onload 事件中获取，代码如下：
 
-- file to base64
-  dataUrl 除去 MIME 信息以外才是 base64 的数据
+- file to base64 dataUrl 除去 MIME 信息以外才是 base64 的数据
 
-```js
-let reader = new FileReader(file);
-reader.onload = event => console.log(event.target.result);
-reader.readAsDataURL(file);
-```
+  ```js
+  let reader = new FileReader(file);
+  reader.onload = event => console.log(event.target.result);
+  reader.readAsDataURL(file);
+  ```
 
 - file to arrayBuffer
 
-```js
-let reader = new FileReader(file);
-reader.onload = event => console.log(event.target.result);
-reader.readAsArrayBuffer(file);
-```
+  ```js
+  let reader = new FileReader(file);
+  reader.onload = event => console.log(event.target.result);
+  reader.readAsArrayBuffer(file);
+  ```
 
 - file to binaryString
 
-```js
-reader.readAsBinaryString(file);
-```
+  ```js
+  reader.readAsBinaryString(file);
+  ```
 
 - base64 to file
 
-```js
-function dataURLtoFile(dataurl, filename) {
-  let arr = dataurl.split(","),
-    mime = arr[0].match(/:(.*?);/)[1],
-    bstr = atob(arr[1]),
-    n = bstr.length,
-    u8arr = new Uint8Array(n);
-  while (n--) {
-    u8arr[n] = bstr.charCodeAt(n);
+  ```js
+  function dataURLtoFile(dataurl, filename) {
+    let arr = dataurl.split(","),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
   }
-  return new File([u8arr], filename, { type: mime });
-}
-```
+  ```
 
-```js
-// 文件上传时通过转换为bloburl来实现预览
-$(".test-file").change(function(e) {
-  let file = e.currentTarget.files[0];
-  console.log(typeof file, file instanceof Blob); // object true
-  const src = URL.createObjectURL(file);
-  // console.log(src)
-  // blob:http://localhost:7006/866a4808-7336-4ab6-b506-321bd0f024e0
-  var img = new Image();
-  img.src = src;
-  img.onload = function() {
-    document.body.append(img);
-  };
-});
-```
+- URL.createObjectURL
+
+  ```js
+  // 文件上传时通过转换为bloburl来实现预览
+  $(".test-file").change(function(e) {
+    let file = e.currentTarget.files[0];
+    console.log(typeof file, file instanceof Blob); // object true
+    const src = URL.createObjectURL(file);
+    // console.log(src)
+    // blob:http://localhost:7006/866a4808-7336-4ab6-b506-321bd0f024e0
+    var img = new Image();
+    img.src = src;
+    img.onload = function() {
+      document.body.append(img);
+    };
+  });
+  ```
 
 ## URL.createObjectURL()
 
@@ -152,7 +154,7 @@ ArrayBuffer 涉及面比较广 我的理解是 ArrayBuffer 代表内存之中的
 
 {type: application/octet-stream}
 
-## 应用
+## 一些应用
 
 ```html
 <body>
@@ -232,13 +234,13 @@ ArrayBuffer 涉及面比较广 我的理解是 ArrayBuffer 代表内存之中的
       return import(script.src);
     }
     const code = `
-        export function add () {
-          console.log('nncz')
-        }
-        export default {
-          foo: 'bar',
-        }
-      `;
+      export function add () {
+        console.log('nncz')
+      }
+      export default {
+        foo: 'bar',
+      }
+    `;
     importCode(code).then(m => {
       console.log(m, m.default); // {foo: 'bar'}
     });

@@ -1,11 +1,12 @@
-# 零碎时间 5 分钟学习法 学习笔记
+# 5分钟划水学习法 练习源码、笔记
 
 * [文本益处的一般思路](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
 * [固定定位的潜在问题](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/common/fixed-position.md)
 * [`margin`在 FFC、GFC 中的妙用](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
 * [`clip-path`属性](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 * [自定义事件](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/custom-event.md)
-* [浏览器渲染机制](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/render.md)
+* [简易的函数截流、防抖处理](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/function-handle.md)
+* [浏览器渲染机制](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/html-render/index.md)
 * [es6 `generator`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-generator.md)
 * [es6 `class`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-class.md)
 * [一个完备的继承](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/nice-inherit.md)
@@ -19,7 +20,7 @@
 * [对等依赖`peerDependencies`分析](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 * [写一个`useEvent`hooks](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 * [从函数调用栈看递归](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/stack-flow.md)
-* [如何优雅的处理`async/await`流程中的异常](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
+* [`async/await`流程的异常处理](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/async-await.md)
 * [GO`channel`再理解](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/go-channel.md)
 * [SPA 中页面请求行为匹配到 URL 的大致思路](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/fetchmapurl.md)
 * [当`exec`遇上全局匹配](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/regexp-exec.md)
@@ -44,7 +45,6 @@
 * [原型链的一个小疑问](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 * [`Blob`对象](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/blob-about.md)
 * [捋一捋 `Babel7.x`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
-* [简易的函数截流、防抖](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 * [`mixin`、`HOC`、`hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 * [币加索的区块链时光](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/block-chain.md)
 * [小试文档神器`REST-client`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/rest-client.md)

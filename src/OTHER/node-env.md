@@ -15,14 +15,16 @@ npm install dotenv --save
 安装 dotenv 依赖读取变量文件 根目录下新建.env 文件 并将其 gitignore 掉
 
 ```env
-PORT=wx.nnleo.cn
+HOST=wx.nnleo.cn
 PORT=65534
 ```
 
 ```js
 require("dotenv").config();
 console.log(process.env.HOST);
+// wx.nnleo.cn
 console.log(process.env.PORT);
+// 65534
 ```
 
 ## 使用 Npm Scripts
@@ -31,9 +33,6 @@ console.log(process.env.PORT);
 
 ```json
 {
-  // 使用 IntelliSense 了解相关属性
-  // 悬停以查看现有属性的描述。
-  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
