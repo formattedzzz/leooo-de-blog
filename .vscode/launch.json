@@ -8,18 +8,18 @@
       "type": "node",
       "request": "launch",
       "name": "启动程序",
-      "program": "${workspaceFolder}/ELECTRON/index.js"
+      "program": "${workspaceFolder}/src/ELECTRON/index.js"
     },
     {
       "name": "Debug Main Process",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceFolder}/ELECTRON",
+      "cwd": "${workspaceFolder}/src/ELECTRON",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
       "windows": {
         "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
       },
       "args" : ["."]
-    }
+    },
   ]
 }

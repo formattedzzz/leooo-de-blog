@@ -1,3 +1,6 @@
+# 一次线上面试
+
+```js
 // 第一题
 for (var i = 0; i < 5; i++) {
   (function(num) {
@@ -239,3 +242,4 @@ class EventEmitter {
     }
   }
 }
+```
