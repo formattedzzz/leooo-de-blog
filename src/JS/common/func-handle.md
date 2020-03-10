@@ -83,7 +83,7 @@ const currying = (fn, ...args) => {
     // 如果参数够了 就直接执行 并返回执行值
     return fn(...args);
   } else {
-    // 如果不够就返回一个参数 并把返回函数的参数塞进去颗粒化
+    // 如果不够就返回一个参数 并把返回函数的参数塞进去柯里化
     return (...args2) => currying(fn, ...args, ...args2);
   }
 };
