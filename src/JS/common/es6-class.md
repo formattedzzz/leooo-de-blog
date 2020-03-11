@@ -66,12 +66,12 @@
       console.log(+Date.now());
     }
     fun2() {
-      this.fun1(); // 肯定不行 this 都不指向WaterFull本身
-      WaterFull.fun1; // 也不行
+      this.fun1();      // 肯定不行 this 都不指向WaterFull本身
+      WaterFull.fun1;   // 也不行
     }
     static fun3() {
-      this.fun1(); // this => 类本身
+      this.fun1();      // this => 类本身
     }
   }
-  WaterFull.fun3(); // ok
+  WaterFull.fun3();     // ok
   ```
