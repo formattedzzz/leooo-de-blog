@@ -12,7 +12,7 @@
 * [es6 `generator`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-generator.md)
 * [`es5`写一个迭代器](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 * [一个完备的继承](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/nice-inherit.md)
-* [理解原型链](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
+* [理解原型链](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/prototype-chain.md)
 * [`async/await`流程的异常处理](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/async-await.md)
 * [认识稀疏数组](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/sparse-array.md)
 * [`try-catch`执行顺序](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/try-catch.md)
