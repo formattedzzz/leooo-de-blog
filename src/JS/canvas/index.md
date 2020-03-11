@@ -58,27 +58,9 @@ Ball.prototype.move = function() {
 };
 ```
 
-## context.measureText
-
-根据上下文绘图环境得出一段文字的宽度 => 返回 **{width: Number}**
-
-## context.save()、context.restore()
-
-暂存矩阵变换、裁剪区域、绘图属性的样式
-
-## context.arc()
-
-**true** 顺时针 **false** 逆时针
-
-## context.beginPath()
-
-一定要记得每笔画之前执行**beginPath** 不然在做动画的时候会清不干净
-
 ## canvas 清晰度问题
 
-明确一个点
-
-canvas 属性宽高：绘制区域的宽高 400\*400 的画布在你的 canvasAPI 中就只能容纳 400\*400 超出部分不予显示
+明确一个点 canvas 属性宽高：绘制区域的宽高 400\*400 的画布在你的 canvasAPI 中就只能容纳 400\*400 超出部分不予显示
 
 canvas 样式宽高：画布在页面中所占位置的大小 通过设置样式宽高对画布进行缩放
 
