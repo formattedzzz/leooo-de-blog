@@ -1,26 +1,36 @@
 # linux 基操笔记
 
-## 前端开发者环境
+## vim 操作（命令模式）
 
-- baidu-PCS(下载相关)
-- chrome
-- node(npm&cnpm)
-- yarn
-- 全局包 vue-cli server font-spider npm-check-updates hexo-cli gatsby-cli
-- git(source-tree)
-- brew
-- vscode
-- myqsql
-- navicat
-- go
-- andriod IED + andriod sdk
-- flutter
-- dart server 运行环境
-- vue-devtool
-- shuttle
-- wx-devtool
-- ps-cc
-- docker
+- **`dd`** 删除一行
+- **`u`** 撤销操作
+- **`^ + r`** 对撤销的撤销
+- **`i`** 光标之前
+- **`a`** 光标之后
+- **`o`** 光标新建下一行开始输入
+- **`O`** 光标新建上一行开始输入
+- **`ZZ`** 保存退出
+- **`G`** 定位到最末尾 （一般我们用触摸板滑动就 OK 了）
+- **`gg`** 定位到最开始
+- **`^`** 定位到当前行首（跟正则一样）
+- **`\$`** 定位到当前行尾
+- **`:set number`** 显示行号
+- **`33G :33`** 定位到第 33 行
+- **`v`** 从当前光标开始选中
+- **`d`** 剪切 **y** 复制
+- **`yy`** 复制当前行
+- **`p`** 粘帖
+- **`:set ruler`** 打开标尺
+  - H 移至视窗的第一行
+  - M 移至视窗的中间那行
+  - L 移至视窗的最后一行
+- **`/leooo`** 简单搜索 leooo 这个单词 n N 切换下一个上一个
+- **`:set hlsearch`** 如果搜索结果没有高亮的可以设置一下
+- 当前行搜索 foo 替换为 bar
+- **`:s/foo/bar/g`**
+  全文搜索 foo 替换为 bar
+- **`:%s/foo/bar/g`**
+  当然还有当前选区 搜索 foo 替换为 bar
 
 ## 修复环境变量引起的命令行崩溃
 
@@ -49,23 +59,23 @@ source ~/.bash_profile
 
 ## 目录、文件
 
-- **/** 主机根目录
-- **~** 登录用户根目录
+- **`/`** 主机根目录
+- **`~`** 登录用户根目录
 - 创建文件：
 
-  **touch a.txt**
+  **`touch a.txt`**
 
 - 创建文件夹：
 
-  **mkdir NewFolder**
+  **`mkdir NewFolder`**
 
 - 删除文件：
 
-  **rm a.txt**
+  **`rm a.txt`**
 
 - 删除空文件夹：
 
-  **rmdir NewFolder**
+  **`rmdir NewFolder`**
 
 - 删除文件夹的内容包括文件夹
 
@@ -126,7 +136,7 @@ source ~/.bash_profile
 
 ## 盘符
 
-Df 命令是 linux 系统以磁盘分区为单位查看文件系统，可以加上参数查看磁盘剩余空间信息，命令格式：
+`Df` 命令是 `linux` 系统以磁盘分区为单位查看文件系统，可以加上参数查看磁盘剩余空间信息，命令格式：
 
 ```sh
 df -hl
@@ -407,7 +417,7 @@ systemctl status firewalld
 
 ## redis
 
-安装 下载安装包 解压到 usr/local/ 目录
+安装 下载安装包 解压到 `usr/local/` 目录
 
 然后 sudo make test sudo make install 即可 redis-server 启动成功
 
@@ -628,9 +638,9 @@ go env
 
 ## macOS 下升级 curl 到最新
 
-为了覆盖系统自带的 curl 命令
+为了覆盖系统自带的 `curl` 命令
 
-～/下新建.zshrc 文件
+`～/` 下新建 `.zshrc` 文件
 
 ```conf
 export LDFLAGS="-L/usr/local/opt/curl/lib"

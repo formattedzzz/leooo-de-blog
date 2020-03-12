@@ -79,3 +79,55 @@ fun1 和 fun2 相差了 1500ms = 1000 + 500 fun2 在 fun1 执行完的 500ms 后
 setTimeout 在内部实现了递归调用配合硬性判断条件来触发
 
 因为这里的 sleep 函数是同步的 代码均为依次执行
+
+## 整理出来
+
+```js
+function getNewInterval() {
+  // 这里通过构造函数返回一个函数 这样就不会在清除的时候把所有的定时器都清掉了
+  function myInterval() {
+    var args = arguments;
+    myInterval.timeId = setTimeout(() => {
+      if (typeof args[0] === "function") args[0]();
+      args.callee(...args);
+    }, args[1]);
+    // return myInterval.timeId;
+    // 这里return是没用的 因为 args.callee 一调用 myInterval 一直执行 不会有返回值
+  }
+  myInterval.clear = () => {
+    clearTimeout(myInterval.timeId);
+  };
+  return myInterval;
+}
+```
+
+测试一下
+
+```js
+function sleep(sleepTime) {
+  var start = new Date().getTime();
+  while (true) {
+    if (new Date().getTime() - start > sleepTime) break;
+  }
+}
+var call = () => {
+  sleep(500);
+  console.log("call excuted", Math.ceil(new Date().getTime() / 1000), "s");
+};
+
+var newInterval = new getNewInterval();
+
+newInterval(call, 500);
+
+var timer = setTimeout(() => {
+  newInterval.clear();
+  clearTimeout(timer);
+}, 6000);
+
+// call excuted 1584020089 s
+// call excuted 1584020090 s
+// call excuted 1584020091 s
+// call excuted 1584020092 s
+// call excuted 1584020093 s
+// call excuted 1584020094 s
+```
