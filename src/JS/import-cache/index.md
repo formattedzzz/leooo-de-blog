@@ -11,18 +11,21 @@ console.log("lib");
 module.exports = function() {
   console.log(123);
 };
+
 // a.js
 console.time("1");
 let func = require("./lib.js");
 console.timeEnd("1");
 func();
 module.exports = "aaa";
+
 // b.js
 console.time("1");
 let func = require("./lib.js");
 console.timeEnd("1");
 func();
 module.exports = "bbb";
+
 // index.js
 console.log(require("./a.js"));
 console.log(require("./b.js"));
@@ -40,5 +43,9 @@ console.log(require("./b.js"));
 ```
 
 一个应用起来之后进程中的所有模块导出的变量 与其他模块的依赖关系都已经确定了
-一般我们都是重新部署应用 进程切断 重新启动
-所以怎样可以做到`node`应用的不断网热更新呢
+
+一般我们都是重新部署应用 进程切断 重新启动的过程是不能对外服务的 即使时间很短
+
+那么怎样可以做到`node`应用的不断网热更新呢
+
+## node 应用热部署
