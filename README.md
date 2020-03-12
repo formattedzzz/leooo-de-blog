@@ -1,10 +1,13 @@
-# 5分钟划水学习法 练习源码、笔记
+# 5 分钟划水学习法 练习源码、笔记
 
 * [文本益处的一般思路](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
 * [固定定位的潜在问题](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/common/fixed-position.md)
 * [`margin`在 FFC、GFC 中的妙用](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
 * [`vertical-align`属性](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
 * [`clip-path`属性](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
+
+---
+
 * [自定义事件](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/custom-event.md)
 * [简易的函数截流、防抖、柯里化处理](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/func-handle.md)
 * [初探 H5 新特性`web-worker`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/h5-worker.md)
@@ -42,16 +45,24 @@
 * [`node`认识对等依赖`peerDependencies`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/peer-dependencies.md)
 * [`git`时光机](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/nice-git.md)
 * [`git` `hooks`实现自动部署](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/git-hooks.md)
-* [`vue`vuex跟双向绑定的冲突问题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-* [`vue`v-for列表元素事件使用了代理吗](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+* [`vue`vuex 跟双向绑定的冲突问题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+* [`vue`v-for 列表元素事件使用了代理吗](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 * [`vue`中`computed`实现原理](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-* [`react`生命周期](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-lifecircle.md)
-* [`react``hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-hooks.md)
-* [`react`写一个useEvent`hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-* [`react`用`puppeteer`来测试组件](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-test.md)
 * [`Blob`对象的应用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/blob-about.md)
 * [捋一捋 `Babel6.x`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 * [GO `channel` 再理解](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/go-channel.md)
 * [币加索的区块链时光](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/block-chain.md)
 * [初识`puppeteer`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/puppeteer/index.md)
 * [小试`vscode`文档神器`REST Client`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/rest-client.md)
+
+---
+
+* [`react`生命周期](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-lifecircle.md)
+* [`react` `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-hooks.md)
+* [`react`写一个 useEvent`hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+* [`react`用`puppeteer`来测试组件](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-test.md)
+
+---
+
+* [`笔记`shell 脚本](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/shell/index.md)
+* [`笔记`Linux 命令](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/linux.md)

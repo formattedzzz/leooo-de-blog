@@ -34,7 +34,7 @@ git cherry-pick commit7ID
 
 ## git rebase
 
-```shell
+```bash
 git rebase -i HEAD~4
 # 合并最近4次提交 或者这样 git rebase -i commitid
 # commitid(不包括本身)之后的所有提交
@@ -51,5 +51,33 @@ git rebase -i HEAD~4
 ## git 浅层 clone
 
 ```bash
-git clone --depth=1
+git clone repourl --depth=1
+```
+
+## 其他小伙伴发布分支到远程 而本地没有
+
+法 1:
+
+```bash
+git checkout -b branchname
+# 同名分支 先本地建立分支
+
+git pull origin branchname
+# 同名分支 再在该分支下主动拉取远程分支 则会自动建立关联
+```
+
+法 2:
+
+```bash
+git fetch
+# 先让本地能够检测到远程新增的分支
+
+git checkout -b branchname origin/branchname
+# 再新建本地分支与该远程分支进行关联
+```
+
+## 想放弃托管某文件但是本地保留
+
+```bash
+git rm --cached file_path
 ```
