@@ -41,7 +41,7 @@
 - [`vue` v-for 列表元素事件使用了代理吗](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`vue` 中 `computed` 实现原理](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`Blob` 对象的应用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/blob-about.md)
-- [捋一捋 `Babel6.x`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
+- [捋一捋 `babel`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 - [`node` 模块缓存](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/import-cache/index.md)
 - [`node` 模块循环引用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/import-circle/index.md)
 - [`node` 中使用环境变量](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/node/node-env.md)

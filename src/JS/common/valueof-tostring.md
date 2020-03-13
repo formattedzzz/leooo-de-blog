@@ -1,11 +1,11 @@
 # 回顾 toString 和 valueOf 两个函数
 
+> undefined 和 null 没有 toString()和 valueOf()方法
+
 ```js
 Number(undefined) === NaN;
 Number(null) === 0;
 ```
-
-> undefined 和 null 没有 toString()和 valueOf()方法
 
 为啥嘞 在 js 里面 这两个东西就是一个原始值 不是对象 也不是像 String Number 这样的包装对象 虽然 null 是一个空指针对象
 只能用 String(null) String(undefined)
@@ -26,20 +26,19 @@ Number(null) === 0;
   应该(123).toString() ({a:1,b:2}).toString()这样 写成字面量的形式调用
 
   ```js
-  [1, 2.5, 3].toString();    // "1,2.5,3";
+  [1, 2.5, 3].toString(); // "1,2.5,3";
   // 去掉[]及空格 跟String([]) 等价
-  [1, 3, [12, 2.4, [4, 5, 6]]].join(",") === [1, 3, [12, 2.4, [4, 5, 6]]].toString();
+  [1, 3, [12, 2.4, [4, 5, 6]]].join(",") ===
+    [1, 3, [12, 2.4, [4, 5, 6]]].toString();
 
   // [1, 3,[12, 2.4, [4,5,6]]].join('') 不带分隔符结果大相径庭
 
-  ({ a: 1 }.toString());    // '[object object]'
+  ({ a: 1 }.toString()); // '[object Object]'
 
-  [].toString();            // ''
+  [].toString(); // ''
 
-  null == undefined         // true
+  null == undefined; // true
   ```
-
->所以说为什么 object.prototype.toString 方法可以用来判断类型.
 
 在转换不同的数据类型时 相等操作符遵循下列基本规则：
 
@@ -47,12 +46,21 @@ Number(null) === 0;
 
 - 如果一个操作数是字符串 另一个操作数是数值 在比较之前先将字符串转换为数值
 
-- 如果一个操作数是对象 另一个操作数不是 则调用对象的 valueOf 方法 用得到的基本类型值按照前面的规则进行比较
+- 如果一个操作数是对象 另一个操作数不是 则调用对象的 `valueOf` 方法 用得到的基本类型值按照前面的规则进行比较
 
-- 如果有一个操作数是 NaN 无论另一个操作数是什么 相等操作符都返回 false
+  **_特别地_** 如果一个操作对象是数组 如果要调用 `toString` 方法则会隐式的调用 `join` 方法
 
-- 如果两个操作数都是对象 则比较它们是不是同一个对象 如果指向同一个对象 则相等操作符返回 true
+- 如果有一个操作数是 `NaN` 无论另一个操作数是什么 相等操作符都返回 `false`
 
-- 在比较相等性之前 不能将 null 和 undefined 转成其他值
+- 如果两个操作数都是对象 则比较它们是不是同一个对象 如果指向同一个对象 则相等操作符返回 `true`
 
-- null 和 undefined 是相等的
+- 在比较相等性之前 不能将 `null` 和 `undefined` 转成其他值
+
+- `null` 和 `undefined` 是相等的
+
+- 还有个疑问 对象和非对象运算、比较的时候 怎么知道他调用的是 `toString` 还是 `valueOf` 呢
+
+  正常情况下 调用的都是 `toString` 除非你手动把 `valueOf` 改了并返回基本数据类型
+
+> 所以说为什么 `Object.prototype.toString` 方法可以用来判断类型.
+> 这个接口返回的是 描述包装对象的一段字符串

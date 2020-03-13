@@ -1,4 +1,4 @@
-# 浅谈 npm 依赖模型
+# 初识 npm 依赖模型
 
 ## 一些 npm 操作
 
@@ -18,7 +18,7 @@ npm ls
 
 ## 版本号
 
-```json
+```js
 {
   "dependencies": {
     "signale": "1.4.0",
@@ -111,6 +111,7 @@ node_modules
 
 ```sh
 npm config get cache
+# /Users/liufulin/.npm
 ```
 
 ![npm-cache](https://i.loli.net/2020/03/13/lfBXDV41eMFuh5N.png)
@@ -121,7 +122,7 @@ npm config get cache
 npm cache clean
 ```
 
-## 初始化安装的 node_modules 的原理
+## 初始化安装的 `node_modules` 的大致机制
 
 - 从 npm 远程仓库获取包信息
 - 根据 `package.json` 构建依赖树 构建过程：

@@ -20,7 +20,7 @@ Emitter.emit("success", { name: "xiaolin" });
 // { name: "xiaolin" }
 ```
 
-### 模块使用
+### 主要方法
 
 ```js
 function CustomEmitter() {
@@ -136,7 +136,7 @@ console.log(t);
 
 虚拟机 **`vm`** 模块可以开辟出一个独立作用域 **`code`** 代码块里的变量无法访问、影响本地作用域
 
-- runInThisContext
+- `runInThisContext`
 
 ```js
 "use strict";
@@ -147,12 +147,12 @@ let code = `(function(require) {
     response.writeHead(200, {'Content-Type': 'text/html'});
     response.end('<pre><code>console.log("Hello World")</pre></code>');
   }).listen(8124);
-  console.log('Server running at http://127.0.0.1:8124/');
+  console.log('Server running at http://127.0.0.1:7003/');
 })`;
 vm.runInThisContext(code)(require);
 ```
 
-- runInContext
+- `runInContext`
 
 ```js
 const vm = require("vm");
