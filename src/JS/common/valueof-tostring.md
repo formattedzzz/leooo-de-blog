@@ -1,29 +1,29 @@
 # 回顾 toString 和 valueOf 两个函数
 
-> undefined 和 null 没有 toString()和 valueOf()方法
+> `undefined` 和 `null` 没有 `toString` 和 `valueOf`方法
 
 ```js
 Number(undefined) === NaN;
 Number(null) === 0;
 ```
 
-为啥嘞 在 js 里面 这两个东西就是一个原始值 不是对象 也不是像 String Number 这样的包装对象 虽然 null 是一个空指针对象
-只能用 String(null) String(undefined)
+为啥嘞 在 js 里面 这两个东西就是一个原始值 不是对象 也不是像 `String` `Number` 这样的包装对象 虽然 `null` 是一个空指针对象
+只能用 `String(null)` `String(undefined)`
 
-- toString 返回一个反映(描述)该对象的字符串
+- `toString` 返回一个反映(描述)该对象的字符串
 
-- valueOf 返回该对象的原始值
+- `valueOf` 返回该对象的原始值
 
-- Function.prototype.toString 影响的是函数调用 toString 返回的结果
+- `Function.prototype.toString` 影响的是函数调用 `toString` 返回的结果
 
-- Object.prototype.toString 影响的是 json 对象调用 toString 返回的结果
+- `Object.prototype.toString` 影响的是 json 对象调用 `toString` 返回的结果
 
-- Array.prototype.toString 影响的是数组调用 toString 返回的结果 有趣的是：Array.prototype 本质是一个数组！
+- `Array.prototype.toString` 影响的是数组调用 `toString` 返回的结果 有趣的是：`Array.prototype` 本质是一个数组！
 
-- Boolean Number String Regexp Date 以此类推
+- `Boolean` `Number` `String` `Regexp` `Date` 以此类推
 
-  123.toString()、 {a:1,b:2}.toString()、 function() {}.toString() 是会直接报错的
-  应该(123).toString() ({a:1,b:2}).toString()这样 写成字面量的形式调用
+  `123.toString()`、 `{a:1,b:2}.toString()`、 `function() {}.toString()` 是会直接报错的
+  应该`(123).toString()` `({a:1,b:2}).toString()` 这样 写成字面量的形式调用
 
   ```js
   [1, 2.5, 3].toString(); // "1,2.5,3";
@@ -62,5 +62,15 @@ Number(null) === 0;
 
   正常情况下 调用的都是 `toString` 除非你手动把 `valueOf` 改了并返回基本数据类型
 
-> 所以说为什么 `Object.prototype.toString` 方法可以用来判断类型.
-> 这个接口返回的是 描述包装对象的一段字符串
+- 所以说为什么 `Object.prototype.toString` 方法可以用来判断类型.
+
+  这个接口返回的是 描述包装对象的一段字符串
+
+  ```js
+  Object.prototype.toString.call([]);
+  // '[object Array]'
+  Object.prototype.toString.call("");
+  // '[object String]'
+  ```
+
+  很显然格式便是 `[object {{constractorName}}]`
