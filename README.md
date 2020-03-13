@@ -44,9 +44,9 @@
 - [捋一捋 `Babel6.x`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 - [`node` 模块缓存](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/import-cache/index.md)
 - [`node` 模块循环引用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/import-circle/index.md)
-- [`node` 中使用环境变量](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/node-env.md)
-- [`node` vm 虚拟机在业务中的有趣应用](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [`node` 认识对等依赖 `peerDependencies`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/peer-dependencies.md)
+- [`node` 中使用环境变量](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/node/node-env.md)
+- [`node` 内置模块实践](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/node/index.md)
+- [`node` 认识 `npm` 依赖](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/node/peer-dependency.md)
 
 ## react
 
@@ -62,12 +62,12 @@
 
 - [浏览器渲染机制](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/html-render/index.md)
 - [内容安全策略](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/security-policy.md)
-- [为什么可以用 `gif` 图片做数据埋点请求](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [用 gif 图片做数据埋点请求](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/gif-track.md)
 - [初识 `puppeteer`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/puppeteer/index.md)
 - [`git` 时光机](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/nice-git.md)
 - [`git` `hooks`实现自动部署](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/git-hooks.md)
 - [小试 `vscode` 文档神器 `REST Client`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/rest-client.md)
 - [GO `channel` 再理解](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/go-channel.md)
 - [币加索的 `区块链` 时光](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/block-chain.md)
-- [`笔记` `shell` 脚本](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/shell/index.md)
-- [`笔记` `Linux` 命令](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/linux.md)
+- [笔记 `shell` 脚本](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/shell/index.md)
+- [笔记 `Linux` 命令](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/linux.md)
