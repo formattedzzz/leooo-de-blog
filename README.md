@@ -19,6 +19,7 @@
 - [es6 `generator`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-generator.md)
 - [`reduce` 的用法及扩展](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es-reduce.md)
 - [用 `es5` 写一个迭代器](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
+- [扒一扒 `arguments` 对象](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es-arguments.md)
 - [用 `es5` 写一个完备的继承](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/nice-inherit.md)
 - [理解原型及原型链](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/prototype-chain.md)
 - [单例模式很简单的写法](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/singleTon.md)
@@ -28,8 +29,7 @@
 - [`toString` 和 `valueOf` 回顾](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/valueof-tostring.md)
 - [`try-catch` 执行顺序](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/try-catch.md)
 - [`session` 方式登录小程序](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/mp-login.md)
-- [`js` 构造堆](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/heap-sort/index.md)
-- [`js` 栈结构及应用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/stack.md)
+- [`js` 堆、栈结构及应用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/heap-stack.md)
 - [`js` 操作 `cookie`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/cookie.md)
 - [装饰器的原理及应用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 - [从函数调用栈看递归](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/stack-flow.md)
@@ -71,3 +71,12 @@
 - [币加索的 `区块链` 时光](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/block-chain.md)
 - [笔记 `shell` 脚本](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/shell/index.md)
 - [笔记 `Linux` 命令](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/linux.md)
+
+## todo
+
+- [`node` 事件循环案例](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`es6` `proxy`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`node` 开发一个实用的 cli 工具](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`koa` 洋葱圈模型](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`webpack4.x` 实践及手写 `loader` `plugin`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`node` `子进程` `子线程`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
