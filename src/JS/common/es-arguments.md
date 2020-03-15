@@ -48,8 +48,8 @@ function A() {
   console.log(arguments.__proto__ === Object.prototype); // true
   console.log(Object.prototype.toString.call(arguments)); // "[object Arguments]"
   console.log(arguments.toString()); // "[object Arguments]"
-  console.log(Arguments); // Arguments is not defined
 }
+console.log(Arguments); // Arguments is not defined
 ```
 
 看来 `arguments` 对象本质跟 `Array`、`RegExp` 一样是 `Arguments` 类构造出来 但我们却访问不到这个类
