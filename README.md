@@ -58,7 +58,7 @@
 - [`react` `HOC`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-hooks.md)
 - [`react` 写一个 useEvent `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` 用 `puppeteer` 来测试组件](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-test.md)
-- [`react` 重新认识 `Suspense`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`react` 重新认识 `Suspense`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-suspense.md)
 
 ## other
 
