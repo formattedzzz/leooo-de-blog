@@ -23,8 +23,8 @@
 - [`js` 从函数调用栈看递归](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/stack-flow.md)
 - [`js` 多叉树遍历及还原](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/tree-iterator/index.md)
 - [`js` `Blob` 对象的应用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/blob-about.md)
-- [`es5` 写一个构造迭代器](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
-- [`es5` 写一个完备的继承](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/nice-inherit.md)
+- [`es5` 构造一个迭代器](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-iterator.md)
+- [`es5` 写一个完备的继承及扩展](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/nice-inherit.md)
 - [`es5` 理解原型及原型链](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/prototype-chain.md)
 - [`es5` 单例模式很简单的写法](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/singleTon.md)
 - [`es6` `class`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-class.md)
@@ -58,6 +58,7 @@
 - [`react` `HOC`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-hooks.md)
 - [`react` 写一个 useEvent `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` 用 `puppeteer` 来测试组件](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-test.md)
+- [`react` 重新认识 `Suspense`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 
 ## other
 
@@ -76,8 +77,9 @@
 ## todo
 
 - [`node` 事件循环案例](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [`es6` `proxy`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`js` `defineProperty` vs `proxy`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`node` 开发一个实用的 cli 工具](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`koa` 洋葱圈模型](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`webpack4.x` 实践及手写 `loader` `plugin`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`node` `子进程` `子线程`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`service worker`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
