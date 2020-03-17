@@ -162,9 +162,9 @@ export default function Baz(props) {
 }
 ```
 
-通过 throw new Promise 来中断组件渲染 Suspense 会等待这个 Promise 就绪后 接着重新渲染
+通过 throw new `Promise` 来中断组件渲染 `Suspense` 会等待这个 `Promise` 就绪后 接着重新渲染
 
-为了避免重新渲染时 又抛出 Promise 导致'死循环'。这里需要使用一个 `缓存` 来表示异步操作已经就绪了 避免再次抛出异常
+为了避免重新渲染时 又抛出 `Promise` 导致死循环。这里需要使用一个 `缓存` 来表示异步操作已经就绪了 避免再次抛出异常
 能不能在组件内部缓存这些状态？答案是不行, 至少现在不可以
 
 - 将缓存状态提取到 `context`

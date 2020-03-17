@@ -1,81 +1,114 @@
 # 初识 Blob 对象
 
+## `File` 对象与其他形式的转化
+
 ```js
 // 从input元素中读取一个文件：
 let fileInput = document.getElementById("file");
-fileInput.onchange = console.log(fileInput.files[0]);
+fileInput.onchange = () => console.log(fileInput.files[0]);
 // 直接创建一个
 let file = new File(["1"], "1.txt");
 file instanceof File; // true
 file instanceof Blob; // true
 ```
 
-file 和其他类型之间的转换是一个异步的过程，是通过 fileReader 来实现的
-转换的结果在 reader 的 onload 事件中获取，代码如下：
+`file` 和其他类型之间的转换是一个异步的过程 是通过 `fileReader` 来实现的
+转换的结果在 `reader` 的 `onload` 事件中获取 代码如下：
 
-- file to base64 dataUrl 除去 MIME 信息以外才是 base64 的数据
-  
-  ```js
-  let reader = new FileReader(file);
-  reader.onload = event => console.log(event.target.result);
-  reader.readAsDataURL(file);
-  ```
+### `file to base64` dataUrl 除去 MIME 信息以外才是 base64 的数据
 
-- file to arrayBuffer
-  
-  ```js
-  let reader = new FileReader(file);
-  reader.onload = event => console.log(event.target.result);
-  reader.readAsArrayBuffer(file);
-  ```
+```js
+let reader = new FileReader(file);
+reader.onload = event => console.log(event.target.result);
+reader.readAsDataURL(file);
+```
 
-- file to binaryString
-  
-  ```js
-  reader.readAsBinaryString(file);
-  ```
+### `file to arrayBuffer`
 
-- base64 to file
-  
-  ```js
-  function dataURLtoFile(dataurl, filename) {
-    let arr = dataurl.split(","),
-      mime = arr[0].match(/:(.*?);/)[1],
-      bstr = atob(arr[1]),
-      n = bstr.length,
-      u8arr = new Uint8Array(n);
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
-    return new File([u8arr], filename, { type: mime });
+```js
+let reader = new FileReader(file);
+reader.onload = event => console.log(event.target.result);
+reader.readAsArrayBuffer(file);
+```
+
+### `file to binaryString`
+
+```js
+let reader = new FileReader(file);
+reader.onload = event => console.log(event.target.result);
+reader.readAsBinaryString(file);
+```
+
+### `base64 to file`
+
+```js
+// data:application/octet-stream;base64,MQ==
+function dataURLtoFile(dataurl, filename) {
+  let arr = dataurl.split(",");
+  // 逗号后面的内容才是要调用的 btoa 函数的内容
+  let mime = arr[0].match(/:(.*?);/)[1];
+  // 获取类型 BlobPropertyBag 也就是 new Blob 第二个参数的 type 属性的值
+  let bstr = atob(arr[1]);
+  // atob('MQ==') === '1'
+  let n = bstr.length;
+  let u8arr = new Uint8Array(n);
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
   }
-  ```
+  return new File([u8arr], filename, { type: mime });
+}
+```
 
-- URL.createObjectURL
-  
-  ```js
-  // 文件上传时通过转换为bloburl来实现预览
-  $(".test-file").change(function(e) {
-    let file = e.currentTarget.files[0];
-    console.log(typeof file, file instanceof Blob); // object true
-    const src = URL.createObjectURL(file);
-    // console.log(src)
-    // blob:http://localhost:7006/866a4808-7336-4ab6-b506-321bd0f024e0
-    var img = new Image();
-    img.src = src;
-    img.onload = function() {
-      document.body.append(img);
+## `Blob` 对象的一些接口
+
+### `Blob to ObjectURL`
+
+`Blob` 其实是一个可以当作文件用的二进制数据 我们可以通过接口 **`URL.createObjectURL()`** 生成一个指向 `Blob` 的地址 参数本质就是一个 `Blob` 对象
+
+需要注意的是 即使是同样的二进制数据 每调用一次 **`URL.createObjectURL`** 方法 就会得到一个不一样的 `Blob-URL` 这个 URL 的存在时间 等同于网页的存在时间 一旦网页刷新或卸载 这个 `Blob-URL` 即失效
+
+```js
+// 文件上传时通过转换为bloburl来实现预览
+$(".test-file").change(function(e) {
+  let file = e.currentTarget.files[0];
+  console.log(typeof file, file instanceof Blob); // object true
+  const src = URL.createObjectURL(file);
+  // console.log(src)
+  // blob:http://localhost:7006/866a4808-7336-4ab6-b506-321bd0f024e0
+  var img = new Image();
+  img.src = src;
+  img.onload = function() {
+    document.body.append(img);
+  };
+});
+```
+
+### `ObjectURL to Blob` 呢
+
+当然可以 `ObjectURL` 就是指向本地一段内容的资源 赋给 `<a></a>` 点击便会触发下载
+
+所以我们可以通过 `XMLHttpRequest` 获取到他的内容
+
+```js
+function objectURLToBlob(url) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.responseType = "blob";
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        resolve(xhr.response);
+      } else {
+        reject(xhr.statusText);
+      }
     };
+    xhr.onerror = () => reject(xhr.statusText);
+    xhr.send();
   });
-  ```
+}
+```
 
-## URL.createObjectURL()
-
-Blob 其实是一个可以当作文件用的二进制数据 我们可以通过接口**URL.createObjectURL()**生成一个指向 Blob 的地址 参数本质就是一个 blob 对象
-
-需要注意的是 即使是同样的二进制数据 每调用一次**URL.createObjectURL**方法 就会得到一个不一样的 Blob URL 这个 URL 的存在时间 等同于网页的存在时间 一旦网页刷新或卸载 这个 Blob URL 即失效
-
-## Blob 与 ArrayBuffer 的互转
+### `Blob` 与 `ArrayBuffer` 的互转
 
 ```js
 // 创建一个以二进制数据存储的html文件
@@ -136,25 +169,32 @@ textReader.onload = function() {
 };
 ```
 
-## new Blob()两个参数分别是什么
+### `new Blob()` 两个参数分别是什么
 
 - 第一个参数
 
-**ArrayBuffer** **ArrayBufferView** **Blob** **DOMString** 二进制数据序列构成的数组
+  **`ArrayBuffer`** **`ArrayBufferView`** **`Blob`** **`DOMString`** 二进制数据序列构成的数组
 
-ArrayBuffer 涉及面比较广 我的理解是 ArrayBuffer 代表内存之中的一段二进制数据 **一旦生成不能再改** 可以通过视图（**TypedArray**和**DataView**）进行操作
+  ArrayBuffer 涉及面比较广 我的理解是 ArrayBuffer 代表内存之中的一段二进制数据 **`一旦生成不能再改`** 可以通过视图（**`TypedArray`** 和 **`DataView`**）进行操作
 
-- 第二个可选参数（BlobPropertyBag 字典）
+- 第二个可选参数（`BlobPropertyBag` 字典）
 
-{type: "application/octet-binary"}
+  `{type: "application/octet-binary"}`
 
-{type: "application/json"}
+  `{type: "application/json"}`
 
-{type: "video/mpe4"}
+  `{type: "video/mpe4"}`
 
-{type: application/octet-stream}
+  `{type: application/octet-stream}`
 
-## 一些应用
+## 两个全局函数 `atob` `btoa`
+
+- `atob` `string` 转 `base64`
+- `btoa` `base64` 转 `string`
+
+对于中文最好经过 `encodeURIComponent` 处理
+
+## 一些其他应用
 
 ```html
 <body>

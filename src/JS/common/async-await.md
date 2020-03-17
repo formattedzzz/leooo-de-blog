@@ -86,9 +86,9 @@ request.use(async (ctx, next) => {
 export default request;
 ```
 
-上面的 errorHandler 函数默认捕获非 200 的状态码
-如果状态码异常我们无法根据 API 作出相应的 toast 也拿不到 response 中的 body
-所以我们可以统一到 errorHandler 中处理 Promise reject 的情况
+上面的 `errorHandler` 函数默认捕获非 200 的状态码
+如果状态码异常我们无法根据 API 作出相应的 toast 也拿不到 `response` 中的 body
+所以我们可以统一到 `errorHandler` 中处理 `Promise` reject 的情况
 
 ```js
 import request from "./request";
@@ -109,4 +109,4 @@ function* sendPostApiEffect(payload) {
 }
 ```
 
-如此 我们 await 任何请求 API 的返回值 都能拿到值（包括错误信息）
+如此 我们 `await` 任何请求 API 的返回值 都能拿到值（包括错误信息）
