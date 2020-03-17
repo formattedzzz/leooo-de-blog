@@ -1,8 +1,12 @@
 # 生命周期的改动
 
-- 不要在 componentDidUpdate 钩子函数中使用 setState 函数
-- shouldComponentUpdate 钩子函数
-- 既然提到了 shouldComponentUpdate 就再了解一下 React.PureComponent 吧
+## `componentDidUpdate`
+
+不要在 `componentDidUpdate` 钩子函数中使用 `setState` 函数
+
+## `shouldComponentUpdate`
+
+关于 `shouldComponentUpdate` 官方已经提到 一般不需要去实现这个函数 因为有 `React.PureComponent` 而且 `hooks` 也有了 `useMemo`、 `useCallback` 等替代品
 
 ```jsx
 shouldComponentUpdate(nextProps, nextState) {
@@ -12,12 +16,15 @@ shouldComponentUpdate(nextProps, nextState) {
   return true;
 }
 // return boolean 为true才会出发视图更新
-// 一般不需要去实现这个函数 因为有React.PureComponent
 ```
 
-- componentWillReceiveProps 别名 UNSAFE_componentWillReceiveProps
+## `componentWillReceiveProps`
 
-- getDerivedStateFromProps 这两个放在一起 功能相似吧
+下个大版本即将废弃 别名 `UNSAFE_componentWillReceiveProps` 可以继续使用
+
+## `getDerivedStateFromProps`
+
+使用场景：**`state` 的值在任何时候都取决于 `props`**
 
 ```js
 class ExampleComponent extends React.Component {
@@ -71,9 +78,13 @@ class ExampleComponent extends React.Component {
 }
 ```
 
-- componentWillUpdate、UNSAFE_componentWillUpdate
+## `componentWillUpdate`
 
-- 新的替代函数 getSnapShotBeforeUpdate + componentDidUpdate 两者组合使用
+下个大版本即将废弃 别名 `UNSAFE_componentWillUpdate` 可以继续使用
+
+## `getSnapShotBeforeUpdate`
+
+`getSnapShotBeforeUpdate` + `componentDidUpdate` 两者组合使用代替 `componentWillUpdate`
 
 ```js
 class ScrollingList extends React.Component {
@@ -106,4 +117,58 @@ class ScrollingList extends React.Component {
     return <div ref={this.listRef}>{/* ...contents... */}</div>;
   }
 }
+```
+
+## static `getDerivedStateFromError` `componentDidCatch`
+
+错误边界提供的两个钩子函数
+
+```jsx
+// error-handle.jsx
+import React from "react";
+class ErrorBoundary extends React.Component {
+  state = { hasError: false };
+
+  static getDerivedStateFromError(error) {
+    // 更新 state 使下一次渲染能够显示降级后的 UI
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // 你同样可以将错误日志上报给服务器
+    console.log(error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong.</h1>;
+    }
+    return this.props.children;
+  }
+}
+export default ErrorBoundary;
+
+// error-con.jsx
+export default class ErrorCon extends React.Component {
+  state = { code: 1 };
+  render() {
+    if (this.state.code === 0) {
+      throw new Error("a error");
+    }
+    return (
+      <div
+        onClick={() => {
+          this.setState({ code: 0 });
+        }}
+      >
+        this is ErrorCon Component
+      </div>
+    );
+  }
+}
+
+// app.jsx
+<ErrorHandle>
+  <ErrorCon></ErrorCon>
+</ErrorHandle>;
 ```

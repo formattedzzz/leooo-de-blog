@@ -18,7 +18,7 @@ function ComponentA(props) {
 }
 ```
 
-这里 useState 的参数只是初始化的时候有效 即 ComponentA 整个组件重新渲染的时候
+这里 `useState` 的参数只是初始化的时候有效 即 ComponentA 整个组件重新渲染的时候
 ComponentA 的父组件通过传参数进来的 name 改变是无效的
 
 ## useEffect
@@ -42,22 +42,22 @@ useEffect(() => {
 console.log("render?");
 ```
 
-- useEffect 不填第二个参数的话 首次渲染和之后的每次渲染都会调用 useEffect 函数 组件重新挂载就会触发三次 useEffect
+- `useEffect` 不填第二个参数的话 首次渲染和之后的每次渲染都会调用 useEffect 函数 组件重新挂载就会触发三次 `useEffect`
 
-- 第二个参数为[]的话 useEffect 函数只会在 componentDidMount 时执行
+- 第二个参数为 `[]` 的话 `useEffect` 函数只会在 `componentDidMount` 时执行
 
-- 第二个参数为[name, age] 数组中的某个值变了才会触发 useEffect
+- 第二个参数为`[name, age]` 数组中的某个值变了才会触发 `useEffect`
 
-- 每触发一次 componentWillUpdate 比如 setAge(10)
-  会先 render--再异步执行上一次 useEffect 返回的函数 un-useEffect--最后执行本次更新触发的 useEffect
+- 每触发一次 `componentWillUpdate` 比如 setAge(10)
+  会先 render -- 再异步执行上一次 `useEffect` 返回的函数 `un-useEffect` -- 最后执行本次更新触发的 `useEffect`
 
-- 可以简单理解 useEffect 函数里的返回的函数就是 componentWillUnMount
+- 可以简单理解 `useEffect` 函数里的返回的函数就是 `componentWillUnMount`
 
-- 所以 useEffect 返回的函数很重要 比如设置了定时器一定要下次 useEffect 执行前清除
+- 所以 `useEffect` 返回的函数很重要 比如设置了定时器一定要下次 `useEffect` 执行前清除
 
 - 最重要的一点必须理解、明确
   每一个全新的开始 所有的局部变量全都重来 全体失忆
-  每一次全新的开始 只有 Hooks 函数（比如 useEffect）具有上一次渲染的"记忆"
+  每一次全新的开始 只有 `Hooks` 函数（比如 `useEffect`）具有上一次渲染的"记忆"
 
 ```jsx
 function App() {
@@ -80,7 +80,7 @@ function App() {
 }
 ```
 
-想一想这里的 useEffect 第二个参数不填或者填空会怎么样？
+想一想这里的 `useEffect` 第二个参数不填或者填空会怎么样？
 
 ## useRef
 
@@ -102,8 +102,8 @@ useEffect(() => {
 });
 ```
 
-上面 timerID 是 useRef 函数返回的局部变量 组件每次更新访问到的同一个 timerID
-总之用可以 useRef 来跨越渲染周期存储数据 而且对它修改也不会引起组件渲染
+上面 timerID 是 `useRef` 函数返回的局部变量 组件每次更新访问到的同一个 timerID
+总之用可以 `useRef` 来跨越渲染周期存储数据 而且对它修改也不会引起组件渲染
 
 ## useMome
 
@@ -168,17 +168,17 @@ const MemoChild = memo(props => {
 });
 ```
 
-useMome 用来处理变量缓存的 看注释的那条：如果 count 发生改变 整个函数重新执行
+`useMome` 用来处理变量缓存的 看注释的那条：如果 count 发生改变 整个函数重新执行
 data 会被重新赋值 Child 组件势必重新渲染 所以`useMome`是解决这个问题的
 
-useMome 的用法：
-首先 React.mome() 包裹的纯组件内容固定的 (没有引用父组件的任何值)
+`useMome` 的用法：
+首先 `React.mome()` 包裹的纯组件内容固定的 (没有引用父组件的任何值)
 父函数组件重新渲染并不会引起`MemoPureChild`的重新渲染
-但是 `MemoChild` 应用了 data 使用 useMemo hook 只有 name 发生改变的时候 `MemoChild` 才会重新渲染
+但是 `MemoChild` 应用了 data 使用 `useMemo` hook 只有 name 发生改变的时候 `MemoChild` 才会重新渲染
 
 ## useCallback
 
-跟缓存变量差不多 用来缓存函数
+跟缓存变量差不多 用来缓存函数 同样需要 `memo` 方法包裹子组件
 
 ```jsx
 const onChange = useCallback(e => {
@@ -190,8 +190,8 @@ const onChange = useCallback(e => {
 
 ## useContext
 
-传入的是 React.createContext() 返回的对象
-该 hooks 解决的就是函数式组件的 context 问题 相当于类组件中
+传入的是 `React.createContext()` 返回的对象
+该 `hooks` 解决的就是函数式组件的 `context` 问题 相当于类组件中
 
 ```jsx
 var myContext = React.createContext(null);

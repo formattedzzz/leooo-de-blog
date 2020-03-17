@@ -52,10 +52,10 @@
 ## react
 
 - [`react` 生命周期](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-lifecircle.md)
-- [`react` 代码规范](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-hooks.md)
+- [`react` 代码规范](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-hooks.md)
-- [`react` `mixin`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-hooks.md)
-- [`react` `HOC`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-hooks.md)
+- [`react` `mixin`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`react` `HOC`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` 写一个 useEvent `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` 用 `puppeteer` 来测试组件](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-test.md)
 - [`react` 重新认识 `Suspense`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-suspense.md)

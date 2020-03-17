@@ -121,23 +121,45 @@ export default class Baz extends Component {
 }
 
 // ---------------- routeComponent.jsx
-import React, { Component, lazy, Suspense } from "react";
-import Baz from "./baz";
+import React, { Component } from "react";
 
-class RouteComponent extends Component {
+let data = "";
+let promise = "";
+function requestData(id = "id") {
+  if (data) return data;
+  if (promise) throw promise;
+  promise = new Promise(resolve => {
+    setTimeout(() => {
+      data = { id, code: 1, msg: "ok" };
+      resolve(data);
+    }, 2000);
+  });
+  throw promise;
+}
+
+export default class Baz extends Component {
   render() {
-    return (
-      <div style={{ background: "#ccc", padding: 24 }}>
-        RouteComponent Layout component
-        <Suspense fallback={<div>module is loading</div>}>
-          this is RouteComponent
-          <Baz></Baz>
-        </Suspense>
-      </div>
-    );
+    console.log(this.props.id);
+    const data = requestData(this.props.id);
+    return <div>this is Foo Component {JSON.stringify(data)}</div>;
   }
 }
-export default RouteComponent;
+
+let throwed = false;
+
+export default function Baz(props) {
+  let data = null;
+  data = new Promise((res, rej) => {
+    setTimeout(() => {
+      throwed = true;
+      res({ id: props.id || "", code: 1, msg: "ok" });
+    }, 3000);
+  });
+  if (!throwed) {
+    throw data;
+  }
+  return <div>{JSON.stringify(data)}</div>;
+}
 ```
 
 通过 throw new Promise 来中断组件渲染 Suspense 会等待这个 Promise 就绪后 接着重新渲染
@@ -148,3 +170,6 @@ export default RouteComponent;
 - 将缓存状态提取到 `context`
 
 - 将缓存状态提取到父级
+
+其机制跟 错误边界 如出一辙 `errorHandle` 包裹的组件 throw `Error` 之后会层层上冒被 `errorHandle` 捕获
+最终替换为 提示组件
