@@ -1,4 +1,4 @@
-# 5 分钟划水学习法 练习源码、笔记
+# 好记性不如烂笔头 边读、边实践、边记录
 
 ## css
 
@@ -26,7 +26,7 @@
 - [`es5` 构造一个迭代器](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-iterator.md)
 - [`es5` 从继承角度看 `bind-ployfill`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/nice-inherit.md)
 - [`es5` 理解原型及原型链](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/prototype-chain.md)
-- [`es5` 单例模式很简单的写法](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/singleTon.md)
+- [`es5` 写一个简单的单例模式](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/singleTon.md)
 - [`es6` `class`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-class.md)
 - [`es6` `generator`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-generator.md)
 - [`es7` 装饰器的原理及应用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)

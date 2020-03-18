@@ -113,3 +113,47 @@ for (let value of range(0, 3)) {
 }
 console.log([...range(0, 5)]); // [0, 1, 2, 3, 4, 5]
 ```
+
+## 重载一些内置迭代器
+
+```js
+function reload(arr) {
+  if (Array.isArray(arr)) {
+    arr[Symbol.iterator] = function*() {
+      for (let i = 0; i < this.length; i++) {
+        yield [this[i], i];
+      }
+    };
+  }
+}
+var arr = ["x", "y", "z"];
+reload(arr);
+for (let [item, idx] of arr) {
+  console.log(item, idx);
+}
+```
+
+## 直接使用 `generator` 函数构造迭代器
+
+```js
+function createCommonIterator(from, to, cb) {
+  return {
+    from,
+    to,
+    [Symbol.iterator]: function*() {
+      for (var i = this.from; i <= this.to; i++) {
+        yield cb(i, this);
+      }
+    }
+  };
+}
+
+for (let [item, tobj] of createCommonIterator(0, 10, (i, o) => [i, o])) {
+  console.log(item, tobj);
+}
+```
+
+总结下来就是一点 只要一个对象具有 `Symbol.iterator` 属性（原型链上也可以）
+且该属性执行完返回一个 `迭代器` 这个 `迭代器` 既可以用 **`es5`** 自己实现 也可以用 `generator` 函数
+
+那它就能够被 `for...of` 迭代遍历
