@@ -88,11 +88,15 @@ path 这个属性默认是 `"\"` 这个值匹配的是 web 的路由
   // 100秒后过期
   ```
 
-- `max-age` 秒数
+- `max-age` 秒数 其优先级高于 `expires`
 
   ```js
   document.cookie = `name=leooo;max-age=100;`;
   // 100秒后过期
+  document.cookie = `name=leooo;max-age=0;`;
+  // 立即删除该组cookie值
+  document.cookie = `name=leooo;max-age=100;`;
+  // 跟会话效果一样 浏览器关闭则cookie消失
   ```
 
 ### `secure` 属性
@@ -109,14 +113,39 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly;
 
 ### SameSite 属性
 
-可以让该 `cookie` 不被附带到请求中
+让 `Cookie` 在跨站请求时不会被发送 有三个可以设置的值 仅 https 条件下可以设置 `SameSite=none` 必须同时加上 `Secure` 属性 所以我们要测试的话 先把 localhost https 化
 
-- `strict`
+首先我们来明确一下 跨域跟跨站的区别
 
-  浏览器将只发送相同站点请求的 `cookie`(即当前网页 URL 与请求目标 URL 完全一致)。
+- 跨域 协议/主机名/端口 均需一致
 
-  如果请求来自与当前 `location` 的 URL 不同的 URL 则不包括标记为 `Strict` 属性的 `cookie`
+- 跨站 不需要考虑协议和端口 有效顶级域名+二级域名 一致即可
 
-- `Lax` 默认值 保留一些跨站子请求 如图片加载 `frames` 的调用
+  `www.a.nnleo.cn` `www.b.nnleo.cn` 同站 顶级域名相同
 
-- `none` 如果想要指定 Cookies 在同站 跨站请求都被发送 那么需要明确指定 SameSite 为 None
+  `blog.nnleo.cn` `wx.nnleo.cn` 跨站 独立的二级域名
+
+#### **`strict`**
+
+浏览器将只发送相同站点请求的 `cookie`(即当前网页 URL 与请求目标 URL 完全一致)。
+
+如果请求来自与当前 `location` 的 URL 不同的 URL 则不包括标记为 `Strict` 属性的 `cookie`
+
+#### **`Lax`**
+
+80 版+ `chrome` 的默认值 在跨站的情况下 一部分情况的请求仍会发送 cookie
+
+|   请求类型   |      Lax      |
+| :----------: | :-----------: |
+|    a 链接    |  发送 cookie  |
+| link 预加载  |  发送 cookie  |
+|   get 表单   |  发送 cookie  |
+|  post 表单   | 不发送 cookie |
+|    iframe    | 不发送 cookie |
+| 类 ajax 请求 | 不发送 cookie |
+|  image 标签  | 不发送 cookie |
+|              |               |
+
+#### **`none`**
+
+老版本默认值 如果想要指定 `Cookies` 在同站、跨站请求都被发送 那么需要明确指定 `SameSite` 为 `None`

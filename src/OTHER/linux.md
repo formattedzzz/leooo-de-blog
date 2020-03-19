@@ -339,14 +339,38 @@ export PATH=$PATH:$GOBIN:$GOROOT/bin
 
 ## yarn
 
-yarn install 或者 yarn
+| npm                              | yarn                      |
+| -------------------------------- | ------------------------- |
+| npm init                         | yarn init                 |
+| npm install                      | yarn                      |
+| npm install xxx@1.1.1 -g         | yarn global add xxx@1.1.1 |
+| npm install xxx@1.1.1 --save     | yarn add xxx@1.1.1        |
+| npm install xxx@1.1.1 --save-dev | yarn add xxx@1.1.1 --dev  |
+| npm uninstall xxx --save(-dev)   | yarn remove xxx           |
+| npm run xxx                      | yarn run xxx              |
+|                                  |                           |
 
 ```sh
-yarn add [package]
-yarn add [package]@[version]
-yarn add [package]@[tag]
-yarn upgrade
-yarn remove
+yran config list
+# yarn config v1.21.1
+# info yarn config
+# {
+#   'version-tag-prefix': 'v',
+#   'version-git-tag': true,
+#   'version-commit-hooks': true,
+#   'version-git-sign': false,
+#   'version-git-message': 'v%s',
+#   'init-version': '1.0.0',
+#   'init-license': 'MIT',
+#   'save-prefix': '^',
+#   'bin-links': true,
+#   'ignore-scripts': false,
+#   'ignore-optional': false,
+#   registry: 'https://registry.yarnpkg.com',
+#   'strict-ssl': true,
+#   'user-agent': 'yarn/1.21.1 npm/? node/v12.13.0 darwin x64',
+#   lastUpdateCheck: 1584501887585
+# }
 ```
 
 ## Bash 开光

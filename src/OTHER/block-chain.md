@@ -12,7 +12,7 @@ md5 可逆吗【md5 现在被认为是不够安全的 可以人为地制造 哈�
 
 全节点 轻节点（只包含块头）
 
-**hash 指针**
+**`hash` 指针**
 
 **merkle tree**（block body 所有交易记录哈希值相互形成的哈希金字塔）
 
@@ -24,9 +24,9 @@ md5 可逆吗【md5 现在被认为是不够安全的 可以人为地制造 哈�
 
 **`hashtree`**
 
-**block header**
+**`block header`**
 
-**block body**
+**`block body`**
 
 ## 怎么设计一套 数字货币
 
@@ -108,7 +108,7 @@ hash-rate
 
 **UTXO**数据结构
 
-**double spending**
+**`double spending`**
 
 节点怎么决定打包哪些交易
 
@@ -120,13 +120,13 @@ hash-rate
 
 如果别人发布了新的区块 大部分节点会先验证交易的合法性 如果不合法就还是按照上一个节点继续挖矿 否则的话校验新的交易记录 重新生成一个块再重新挖
 
-**bitcoin is secured by mining**
+**`bitcoin is secured by mining`**
 
 是哪个傻逼提过比特币是`抵御人工智能的最后一道防线`
 
-**self mining**
+**`self mining`**
 
-**forking attack**
+**`forking attack`**
 
 `6次确认`（铸币交易应该也需要吧 不然系统不可能凭空让你消失 12.5 个比特币）
 
@@ -176,7 +176,9 @@ best effort
 
 chainstate 里面保存着自己本机客户端的信息 也保存着网络中其他客户端发过来的信息 如果由于网络或机器原因 chainstate 数据丢失了 就需要通过其他节点进行恢复。
 
-chainstate 在本地客户端是以**leveldb**作为底层数据库的。这个就真不懂了 具体可以参考这篇文章 https://baya.github.io/2017/09/04/build-our-btc-system.html
+chainstate 在本地客户端是以**leveldb**作为底层数据库的。这个就真不懂了 具体可以参考这篇文章
+
+https://baya.github.io/2017/09/04/build-our-btc-system.html
 
 矿工首先是收集要创建区块的各种信息 会从本地的 chainstate 中挑选出部分交易出来 挑选出多少条由自己的算法决定
 
@@ -276,11 +278,11 @@ pool manager ---- many miner
 
 ## 挖矿机制的两种形式
 
-**POW**
+**`POW`**
 
 proof of work 基于工作量 谁算力强 谁就牛逼
 
-**POS**
+**`POS`**
 
 proof of stake 基于权益 谁的权益（代币、钱）多 谁就掌握记账权 （联盟链的基石？）挖矿的哈希不等式会改变
 
@@ -300,7 +302,7 @@ proof of stake 基于权益 谁的权益（代币、钱）多 谁就掌握记账
 
 - P2SH 多重签名的形式
 
-**看下 P2PKH（最常用的一种）**
+**看下 `P2PKH`（最常用的一种）**
 
 ```bash
 #输入脚本（付款方在本交易中的输入）包含
@@ -318,9 +320,9 @@ checksig           # 弹出栈顶的公钥跟签名验证 通过则压入true
 
 整个过程跟收款方并没有联系 而是为 了证明本次交易付款方能不能够付款 他的币来源能不能对上 是 spending 的过程
 
-**比较复杂的一种 （pay to script hash）**
+**比较复杂的一种 （`pay to script hash`）**
 
-这一种首先区别是**交易输出**
+这一种首先区别是 **交易输出**
 
 输出的不是收款人的公钥哈希 而是一段脚本的哈希
 
@@ -414,7 +416,7 @@ checkmultisig
 
 前面的理解中对分岔已经有很强的概念了
 
-**fork   state fork   forking attack   deliberate fork**
+**`fork`   `state fork`   `forking attack`   `deliberate fork`**
 
 由于比特币协议升级造成的分岔 某些节点来不及或不同意升级造成的 协议分岔 **protocal fork**
 
@@ -548,4 +550,4 @@ protocal fork 中又分成 hard fork 跟 soft fork
 
 比特币怎么绕开的分布式共识中的不可能结论
 
-**比特币并没有绕过理论上的分布式共识**
+**比特币并没有绕过理论上的 `分布式共识`**

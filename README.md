@@ -28,6 +28,7 @@
 - [`es5` 理解原型及原型链](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/prototype-chain.md)
 - [`es5` 写一个简单的单例模式](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/singleTon.md)
 - [`es6` `class`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-class.md)
+- [`es6` `Promise` 真的有点绕](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-generator.md)
 - [`es6` `generator`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-generator.md)
 - [`es7` 装饰器的原理及应用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 - [初探 H5 新特性 `web-worker`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/h5-worker.md)
@@ -41,6 +42,7 @@
 - [`vue` vuex 跟双向绑定的冲突问题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`vue` v-for 列表元素事件使用了代理吗](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`vue` 中 `computed` 实现原理](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`vue` `cli3` 的一些应用](https://github.com/formattedzzz/fe-notes/blob/master/src/VUE/vue-cli.md)
 - [捋一捋 `babel`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/babel/index.md)
 - [`node` 模块缓存](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/import-cache/index.md)
 - [`node` 模块循环引用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/import-circle/index.md)
@@ -51,14 +53,14 @@
 
 ## react
 
-- [`react` 生命周期](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-lifecircle.md)
+- [`react` 生命周期](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-lifecircle.md)
 - [`react` 代码规范](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [`react` `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-hooks.md)
+- [`react` `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-hooks.md)
 - [`react` `mixin`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` `HOC`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` 写一个 useEvent `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [`react` 用 `puppeteer` 来测试组件](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-test.md)
-- [`react` 重新认识 `Suspense`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-suspense.md)
+- [`react` 用 `puppeteer` 来测试组件](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-test.md)
+- [`react` 重新认识 `Suspense`](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-suspense.md)
 
 ## other
 
@@ -66,6 +68,7 @@
 - [内容安全策略](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/security-policy.md)
 - [用 gif 图片做数据埋点请求](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/gif-track.md)
 - [初识 `puppeteer`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/puppeteer/index.md)
+- [初识 `umd` 模块结构](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/umd-struct.md)
 - [`git` 时光机](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/nice-git.md)
 - [`git` `hooks`实现自动部署](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/git-hooks.md)
 - [小试 `vscode` 文档神器 `REST Client`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/rest-client.md)
@@ -77,9 +80,10 @@
 ## todo
 
 - [`node` 事件循环案例](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [`js` `defineProperty` vs `proxy`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`js` 数据劫持](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/data-hijack.md)
 - [`node` 开发一个实用的 cli 工具](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`koa` 洋葱圈模型](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`webpack4.x` 实践及手写 `loader` `plugin`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`node` `子进程` `子线程`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`service worker`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [自主实现图片懒加载的一般思路](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)

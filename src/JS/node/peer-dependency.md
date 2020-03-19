@@ -95,7 +95,7 @@ node_modules
 
 ### 扁平模型
 
-到了 `npm3.x` 其将早期的嵌套结构改为扁平结构 安装模块时 不管其是直接依赖还是子依赖的依赖 优先将其安装在 `node_modules` 根目录
+到了 `npm3.x` 其将早期的嵌套结构改为扁平结构 安装模块时 不管其是直接依赖还是子依赖的依赖 优先将其安装在 `node_modules` 根目录 但是每个包依然会安装完整的 `node_modules`
 
 这时候如果项目中又加一个依赖 `base64-js` 那么 npm 再在 `node_modules` 中检查已安装 `base64-js` 版本是否符合要求 符合就跳过
 
@@ -145,3 +145,50 @@ npm cache clean
 
 - 将包解压到 `node_modules`
 - 生成 `lock` 文件
+
+## 来看看 yran node_modules 模型
+
+安装 `babel-plugin-import` 包 该包的生产依赖有两个
+
+```json
+{
+  "dependencies": {
+    "@babel/helper-module-imports": "^7.0.0",
+    "@babel/runtime": "^7.0.0"
+  }
+}
+```
+
+<!-- `node_modules` 结构图对比
+
+![npm.png](https://i.loli.net/2020/03/19/w4DABgvpaMb6XrT.png)
+
+可以看到 `babel-plugin-import` 目录下完整装了其生产依赖 `node_modules` 又递归把其每个生产依赖的需要的生产依赖扁平安装到了
+`node_modules` 根目录下面 -->
+
+![yarn.png](https://i.loli.net/2020/03/19/56rfL7nsZzkeG89.png)
+
+`babel-plugin-import` 目录下无 `node_modules` 全部生产依赖扁平装到了项目 `node_modules` 的根目录下
+
+接下来我们再安装 `@babel/runtime@7.0.0` 很显然 `node_modules` 已经有 7.0.0 的版本了 不会再安装
+
+如果去掉版本号则会安装最新版本 更新到 `@babel/runtime@7.8.7`
+
+```sh
+yarn add @babel/runtime
+[1/4] 🔍  Resolving packages...
+[2/4] 🚚  Fetching packages...
+warning Pattern ["@babel/runtime@^7.8.7"] is trying to unpack in the same destination "/Users/liufulin/Library/Caches/Yarn/v6/npm-@babel-runtime-7.8.7-8fefce9802db54881ba59f90bb28719b4996324d-integrity/node_modules/@babel/runtime" as pattern ["@babel/runtime@^7.0.0"]. This could result in non-deterministic behavior, skipping.
+[3/4] 🔗  Linking dependencies...
+[4/4] 🔨  Building fresh packages...
+success Saved lockfile.
+success Saved 1 new dependency.
+info Direct dependencies
+└─ @babel/runtime@7.8.7
+info All dependencies
+└─ @babel/runtime@7.8.7
+✨  Done in 2.74s.
+```
+
+`node_modules/babel-plugin-import/lib/` 目录下可以 `require("@babel/helper-module-imports")` 吗？
+当然可以

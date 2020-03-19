@@ -83,29 +83,15 @@ const currying = (fn, ...args) => {
     // 如果参数够了 就直接执行 并返回执行值
     return fn(...args);
   } else {
-    // 如果不够就返回一个参数 并把返回函数的参数塞进去柯里化
+    // 如果不够就返回一个函数 并把返回函数的参数塞进去柯里化 直到参数数量足够
     return (...args2) => currying(fn, ...args, ...args2);
   }
 };
 
-// let testFn = (a, b, c) => {
-//   let res = a + b + c;
-//   return res;
-// }
-
-const getUrl = (protocol, domain, port, path) => {
-  return `${protocol}://${domain}:${port}/${path}`;
-};
-const getBaiduUrl = currying(getUrl, "https", "www.baidu.com", "80");
-console.log(getBaiduUrl("test.html"));
-console.log(getBaiduUrl("test2.html"));
-
-function name(params) {}
-name.prototype = {
-  a: 1,
-  add() {
-    this.a++;
-  },
-  log() {}
-};
+const puerAdd = (x, y, z) => x + y + z;
+const add = currying(puerAdd);
+console.log(add(1, 2, 3));
+console.log(add(1)(2, 3));
+console.log(add(1, 2)(3));
+console.log(add(1)(2)(3));
 ```
