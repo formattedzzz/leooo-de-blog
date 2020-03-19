@@ -9,3 +9,23 @@
 ```js
 Function.__proto__ === Function.prototype; // true
 ```
+
+## `new` 操作符的本质
+
+```js
+function newFunc(func, ...args) {
+  if (
+    typeof func !== "function" ||
+    /=>/.test(Function.prototype.toString.call(func))
+  ) {
+    throw new Error("param1 should be a function");
+  }
+  var obj = {};
+  obj.__proto__ = func.prototype;
+  var res = func.apply(obj, ...args);
+  if (typeof res === "object") {
+    return res;
+  }
+  return obj;
+}
+```

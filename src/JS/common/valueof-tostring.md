@@ -1,4 +1,6 @@
-# 回顾 toString 和 valueOf 两个函数
+# js 基础回顾、总结
+
+## `toString` 和 `valueOf` 两个函数
 
 > `undefined` 和 `null` 没有 `toString` 和 `valueOf`方法
 
@@ -99,5 +101,39 @@ Number(null) === 0;
   );
   // "sb"
   ```
-  
-  😀打扰了...
+
+  😀 打扰了...
+
+## js 进制转换
+
+任意进制的字符串转十进制
+
+```js
+Number.parseInt("110", 2); // 6
+Number.parseInt("010", 8); // 8
+Number.parseInt("0xf", 16); // 15
+```
+
+十进制转任意进制
+
+```js
+Number.prototype.toString.call(10, 2); // "1010"
+Number.prototype.toString.call(15, 16); // "f"
+```
+
+## `(2.55).toFixed(1) === 2.5`
+
+根本原因在于 2.55 的存储要比实际存储小一点 导致 0.05 的第 1 位尾数不是 1 所以就被舍掉了
+
+同样的 0.1 + 0.2 的问题 0.1 存取的值要比 0.1 大一点点
+
+```js
+// 先把toFixed存起来
+if (!Number.prototype._toFixed) {
+  Number.prototype._toFixed = Number.prototype.toFixed;
+}
+// 再纠正
+Number.prototype.toFixed = function(n) {
+  return (this + 1e-14)._toFixed(n);
+};
+```

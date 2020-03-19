@@ -1,5 +1,24 @@
 # 认识 `arguments` 对象
 
+## 先看一道面试题
+
+```js
+var obj = {
+  age: 18,
+  foo: function(func) {
+    func();
+    arguments[0]();
+  }
+};
+var age = 10;
+function temp() {
+  console.log(this.age);
+}
+obj.foo(temp);
+// 10
+// undefined
+```
+
 ## `arguments` 对象本质是啥
 
 在 `js` 这门灵活的语言里 `arguments` 对象像是个异类的存在 长得像数组却是个对象
