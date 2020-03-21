@@ -576,6 +576,153 @@ service mysqld start      # 用来重启mysql
 /etc/init.d/nginx start   # 用来重启nginx
 ```
 
+## nginx 基本配置
+
+```yaml
+# For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+# Basic Settings:
+events {
+    worker_connections 768;
+    # multi_accept on;
+}
+
+http {
+
+    ##
+    # Basic Settings
+    ##
+
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
+    # server_tokens off;
+
+    # server_names_hash_bucket_size 64;
+    # server_name_in_redirect off;
+
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    ##
+    # SSL Settings
+    ##
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE
+    ssl_prefer_server_ciphers on;
+
+    ##
+    # Logging Settings
+    ##
+
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    ##
+    # Gzip Settings
+    ##
+
+    gzip on;
+    gzip_disable "msie6";
+
+    # gzip_vary on;
+    # gzip_proxied any;
+    # gzip_comp_level 6;
+    # gzip_buffers 16 8k;
+    # gzip_http_version 1.1;
+    # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+    ##
+    # Virtual Host Configs
+    ##
+
+    #server{
+    #    listen 80 default_server;
+    #    listen [::]:80 default_server;
+    #    server_name wx.nnleo.cn;
+    #    charset utf8;
+    #    root /home/ubuntu/account-server;
+    #     location / {
+    #        proxy_pass http://127.0.0.1:7003;
+    #        proxy_set_header X-Real-IP $remote_addr;
+    #        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    #    }
+    #}
+    # 博客静态资源配置
+    server {
+        listen                          443 ssl;
+        server_name                     www.nnleo.cn;
+        ssl_certificate         1_nnleo.cn_bundle.crt;
+        ssl_certificate_key     2_nnleo.cn.key;
+        location / {
+            index index.html;
+            root  /home/ubuntu/leo-blog/;
+        }
+    }
+    # 小程序后台配置
+    upstream nnleo {
+        server 127.0.0.1:7003 weight=1;
+    }
+    map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+    }
+    server {
+        listen                    443 ssl;
+        server_name         wx.nnleo.cn;
+        #ssl on;
+        ssl_certificate             1_wx.nnleo.cn_bundle.crt;
+        ssl_certificate_key     2_wx.nnleo.cn.key;
+        #ssl_password_file /etc/nginx/
+        #ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers                      HIGH:!aNULL:!MD5;
+        proxy_set_header             Upgrade $http_upgrade;
+        proxy_set_header             Connection $connection_upgrade;
+        #ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HTGH:!aNULL:!MD5:!RC4:!DHE;
+        ssl_prefer_server_ciphers on;
+        client_max_body_size 20m;
+        location / {
+            proxy_pass http://nnleo;
+        }
+    }
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+}
+# mail {
+#     # See sample authentication script at:
+#     # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
+#     # auth_http localhost/auth.php;
+#     # pop3_capabilities "TOP" "USER";
+#     # imap_capabilities "IMAP4rev1" "UIDPLUS";
+#     server {
+#         listen     localhost:110;
+#         protocol   pop3;
+#         proxy      on;
+#     }
+#     server {
+#         listen     localhost:143;
+#         protocol   imap;
+#         proxy      on;
+#     }
+# }
+```
+
+`nginx` 解决 SPA `history` 刷新页面的问题 不管什么页面进来 一律返回 `index.html`
+
+所有页面的路由跳转交给前端～
+
+```txt
+location / {
+    try_files $uri $uri/ /index.html;
+}
+```
+
 ## systemctl
 
 ```sh

@@ -18,6 +18,7 @@ function newFunc(func, ...args) {
     typeof func !== "function" ||
     /=>/.test(Function.prototype.toString.call(func))
   ) {
+    // 不能 new 一个非函数或者箭头函数
     throw new Error("param1 should be a function");
   }
   var obj = {};

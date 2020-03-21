@@ -2,7 +2,7 @@
   "excludeFiles": ["./src/OTHER/block-chain.md"],
   "rules": {
     "no-empty-code": 0,
-    "no-long-code": 1,
+    "no-long-code": [1, {"length": 200}],
     "no-space-in-emphasis": 0,
     "no-emphasis-as-header": 0
   }

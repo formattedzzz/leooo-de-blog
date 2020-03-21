@@ -4,7 +4,7 @@
 
 - [文本益处的一般思路](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
 - [固定定位的潜在问题](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/common/fixed-position.md)
-- [`margin` 在 FFC、GFC 中的妙用](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
+- [`margin` 在 FFC、GFC 中的妙用](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/common/ffc-margin.md)
 - [`vertical-align` 属性](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
 - [`clip-path` 属性](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 
@@ -41,7 +41,6 @@
 - [你会怎么实现 `sleep(1000)`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/sleep.md)
 - [我的 `eventBus` 可能得改一改了](https://github.com/formattedzzz/leo-build-wx/blob/master/summary/event-bus.md)
 - [`vue` vuex 跟双向绑定会冲突吗](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [`vue` v-for 列表元素事件使用了代理吗](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`Vue.extend` 在插件中的应用](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`vue` `cli3` 的一些应用](https://github.com/formattedzzz/fe-notes/blob/master/src/VUE/vue-cli.md)
 - [原生小程序 `computed` 实现原理](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
@@ -66,16 +65,17 @@
 
 ## other
 
+- [一些算法题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/algorithms/index.md)
 - [浏览器渲染机制](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/html-render/index.md)
 - [内容安全策略](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/security-policy.md)
 - [用 gif 图片做数据埋点请求](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/gif-track.md)
 - [初识 `puppeteer`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/puppeteer/index.md)
-- [初识 `umd` 模块结构](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/umd-struct.md)
+- [搞清 `umd` 模块结构](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/umd-struct.md)
 - [`git` 时光机](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/nice-git.md)
 - [`git` `hooks`实现自动部署](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/git-hooks.md)
 - [小试 `vscode` 文档神器 `REST Client`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/rest-client.md)
 - [GO `channel` 再理解](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/go-channel.md)
-- [币加索的 `区块链` 时光](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/block-chain.md)
+- [币加索的区块链时光](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/block-chain.md)
 - [笔记 `shell` 脚本](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/shell/index.md)
 - [笔记 `Linux` 命令](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/linux.md)
 
@@ -88,4 +88,4 @@
 - [`webpack4.x` 实践及手写 `loader` `plugin`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`node` `子进程` `子线程`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`service worker`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [自主实现图片懒加载的一般思路](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [记录一些思考、想法](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts.md)

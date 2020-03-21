@@ -192,13 +192,129 @@ console.log(x, y); // 1; y is not defined.
    └───────────────────────┘
 ```
 
+```js
+setTimeout(() => {
+  console.log("timer1");
+  Promise.resolve().then(function() {
+    console.log("promise1");
+  });
+}, 0);
+
+setTimeout(() => {
+  console.log("timer2");
+  Promise.resolve().then(function() {
+    console.log("promise2");
+  });
+}, 0);
+// timer1
+// timer2
+// promise1
+// promise2
+```
+
+咋和浏览器不一样呢 根据 Node.js 官方介绍 每次事件循环都包含了 6 个阶段:
+
+- `timers` 阶段: 这个阶段执行 `timer`（setTimeout、setInterval）的回调
+- `I/O callbacks` 阶段: 执行一些系统调用错误 比如网络通信的错误回调
+- `idle` `prepare` 阶段: 仅 node 内部使用
+- `poll` 阶段: 获取新的 I/O 事件, 适当的条件下 node 将阻塞在这里
+- `check` 阶段: 执行 setImmediate() 的回调
+- `close` callbacks 阶段: 执行 socket 的 close 事件回调
+
+我们重点看 `timers`、`poll`、`check` 这 3 个阶段就好 因为日常开发中的绝大部分异步任务都是在这 3 个阶段处理的。
+
+### `timers` 阶段
+
+是事件循环的第一个阶段 Node 会去检查有无已过期的 timer 如果有则把它的回调压入 timer 的任务队列中等待执行 事实上 Node 并不能保证 timer 在预设时间到了就会立即执行 因为 Node 对 timer 的过期检查不一定靠谱 它会受机器上其它运行程序影响 或者那个时间点主线程不空闲
+
+```js
+setTimeout(() => {
+  console.log("timeout");
+}, 0);
+setImmediate(() => {
+  console.log("immediate");
+});
+// 执行顺序是不确定
+```
+
+但是把它们放到一个 `I/O` 回调里面 就一定是 `setImmediate()` 先执行 因为 poll 阶段后面就是 check 阶段
+
+### `poll` 阶段
+
+主要有 2 个功能：
+
+- 处理 poll 队列的事件
+- 当有已超时的 timer 执行它的回调函数
+
+even loop 将同步执行 poll 队列里的回调 直到队列为空或执行的回调达到系统上限（上限具体多少未详） 接下来 even loop 会去检查有无预设的 `setImmediate()` 分两种情况:
+
+1、若有预设的 `setImmediate()`, event loop 将结束 poll 阶段进入 check 阶段 并执行 check 阶段的任务队列
+
+2、若没有预设的 `setImmediate()` event loop 将阻塞在该阶段等待
+
+注意一个细节 没有 `setImmediate()` 会导致 event loop 阻塞在 poll 阶段 这样之前设置的 timer 岂不是执行不了了？所以咧 在 poll 阶段 event loop 会有一个检查机制 检查 timer 队列是否为空 如果 timer 队列非空 event loop 就开始下一轮事件循环 即重新进入到 timer 阶段。
+
+### check 阶段
+
+`setImmediate()` 的回调会被加入 check 队列中 从 event loop 的阶段图可以知道 check 阶段的执行顺序在 poll 阶段之后。
+
+### 循环案例
+
+```js
+const fs = require("fs");
+
+fs.readFile("test.txt", () => {
+  console.log("readFile");
+  setTimeout(() => {
+    console.log("timeout");
+  }, 0);
+  setImmediate(() => {
+    console.log("immediate");
+  });
+});
+// readFile
+// immediate
+// timeout
+```
+
+**`process.nextTick()`** VS **`setImmediate()`**
+
+`process.nextTick()` 会在各个事件阶段之间执行 一旦执行 要直到 nextTick 队列被清空
+
+Node.js 中 `microtask` 在事件循环的各个阶段之间执行(清空)
+
+```js
+const fs = require("fs");
+const starttime = Date.now();
+let endtime;
+fs.readFile("app.js", () => {
+  endtime = Date.now();
+  console.log("finish reading time: ", endtime - starttime);
+});
+let index = 0;
+function handler() {
+  if (index++ >= 5) return;
+  console.log(`nextTick ${index}`);
+  process.nextTick(handler);
+  // console.log(`setImmediate ${index}`)
+  // setImmediate(handler)
+}
+handler();
+// nextTick 1
+// nextTick 2
+// nextTick 3
+// nextTick 4
+// nextTick 5
+// finish reading time:  14
+```
+
 ## 查看内存
 
 node 中可以使用 **`process.memoryUsage`** 接口 **`heapUsed`** 字段来查看
 
-`rss`（resident set size）所有内存占用，包括指令区和堆栈
+`rss`（resident set size）所有内存占用 包括指令区和堆栈
 
-`heapTotal` 堆占用的内存，包括用到的和没用到的
+`heapTotal` 堆占用的内存 包括用到的和没用到的
 
 `heapUsed` 用到的堆的部分
 

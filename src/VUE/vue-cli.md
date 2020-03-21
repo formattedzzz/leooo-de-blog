@@ -1,9 +1,14 @@
 # vue-cli3
 
-- `require.context`
+- webapck `require.context` 用法
 
 ```js
-require.context(directory, useSubdirectories = true, regExp = /^\.\/.*$/, mode = 'sync');
+require.context(
+  directory,
+  (useSubdirectories = true),
+  (regExp = /^\.\/.*$/),
+  (mode = "sync")
+);
 ```
 
 批量全局注册一些组件

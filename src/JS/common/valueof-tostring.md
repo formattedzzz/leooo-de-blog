@@ -2,7 +2,7 @@
 
 ## `toString` 和 `valueOf` 两个函数
 
-> `undefined` 和 `null` 没有 `toString` 和 `valueOf`方法
+> `undefined` 和 `null` 没有 `toString` 和 `valueOf` 方法
 
 ```js
 Number(undefined) === NaN;
