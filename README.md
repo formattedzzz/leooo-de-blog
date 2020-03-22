@@ -28,7 +28,7 @@
 - [`es5` 理解原型及原型链](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/prototype-chain.md)
 - [`es5` 写一个简单的单例模式](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/singleTon.md)
 - [`es6` `class`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-class.md)
-- [`es6` `Promise` 原理 差点没绕出来](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-promise.md)
+- [`es6` `Promise` 原理、内部机制](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/promise/index.md)
 - [`es6` `generator`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-generator.md)
 - [`es7` 装饰器的原理及应用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
 - [初探 H5 新特性 `web-worker`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/h5-worker.md)
@@ -81,7 +81,6 @@
 
 ## todo
 
-- [`node` 事件循环案例](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`js` 数据劫持](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/data-hijack.md)
 - [`node` 开发一个实用的 cli 工具](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`koa` 洋葱圈模型](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)

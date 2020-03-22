@@ -1,6 +1,3 @@
-# 记录一些算法题
-
-```js
 function lengthOfLongestSubstring(s = "sdvhkdf") {
   if (typeof s !== "string" || s.length === 0) return 0;
   var stringArray = s.split("");
@@ -17,7 +14,7 @@ function lengthOfLongestSubstring(s = "sdvhkdf") {
   }
   return maxLen;
 }
-console.log(lengthOfLongestSubstring());
+// console.log(lengthOfLongestSubstring());
 
 var longestCommonPrefix = function(strs = ["mfmlower", "flow", "flight"]) {
   var res = "";
@@ -33,7 +30,7 @@ var longestCommonPrefix = function(strs = ["mfmlower", "flow", "flight"]) {
   }
   return res;
 };
-console.log(longestCommonPrefix());
+// console.log(longestCommonPrefix());
 
 var checkInclusion = function(s1 = "adc", s2 = "dcda") {
   if (!s1.length || !s2.length || s2.length < s1.length) return false;
@@ -49,7 +46,7 @@ var checkInclusion = function(s1 = "adc", s2 = "dcda") {
   }
   return res;
 };
-console.log(checkInclusion());
+// console.log(checkInclusion());
 
 var multiply = function(num1, num2) {
   if (!num1 || !num2 || !Number(num1) || !Number(num2)) return 0;
@@ -93,7 +90,7 @@ var multiply = function(num1, num2) {
 //   35
 //  28
 
-console.log(multiply("123", "456"));
+// console.log(multiply("123", "456"));
 
 var reverseWords = function(s) {
   return s
@@ -118,7 +115,7 @@ var simplifyPath = function(path = "/") {
   tempPath.length ? (result = "/" + tempPath.join("/")) : (result = "/");
   return result;
 };
-console.log(simplifyPath("/."));
+// console.log(simplifyPath("/."));
 
 var threeSum = function(nums = [-2, 0, 0, 2, 2]) {
   if (!nums || nums.length < 3) return [];
@@ -210,4 +207,3 @@ function dfsSearch(grid, i, j) {
   }
 }
 // console.log(numIslands());
-```

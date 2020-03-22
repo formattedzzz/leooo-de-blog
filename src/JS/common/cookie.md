@@ -144,7 +144,6 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly;
 |    iframe    | 不发送 cookie |
 | 类 ajax 请求 | 不发送 cookie |
 |  image 标签  | 不发送 cookie |
-|              |               |
 
 #### **`none`**
 

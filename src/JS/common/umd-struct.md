@@ -30,7 +30,7 @@
 ```json
 {
   "output": {
-    "path": resolve("dist"),
+    "path": "./dist",
     "filename": "[name].umd.js",
     "library": "leoui",
     "libraryTarget": "umd",
