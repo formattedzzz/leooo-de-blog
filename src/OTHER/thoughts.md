@@ -1,8 +1,75 @@
-# 记录一些还没来得及实践的想法
+# 记录一些还暂未实践的想法
 
 ## 一个很长的 div 里面罗列了很多图片 形成了瀑布流 怎么实现懒加载
 
-## a 链接的 `target` 设置为 `_blank` 有什么隐患
+`getBoundingClientRect` + `setSrc`
+
+```js
+function LazyLoad(el, options) {
+  if (!(this instanceof LazyLoad)) {
+    return new LazyLoad(el);
+  }
+
+  this.setting = Object.assign(
+    {},
+    { src: "data-src", srcset: "data-srcset", selector: ".lazyload" },
+    options
+  );
+
+  if (typeof el === "string") {
+    el = document.querySelectorAll(el);
+  }
+  this.images = Array.from(el);
+
+  this.listener = this.loadImage();
+  this.listener();
+  this.initEvent();
+}
+
+LazyLoad.prototype = {
+  loadImage() {
+    return throttle(function() {
+      let startIndex = 0;
+      while (startIndex < this.images.length) {
+        const image = this.images[startIndex];
+        if (isElementInViewport(image)) {
+          const src = image.getAttribute(this.setting.src);
+          const srcset = image.getAttribute(this.setting.srcset);
+          if (image.tagName.toLowerCase() === "img") {
+            if (src) {
+              image.src = src;
+            }
+            if (srcset) {
+              image.srcset = srcset;
+            }
+          } else {
+            image.style.backgroundImage = `url(${src})`;
+          }
+          this.images.splice(startIndex, 1);
+          continue;
+        }
+        startIndex++;
+      }
+
+      if (!this.images.length) {
+        this.destroy();
+      }
+    }).bind(this);
+  },
+  initEvent() {
+    window.addEventListener("scroll", this.listener, false);
+  },
+  destroy() {
+    window.removeEventListener("scroll", this.listener, false);
+    this.images = null;
+    this.listener = null;
+  }
+};
+```
+
+屏幕滚动时节流触发函数 获取所有
+
+## a 链接的 `target` 设置为 `_blank` 有什么隐患 解决方案
 
 ## `http` 头报文的 `keep-alive` 是什么意思 有什么不好
 
@@ -44,7 +111,7 @@ function logLoadInfo() {
 
 ## v-for 中如果数组重新赋值 更新列表元素带 key 是比不带 key 更快吗
 
-## vue 中 v-for 列表元素事件使用了代理吗 为什么
+## vue 中 v-for 列表元素事件使用了代理吗 为什么使用（不使用）
 
 ## vue 中父子组建的生命周期是啥顺序
 
@@ -108,20 +175,25 @@ A(function() {
 ## 写一个事件委托
 
 ```js
-function delegate(element, eventType, selector, fn) {
-  element.addEventListener(eventType, e => {
-    let el = e.target;
-    while (!el.matches(selector)) {
-      if (element === el) {
-        el = null;
-        break;
-      }
-      el = el.parentNode;
+function delegate(ele, selector, type, fn) {
+  function callback(e) {
+    e = e || window.event;
+    let target = e.target || e.srcElement;
+    while (!target.matches(selector)) {
+      target = target.parentNode;
     }
-    el && fn.call(el, e, el);
-  });
-  return element;
+    fn.call(target, e);
+  }
+  ele.addEventListener(type, callback, false);
 }
+delegate(
+  document.querySelector("body"),
+  ".list-group-item",
+  "click",
+  function() {
+    console.log("bingo");
+  }
+);
 ```
 
 ## 连续赋值的优先级问题
@@ -275,8 +347,12 @@ preload 完在 `$mount`
 从开发来讲
 
 - 接口要做必要的跨域限制 或者判断请求头 Origin 字段
+
 - 下发给用户的 `cookie` `Samesite` 属性 设置为 `strict` 跨站将不会携带 `cookie`
-  `strict` 将表示这个 `cookie` 只为 `a.com` 服务 不管是你在 `b.com` 请求 `a.com` 还是 `a.com` 请求 `b.com`
+  `strict` 将表示这个 `cookie` 只为 `a.com` 服务
+
+  不管是你在 `b.com` 请求 `a.com` 还是 `a.com` 请求 `b.com`
+
 - 可以下发一个额外随机的 token 埋到页面上 b.com 是拿不到的
 
 跨站请求伪造特点是 伪造请求的网站并不能获取到用户的 cookie 只是冒用
@@ -305,3 +381,32 @@ node 应用可以用的 csurf 这个库防范
 小林拿到加密过的验证码 用阿里的公钥解
 
 整个过程既有对称加密又有非对称加密
+
+## node 一个端口可以开多个进程吗
+
+## react hooks 中 `useEffect` 跟 `useLayoutEffect` 有什么区别
+
+先看官网的说法
+
+> 其函数签名与 useEffect 相同 但它会在所有的 DOM 变更之后同步调用 effect。可以使用它来读取 DOM 布局并同步触发重渲染。在浏览器执行绘制之前 useLayoutEffect 内部的更新计划将被同步刷新。
+
+useLayoutEffect 里面的 callback 函数会在 DOM 更新完成后立即执行, 但是会在浏览器进行任何绘制之前运行完成,阻塞了浏览器的绘制
+
+假设你本意在 useEffect 中 也就是组件加载完成后, 立马将方块的横坐标位置移到 600px 的位置 useEffect 会在初次渲染完成之后再变换位置 肉眼能观察到位置上的改变 useLayoutEffect 则会在 DOM 构建完成同步执行 阻碍渲染。渲染完成便已经在 600px 的位置
+
+## webpack 打包优化的实践
+
+### tree shaking
+
+去除无用代码 纠正 webpack 默认 tree-shaking 下面的弊端
+
+### dll 动态链接库优化
+
+本质上就是空间换时间的策略 优化打包时间 分版本环境解决方案也不同
+2.x、3.x 往往要自己配一一个打包脚本、在配置命中脚本 也有 autoDll 的相关插件
+`webpack4.x` 打包性能的强化到基本不需要了
+
+### 按需引入方面
+
+- `babel-plugin-import`
+- 试图直接从分目录下引入需要的函数

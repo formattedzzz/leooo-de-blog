@@ -1,11 +1,11 @@
 {
-  "name": "fe-note",
+  "name": "leooo-de-blog",
   "version": "1.0.0",
-  "description": "",
-  "main": "/ELECTRON/index.js",
+  "description": "## css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cd ELECTRON && electron index.js"
+    "dev": "cd ELECTRON && electron index.js",
+    "lint": "npx lint-md ./src"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +18,14 @@
     "hooks": {
       "pre-commit": "npx lint-md ./src"
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/formattedzzz/fe-notes.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/formattedzzz/fe-notes/issues"
+  },
+  "homepage": "https://github.com/formattedzzz/fe-notes#readme"
 }

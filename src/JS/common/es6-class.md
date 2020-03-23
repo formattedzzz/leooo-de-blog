@@ -1,6 +1,6 @@
 # 对 es6 Class 的一些(不全面)总结
 
-- `class` 内部所有方法 **`不能枚举`** 也 **`不能当构造函数调用`** 即 **`Object.keys`** 不能遍历 **`Object.getOwnpropertyNames`** 可以
+- `class` 内部所有方法、属性 **`不能枚举`** 也 **`不能当构造函数调用`** **`Object.getOwnpropertyNames`** 可以
 
   ```js
   class A {
@@ -10,8 +10,12 @@
 
     func2() {}
   }
+  A.prototype.name = "leooo";
   Object.getOwnPropertyNames(A); // ['length', 'prototype', 'func1', 'func2']
   Object.keys(A); // []
+  "name" in new A(); // true
+  // for in 是可以的 这也是尽量避免使用 for in 的原因
+
   var b = new A.prototype.func2(); // undefined
   var c = new A.func1(); // undefined
   ```
@@ -95,3 +99,19 @@
   }
   WaterFull.fun3(); // ok
   ```
+
+- 使用 `Object.create` 来实例化一个类
+
+```js
+const person = {
+  isHuman: false,
+  printIntroduction: function() {
+    console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+  }
+};
+const me = Object.create(person);
+
+me.name = "Matthew"; // "name" is a property set on "me", but not on "person"
+me.isHuman = true; // inherited properties can be overwritten
+me.printIntroduction();
+```

@@ -48,6 +48,7 @@ var checkInclusion = function(s1 = "adc", s2 = "dcda") {
 };
 // console.log(checkInclusion());
 
+// 字符串相乘
 var multiply = function(num1, num2) {
   if (!num1 || !num2 || !Number(num1) || !Number(num2)) return 0;
   var num1Arr = [...num1];
@@ -92,6 +93,7 @@ var multiply = function(num1, num2) {
 
 // console.log(multiply("123", "456"));
 
+// 字符串反转
 var reverseWords = function(s) {
   return s
     .trim()

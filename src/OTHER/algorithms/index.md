@@ -1,4 +1,4 @@
-# 记录一些算法题
+# 记录一些 leetcode 算法题
 
 ```js
 function lengthOfLongestSubstring(s = "sdvhkdf") {
@@ -18,7 +18,9 @@ function lengthOfLongestSubstring(s = "sdvhkdf") {
   return maxLen;
 }
 console.log(lengthOfLongestSubstring());
+```
 
+```js
 var longestCommonPrefix = function(strs = ["mfmlower", "flow", "flight"]) {
   var res = "";
   const minLen = Math.min(...strs.map(v => v.length));
@@ -34,7 +36,9 @@ var longestCommonPrefix = function(strs = ["mfmlower", "flow", "flight"]) {
   return res;
 };
 console.log(longestCommonPrefix());
+```
 
+```js
 var checkInclusion = function(s1 = "adc", s2 = "dcda") {
   if (!s1.length || !s2.length || s2.length < s1.length) return false;
   var res = false;
@@ -50,7 +54,9 @@ var checkInclusion = function(s1 = "adc", s2 = "dcda") {
   return res;
 };
 console.log(checkInclusion());
+```
 
+```js
 var multiply = function(num1, num2) {
   if (!num1 || !num2 || !Number(num1) || !Number(num2)) return 0;
   var num1Arr = [...num1];
@@ -94,7 +100,9 @@ var multiply = function(num1, num2) {
 //  28
 
 console.log(multiply("123", "456"));
+```
 
+```js
 var reverseWords = function(s) {
   return s
     .trim()
@@ -103,7 +111,9 @@ var reverseWords = function(s) {
     .reverse()
     .join(" ");
 };
+```
 
+```js
 var simplifyPath = function(path = "/") {
   var result = "";
   var tempPath = [];
@@ -119,7 +129,9 @@ var simplifyPath = function(path = "/") {
   return result;
 };
 console.log(simplifyPath("/."));
+```
 
+```js
 var threeSum = function(nums = [-2, 0, 0, 2, 2]) {
   if (!nums || nums.length < 3) return [];
   var result = [];
@@ -173,7 +185,9 @@ var threeSum = function(nums = [-2, 0, 0, 2, 2]) {
   return result;
 };
 // console.log(threeSum());
+```
 
+```js
 // 最大岛屿问题 实现思路
 var grids = [
   [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],

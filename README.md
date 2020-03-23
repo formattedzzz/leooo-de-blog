@@ -6,12 +6,13 @@
 - [固定定位的潜在问题](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/common/fixed-position.md)
 - [`margin` 在 FFC、GFC 中的妙用](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/common/ffc-margin.md)
 - [`vertical-align` 属性](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
-- [`clip-path` 属性](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/decorator/index.md)
+- [`clip-path` 属性](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [写一个滚动视差效果](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 
 ## javascript
 
 - [`js` 自定义事件](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/custom-event.md)
-- [`js` 简易的函数 `截流` `防抖` `柯里化` 处理](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/func-handle.md)
+- [`js` 简易的函数 截流、防抖、柯里化 处理](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/func-handle.md)
 - [`js` 认识稀疏数组](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/sparse-array.md)
 - [`js` `reduce` 的用法及扩展](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es-reduce.md)
 - [`js` 从数组 `sort` 方法看原地算法](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es-sort.md)
@@ -83,8 +84,11 @@
 
 - [`js` 数据劫持](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/data-hijack.md)
 - [`node` 开发一个实用的 cli 工具](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [以 `D3js` 为依赖写一个 Xmind 组件](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`koa` 洋葱圈模型](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [关于前端测试](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`webpack4.x` 实践及手写 `loader` `plugin`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [`node` `子进程` `子线程`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`node` 子进程、子线程](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`service worker`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`TypeScript` 练习札记](https://github.com/formattedzzz/fe-notes/blob/master/src/TS/src/index.ts)
 - [记录一些思考、想法](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts.md)

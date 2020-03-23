@@ -47,14 +47,13 @@ function debounceEnd(fn, delay, ctx) {
 ```js
 // 首次触发便执行依次 之后每次触发距上次执行大于delay才会执行 注意这里时距离上次执行
 function throttle(fn, inter, ctx) {
-  var canRun = true;
+  var timer = null;
   return function() {
     let args = arguments;
-    if (canRun) {
-      fn.apply(ctx, args);
-      canRun = false;
-      setTimeout(() => {
-        canRun = true;
+    if (!timer) {
+      timer = setTimeout(() => {
+        fn.apply(ctx, args);
+        clearTimeout(timer);
       }, inter);
     }
   };
@@ -73,6 +72,31 @@ var handle2 = throttle(function() {
 }, 1000);
 
 window.onscroll = handle2;
+```
+
+```js
+// 定时器加时间戳
+var throttle = function(func, delay) {
+  var timer = null;
+  var startTime = Date.now();
+  return function() {
+    var curTime = Date.now();
+    var remaining = delay - (curTime - startTime);
+    var context = this;
+    var args = arguments;
+    clearTimeout(timer);
+    if (remaining <= 0) {
+      func.apply(context, args);
+      startTime = Date.now();
+    } else {
+      timer = setTimeout(func, remaining);
+    }
+  };
+};
+function handle() {
+  console.log(Math.random());
+}
+window.addEventListener("scroll", throttle(handle, 1000));
 ```
 
 ## 柯里化

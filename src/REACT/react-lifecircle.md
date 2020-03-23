@@ -1,5 +1,7 @@
 # 生命周期的改动
 
+## class 内部初始化
+
 ## `componentDidUpdate`
 
 不要在 `componentDidUpdate` 钩子函数中使用 `setState` 函数
@@ -21,6 +23,10 @@ shouldComponentUpdate(nextProps, nextState) {
 ## `componentWillReceiveProps`
 
 下个大版本即将废弃 别名 `UNSAFE_componentWillReceiveProps` 可以继续使用
+
+## `componentWillMount`
+
+下个大版本即将废弃 别名 `UNSAFE_componentWillMount` 可以继续使用
 
 ## `getDerivedStateFromProps`
 
@@ -62,7 +68,6 @@ class ExampleComponent extends React.Component {
         lastRow: nextProps.currentRow
       };
     }
-
     // 默认不改动 state
     return null;
   }
