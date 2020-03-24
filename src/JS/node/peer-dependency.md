@@ -146,7 +146,7 @@ npm cache clean
 - 将包解压到 `node_modules`
 - 生成 `lock` 文件
 
-## 来看看 yran node_modules 模型
+## 来看看 yarn node_modules 模型
 
 安装 `babel-plugin-import` 包 该包的生产依赖有两个
 

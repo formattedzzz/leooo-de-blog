@@ -137,19 +137,19 @@ console.log(p.a.d);
 
 - `get(target, propKey, receiver)` 拦截对象属性的读取
 
-  参数：***目标对象*** ***属性名*** ***proxy 实例本身***
+  参数：**_目标对象_** 、**_属性名_** 、 **_proxy 实例本身_**
 
   比如 proxy.foo 和 proxy['foo']
 
 - `set(target, propKey, value, receiver)` 拦截对象属性的设置
 
-  参数：***目标对象*** ***属性名*** ***属性值*** ***proxy 实例本身***
+  参数：**_目标对象_** 、 **_属性名_** 、 **_属性值_** 、 **_proxy 实例本身_**
 
   比如 proxy.foo = v 或 proxy['foo'] = v 返回一个布尔值
 
 - `has(target, propKey)` 拦截 propKey in proxy 的操作 返回一个布尔值。
 
-  参数：***目标对象*** ***需查询的属性名***
+  参数：**_目标对象_** 、 **_需查询的属性名_**
 
 - `deleteProperty(target, propKey)` 拦截 delete proxy[propKey]的操作 返回一个布尔值。
 
@@ -179,7 +179,7 @@ console.log(p.a.d);
 
 - `apply(target, object, args)` 拦截 Proxy 实例作为函数调用的操作
 
-  参数：***目标对象*** ***上下文对象（this）*** ***目标对象的参数数组***
+  参数：**_目标对象_** 、 **_上下文对象（this）_** 、 **_目标对象的参数数组_**
 
   比如 proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。
 

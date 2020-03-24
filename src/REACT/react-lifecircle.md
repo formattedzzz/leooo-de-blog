@@ -2,7 +2,7 @@
 
 ## class 内部初始化
 
-## `componentDidUpdate`
+## `componentWillUpdate` 、 `componentDidUpdate`
 
 不要在 `componentDidUpdate` 钩子函数中使用 `setState` 函数
 

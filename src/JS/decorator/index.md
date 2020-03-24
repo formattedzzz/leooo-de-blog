@@ -18,7 +18,7 @@ myfunc()
 # my function
 ```
 
-再比如 在`dart`中 也能看到对继承过来的 build 方法进行 重载@override
+再比如 在 `dart` 中 也能看到对继承过来的 build 方法进行 重载@override
 使得该组件（类）的 build 方法既能保留原有的渲染机制 又能渲染自定义的内容
 
 ```js
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-再比如 js 中的装饰器 我首次接触到是用到`mobx`这个库的时候
+再比如 js 中的装饰器 我首次接触到是用到 `mobx` 这个库的时候
 
 ```js
 // stroe/index.js
@@ -119,6 +119,9 @@ Cat = isAnimal(function Cat() {});
 ```js
 function fast(target, name, descriptor) {
   // target === Rabbit.prototype
+  // 这里的target name descriptor 具有普适性
+  // 也就是说你放在run 方法上面 target就是 Rabbit.prototype name就是'run'
+  // descriptor就是现在run相对于Rabbit.prototype的默认descriptor
   // descriptor 形如对象参数 {
   // value: null,
   // enumerable: false,

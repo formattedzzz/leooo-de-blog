@@ -58,8 +58,7 @@
 - [`react` 生命周期](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-lifecircle.md)
 - [`react` 代码规范](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-hooks.md)
-- [`react` `mixin`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [`react` `HOC`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`react` 组件混入、复用、赋能](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-component.md)
 - [`react` 写一个 useEvent `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` 用 `puppeteer` 来测试组件](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-test.md)
 - [`react` 重新认识 `Suspense`](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-suspense.md)
@@ -83,8 +82,8 @@
 ## todo
 
 - [`js` 数据劫持](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/data-hijack.md)
-- [`node` 开发一个实用的 cli 工具](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [以 `D3js` 为依赖写一个 Xmind 组件](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`node` 开发一个实用的 `cli` 工具](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [以 `D3js` 为依赖写一个 `mindNode` 组件](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`koa` 洋葱圈模型](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [关于前端测试](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`webpack4.x` 实践及手写 `loader` `plugin`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)

@@ -73,6 +73,8 @@ LazyLoad.prototype = {
 
 ## `http` 头报文的 `keep-alive` 是什么意思 有什么不好
 
+tcp 连接复用 会 catch 住一定的服务器资源
+
 ## chrome 浏览器一个进程的并发请求数是多少 跟同一主机的 TCP 连接数有限制吗
 
 ## `performance.timing` 查看网页性能
@@ -235,9 +237,11 @@ var a = (b = c);
 // 猜想2: b = c; a = c;
 ```
 
-## module.exports 和 exports 有啥区别
+## `module.exports` 和 `exports` 有啥区别
 
-## 怎么给页面加上合适的骨架屏---原理
+一个模块内 `exports` 默认情况下就是 `module.exports` 的一个引用 最后导出的还是 `module.exports`
+
+## 怎么给页面加上合适的骨架屏（原理）
 
 ### 以我们熟悉的 vue SPA 为例 首先我们加上结构及样式
 
@@ -384,6 +388,62 @@ node 应用可以用的 csurf 这个库防范
 
 ## node 一个端口可以开多个进程吗
 
+## `react` `setState` 函数有哪些需要注意的点 从表现行为来看
+
+- **合成事件** 及 **钩子函数** 中的 `setState`
+
+```js
+class A extends Component {
+  state = { index: 0 };
+  componentDidMount() {
+    console.log("SetState调用setState");
+    this.setState({
+      index: this.state.index + 1
+    });
+    console.log("state", this.state.index);
+  }
+  bindEvent = e => {
+    console.log("SetState调用setState");
+    this.setState({
+      index: this.state.index + 1
+    });
+    console.log("state", this.state.index);
+  };
+}
+```
+
+- **异步函数** 和 **原生事件** 中的 `setstate`
+
+显著特点 每个 `setState` 函数都会同步执行到渲染完成 在跳到下一个语句 简单来说就是完全同步的
+
+```js
+class A extends Component {
+  state = { index: 0 };
+  componentDidMount() {
+    setTimeout(() => {
+      console.log("调用setState");
+      this.setState({
+        index: this.state.index + 1
+      });
+      console.log("state", this.state.index);
+    });
+    document.body.addEventListener("click", () => {
+      console.log("调用setState");
+      this.setState({
+        index: this.state.index + 1
+      });
+      console.log("state", this.state.index);
+    });
+  }
+}
+```
+
+- 什么情况下连续 `setState` 会合并处理
+
+  **合成事件** 及 **钩子函数** 里不使用 `(prevState) => {}` 情况的连续 `setState`
+
+- 怎么防止合并处理 避免上述情况即可
+
 ## react hooks 中 `useEffect` 跟 `useLayoutEffect` 有什么区别
 
 先看官网的说法
@@ -410,3 +470,67 @@ useLayoutEffect 里面的 callback 函数会在 DOM 更新完成后立即执行,
 
 - `babel-plugin-import`
 - 试图直接从分目录下引入需要的函数
+
+## 拷贝与赋值的区别
+
+```js
+var arr = [1, 2, 3];
+var arr_copy = arr.slice(0);
+```
+
+这样算是拷贝嘛 这显然就是赋值而已
+
+拷贝严格上来说是先申明一个对象 然后在不断开引用的情况下将别个对象移植过来 前后具有完全一致的数据、特性 且两者之间无任何引用关系
+
+## 原生 ajax 怎么停止一个已经发送的请求
+
+```js
+function ajax(options) {
+  let method = options.method || "GET", // 不传则默认为GET请求
+    params = options.params, // GET请求携带的参数
+    data = options.data, // POST请求传递的参数
+    url =
+      options.url +
+      (params
+        ? "?" +
+          Object.keys(params)
+            .map(key => key + "=" + params[key])
+            .join("&")
+        : ""),
+    async = options.async === false ? false : true,
+    success = options.success,
+    timeout = options.timeout || 6000,
+    headers = options.headers;
+  let xhr;
+  // 创建xhr对象
+  if (window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else {
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xhr.timeout = timeout;
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      console.log("everything-ok:", xhr);
+      success && success(xhr.responseText);
+    }
+  };
+  xhr.onabort = function() {
+    console.log("请求停止...");
+  };
+  xhr.ontimeout = function() {
+    console.log("请求超时...");
+  };
+  xhr.open(method, url, async);
+  if (headers) {
+    Object.keys(Headers).forEach(key =>
+      xhr.setRequestHeader(key, headers[key])
+    );
+  }
+  method === "GET" ? xhr.send() : xhr.send(data);
+  return xhr;
+}
+var url = "https://wx.nnleo.cn/views/users";
+var reqIns = ajax({ url, timeout: 100 });
+// reqIns.abort();
+```
