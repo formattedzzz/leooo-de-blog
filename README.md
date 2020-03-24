@@ -58,7 +58,7 @@
 - [`react` 生命周期](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-lifecircle.md)
 - [`react` 代码规范](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-hooks.md)
-- [`react` 组件混入、复用、赋能](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/react/react-component.md)
+- [`react` 组件混入、复用、赋能](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-component.md)
 - [`react` 写一个 useEvent `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` 用 `puppeteer` 来测试组件](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-test.md)
 - [`react` 重新认识 `Suspense`](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-suspense.md)
