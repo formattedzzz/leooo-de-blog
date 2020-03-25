@@ -71,6 +71,8 @@ LazyLoad.prototype = {
 
 ## a 链接的 `target` 设置为 `_blank` 有什么隐患 解决方案
 
+新页面能访问前一个页面的 window 对象 共享同一进程 可以设置 noopener 解决
+
 ## `http` 头报文的 `keep-alive` 是什么意思 有什么不好
 
 tcp 连接复用 会 catch 住一定的服务器资源
@@ -107,6 +109,8 @@ function logLoadInfo() {
 
 ## 模拟实现 call 怎么解决传参数个数的问题 不能用 es6
 
+使用代码拼接用 eval 执行
+
 ## eval 的直接调用跟间接调用有什么区别
 
 ## 1 像素解决方案 根据像素比进行 scale 相应比例吗
@@ -114,6 +118,8 @@ function logLoadInfo() {
 ## v-for 中如果数组重新赋值 更新列表元素带 key 是比不带 key 更快吗
 
 ## vue 中 v-for 列表元素事件使用了代理吗 为什么使用（不使用）
+
+指向的均是同一个事件
 
 ## vue 中父子组建的生命周期是啥顺序
 
@@ -339,11 +345,11 @@ preload 完在 `$mount`
 
 ## 前端安全之跨站请求伪造
 
-- 受害者登录 a.com 并保留了登录凭证（Cookie）。
-- 攻击者引诱受害者访问了 b.com。
-- b.com 向 a.com 发送了一个请求：a.com/act=xx。浏览器会
-- a.com 接收到请求后 对请求进行验证 并确认是受害者的凭证 误以为是受害者自己发送的请求。
-- a.com 以受害者的名义执行了 act=xx。
+- 受害者登录 a.com 并保留了登录凭证（Cookie）
+- 攻击者引诱受害者访问了 b.com
+- b.com 向 a.com 发送了一个请求 a.com/act=xx。浏览器会
+- a.com 接收到请求后 对请求进行验证 并确认是受害者的凭证 误以为是受害者自己发送的请求
+- a.com 以受害者的名义执行了 act=xx
 - 攻击完成 攻击者在受害者不知情的情况下 冒充受害者 让 a.com 执行了自己定义的操作
 
 从用户角度来讲 点击小电影的链接可以开启无痕模式
@@ -353,7 +359,8 @@ preload 完在 `$mount`
 - 接口要做必要的跨域限制 或者判断请求头 Origin 字段
 
 - 下发给用户的 `cookie` `Samesite` 属性 设置为 `strict` 跨站将不会携带 `cookie`
-  `strict` 将表示这个 `cookie` 只为 `a.com` 服务
+
+  `strict` 将表示这个 `cookie` 只为 **`a.com`** 服务
 
   不管是你在 `b.com` 请求 `a.com` 还是 `a.com` 请求 `b.com`
 
@@ -533,4 +540,72 @@ function ajax(options) {
 var url = "https://wx.nnleo.cn/views/users";
 var reqIns = ajax({ url, timeout: 100 });
 // reqIns.abort();
+```
+
+## react 中执行 `this.forceUpdate()` 会经历那几个生命周期
+
+## 怎么理解 `redux` 、 `mobx` 状态管理库的通用性
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="//cdn.bootcss.com/redux/3.5.2/redux.min.js"></script>
+  </head>
+  <body>
+    <script>
+      /** Action Creators */
+      function inc() {
+        return { type: "INCREMENT" };
+      }
+      function dec() {
+        return { type: "DECREMENT" };
+      }
+      function reducer(state, action) {
+        // 首次调用本函数时设置初始 state
+        state = state || { counter: 0 };
+        switch (action.type) {
+          case "INCREMENT":
+            return { counter: state.counter + 1 };
+          case "DECREMENT":
+            return { counter: state.counter - 1 };
+          default:
+            return state; // 无论如何都返回一个 state
+        }
+      }
+
+      var store = Redux.createStore(reducer);
+      console.log(store.getState()); // { counter: 0 }
+      store.dispatch(inc());
+      console.log(store.getState()); // { counter: 1 }
+      store.dispatch(inc());
+      console.log(store.getState()); // { counter: 2 }
+      store.dispatch(dec());
+      console.log(store.getState()); // { counter: 1 }
+    </script>
+  </body>
+</html>
+```
+
+所以当我们初始化好 `store` 之后 我们可以在需要的地方 `import` 进来即可
+
+或者把它挂载到组件全局都能访问到的地方 只要 `this` 指向组件实例 我们就能访问到
+
+```js
+import Vue from "vue";
+import { Component } from "react";
+var store = Redux.createStore(reducer);
+Vue.prototype.$store = store;
+Component.prototype.store = store;
+
+class component extends Component {
+  state = {};
+
+  componentDidMount() {
+    console.log(this.store);
+    this.store.dispatch({
+      type: "INCREMENT"
+    });
+  }
+}
 ```

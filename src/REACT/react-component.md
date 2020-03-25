@@ -109,7 +109,6 @@ function propsDecorator(target, name, descriptor) {
     };
   } else {
     descriptor.value = function() {
-      componentDidMount.call(this);
       console.log("这是新加的逻辑");
     };
   }
@@ -126,6 +125,8 @@ class DecoratoredComponent extends Component {
   componentDidMount() {
     console.log(this, "componentDidMount");
   }
+
+  log = () => {};
 
   render() {
     console.log("render");
@@ -253,7 +254,7 @@ const formCreate = WrappedComponent =>
 class Item extends React.Component {
   form = this.props.children._owner.stateNode.props;
   // 这里通过层层访问 拿到了 父组件所接收到的集合
-  // 我一直以为是这种配合嵌套的组件是 通过 context 传下来的
+  // 这种配合嵌套的组件也可以通过 context 传下来的
 
   componentDidMount() {
     this.updateInitialValue();
@@ -310,8 +311,8 @@ class FromDemo extends React.Component {
 export default formCreate(FromDemo);
 ```
 
-为什么这里还要构造一个 Item 组件 当然是为了组件的调用的简洁
-另外引入有了 Item 组件我们还能把样式及布局一起集成进去...
+为什么这里还要构造一个 `<Item/>` 组件 当然是为了组件的调用的简洁
+另外引入有了 `<Item/>` 组件我们还能把样式及布局一起集成进去...
 不然我们就得这样写：
 
 ```js
@@ -338,14 +339,37 @@ class FromDemo extends React.Component {
 }
 ```
 
-这就是 `antd form` 组件实现的大致思路啦 但 antd 中 Form.Item 的作用仅仅是为了布局而实现的
-而这里的 Item 组件的功能则用包装函数代替
+这就是 `antd form` 组件实现的大致思路啦 但 antd 中 `Form.Item` 的作用仅仅是为了布局而实现的
+而这里的 `<Item/>` 组件的功能则用包装函数代替
 
 到最新的 `antd4.x` 开始已经改成这种格式了。`Form.Item` 里面的负责采发事件的控件不再需要包装。
 
 当然 组件设计的要完善的多 比如上面的要给 `input` 初始值还需要进行包装 要放到 formCreate 函数返回的那个组件中处理
 不然会报非受控组件的错
 
-## `render props`
+## render props
+
+先看看[官方的案例](https://zh-hans.reactjs.org/docs/render-props.html#gatsby-focus-wrapper)
+
+### render props 的适用场景
 
 ## hooks 中的逻辑复用
+
+### hooks 实现双向绑定
+
+```jsx
+function useBind(init) {
+  let [value, setValue] = useState(init);
+  let onChange = useCallback(function(event) {
+    setValue(event.currentTarget.value);
+  }, []);
+  return {
+    value,
+    onChange
+  };
+}
+function Page1(props) {
+  let value = useBind("");
+  return <input {...value} />;
+}
+```
