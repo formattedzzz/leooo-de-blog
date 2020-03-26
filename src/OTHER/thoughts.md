@@ -478,6 +478,8 @@ useLayoutEffect 里面的 callback 函数会在 DOM 更新完成后立即执行,
 - `babel-plugin-import`
 - 试图直接从分目录下引入需要的函数
 
+### 布置合适的 service worker 来缓存一部分不常改变的静态资源
+
 ## 拷贝与赋值的区别
 
 ```js

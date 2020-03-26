@@ -860,3 +860,48 @@ docker image ls
 ```
 
 Docker for Mac 安装包包含了 Docker Engine、 Docker 命令行客户端, Docker Compose、Docker Machine 和 Kitematic
+
+## 怎样给 localhost 加上 https
+
+由于 `service worker` 真机测试需求 需要对 localhost https 处理
+
+找了一个方便快捷的包 `https-localhost`
+
+```sh
+sudo cnpm i -g --only=prod https-localhost
+```
+
+代码中使用
+
+```js
+const httpsLocalhost = require("https-localhost")();
+// const app = ...
+// const port = 443
+const certs = await httpsLocalhost.getCerts();
+const server = https.createServer(certs, app).listen(port);
+```
+
+命令行托管静态资源
+
+```sh
+serve ./somedir
+# or cd dirpath && serve
+
+# 默认端口 443 以新的端口启动托管
+PORT=444 serve
+```
+
+但是发现一个小问题 该包的命令与之前装的一个 serve 包冲突 在完成安装时也做了提示
+
+```sh
+[https-localhost@4.5.2] link /usr/local/bin/serve@ -> /usr/local/lib/node_modules/https-localhost/index.js
+```
+
+那咋整呢 这里我们找到 npm 包的全局安装目录 `/usr/local/lib/node_modules` 将它换成别名
+
+```sh
+# alias config
+alias servedir="/usr/local/lib/node_modules/serve/bin/serve.js"
+```
+
+把这个配置写进用户环境 `~/.bash_profile` 如果最新 zsh 终端 则写到 `~/.zshrc` 中
