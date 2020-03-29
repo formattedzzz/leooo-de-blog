@@ -1,8 +1,8 @@
 # service worker
 
-## manifest.json
+## 桌面站点配置 manifest.json
 
-### display
+### display 配置项
 
 - fullscreen 全屏显示 会尽可能将所有的显示区域都占满
 - standalone 独立应用模式 这种模式下打开的应用有自己的启动图标 并且不会有浏览器的地址栏。
@@ -12,17 +12,22 @@
 
 ## 生命周期
 
+![service-worker's life-circle](https://i.loli.net/2020/03/27/j2SWDehY3MTvlLc.png)
+
 ## 更新机制
 
 ```js
 /**
  * service worker 安装激活
  */
-let dataCacheName = "new-data-v1";
-let cacheName = "first-pwa-app-1";
+self.version = "v2";
+let dataCacheName = "leo-api-" + self.version;
+let cacheName = "leo-shell-" + self.version;
 let filesToCache = [
   "/",
-  // '/index.html',
+  "./manifest.json",
+  // '/sw.js',
+  "/index.html",
   "/detail.html",
   "/script/index.js",
   "/script/detail.js",
@@ -38,9 +43,7 @@ let filesToCache = [
   "/assets/images/icons/icon_192x192.png",
   "/assets/images/icons/icon_512x512.png"
 ];
-// const self = this
-// const caches = window.caches
-self.version = "v1.3";
+
 self.addEventListener("install", function(e) {
   console.log("SW Install");
   e.waitUntil(
