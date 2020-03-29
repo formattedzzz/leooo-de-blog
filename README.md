@@ -11,7 +11,7 @@
 
 ## javascript
 
-- [`js` 自定义事件](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/custom-event.md)
+- [`js` 自定义事件](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es-event.md)
 - [`js` 简易的函数 截流、防抖、柯里化 处理](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/func-handle.md)
 - [`js` 认识稀疏数组](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/sparse-array.md)
 - [`js` `reduce` 的用法及扩展](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es-reduce.md)
@@ -24,6 +24,7 @@
 - [`js` 从函数调用栈看递归](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/stack-flow.md)
 - [`js` 多叉树遍历及还原](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/tree-iterator/index.md)
 - [`js` `Blob` 对象的应用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/blob/index.md)
+- [`js` 数据劫持](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/data-hijack.md)
 - [`es5` 构造一个迭代器](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-iterator.md)
 - [`es5` 从继承角度看 `bind-ployfill`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/nice-inherit.md)
 - [`es5` 理解原型及原型链](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/prototype-chain.md)
@@ -76,12 +77,14 @@
 - [小试 `vscode` 文档神器 `REST Client`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/rest-client.md)
 - [GO `channel` 再理解](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/go-channel.md)
 - [币加索的区块链时光](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/block-chain.md)
+- [`dart` 初识笔记](https://github.com/formattedzzz/fe-notes/blob/master/src/DART/dart.md)
+- [`flutter` 初识笔记](https://github.com/formattedzzz/fe-notes/blob/master/src/DART/flutter.md)
+- [币加索的区块链时光](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/block-chain.md)
 - [笔记 `shell` 脚本](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/shell/index.md)
 - [笔记 `Linux` 命令](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/linux.md)
 
 ## todo
 
-- [`js` 数据劫持](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/data-hijack.md)
 - [`node` 开发一个实用的 `cli` 工具](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [以 `D3js` 为依赖写一个 `mindNode` 组件](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`koa` 洋葱圈模型](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)

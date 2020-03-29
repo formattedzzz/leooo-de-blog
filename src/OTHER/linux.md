@@ -439,6 +439,114 @@ systemctl status firewalld
 
 ## 计划任务列表
 
+## mysql 基操
+
+> sql 语句不区分大小写
+
+- 安装
+
+```sh
+sudo apt install mysql-server -y
+```
+
+=> 输入并确认密码 => ok!
+
+- 启动
+
+```sh
+mysql -u root -p
+```
+
+=> 输入密码 => ok!
+
+- 查看字符集
+
+```sh
+SHOW VARIABLES LIKE 'character%';
+SHOW VARIABLES LIKE 'collation_%';
+```
+
+`utf8mb4` 是 `utf8` 的超集 支持 `emoji`
+
+`mysql` 配置文件目录：`/etc/mysql`
+ubuntu linux 系统下
+
+- 启动
+
+```sh
+sudo /etc/init.d/mysql start
+# 方式一
+
+sudo service mysql start
+# 方式二
+```
+
+- 停止
+
+```sh
+sudo /etc/init.d/mysql stop
+# 方式一
+
+sudo service mysql stop
+# 方式二
+```
+
+- 重启
+
+```sh
+sudo/etc/init.d/mysql restart
+# 方式一
+
+sudo service mysql restart
+# 方式二
+```
+
+- 开放连接授权(比如本地 navicat 连接云主机上的本地数据库)
+
+```sh
+GRANT ALL PRIVILEGES ON _._ TO 'root'@'%' IDENTIFIED BY 'password' WITH GRANT OPTION;
+flush privileges;
+```
+
+- 导入
+
+```sh
+mysql -u root -p;
+use account;
+source /home/ubuntu/account.sql;
+```
+
+- 导出到当前文件夹
+
+```sh
+mysqldump -u root -p account>account.sql
+```
+
+- 删除某条记录
+
+```sh
+delete from user_tables where openid = '';
+delete from user_tables where info = '[object undefined]';
+```
+
+- 查找某个字段 并去重输出
+
+```sh
+select distinct age from user_tables;
+```
+
+- 按照正则查找 匹配某个字段
+
+```sh
+select * from account_tables where account_id regexp '.{36}';
+```
+
+删除 `uuid` 过长的记录 `''` 里面的就是正则表达式
+
+- 事务操作
+
+并发中的事务操作 悲观锁 乐观锁
+
 ## redis
 
 安装 下载安装包 解压到 `usr/local/` 目录
@@ -470,15 +578,15 @@ apt list --installed
 
 安装位置
 
-​ A、下载的软件的存放位置：/var/cache/apt/archives
+​ A、下载的软件的存放位置：`/var/cache/apt/archives`
 
-​ B、安装后软件的默认位置：/usr/share
+​ B、安装后软件的默认位置：`/usr/share`
 
-​ C、可执行文件位置：/usr/bin
+​ C、可执行文件位置：`/usr/bin`
 
-​ D、配置文件位置：/etc
+​ D、配置文件位置：`/etc`
 
-​ E、lib 文件位置：/usr/lib
+​ E、lib 文件位置：`/usr/lib`
 
 ## 查看 ubuntu 系统版本
 

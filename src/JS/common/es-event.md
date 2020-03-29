@@ -126,3 +126,27 @@ $("#app").on({
 ## 事件对象 e 的 一些属性
 
 **e.isTrusted** 区分是原生的事件还是自定义事件
+
+## 事件委托
+
+```js
+function delegate(ele, selector, type, fn) {
+  function callback(e) {
+    e = e || window.event;
+    let target = e.target || e.srcElement;
+    while (!target.matches(selector)) {
+      target = target.parentNode;
+    }
+    fn.call(target, e);
+  }
+  ele.addEventListener(type, callback, false);
+}
+delegate(
+  document.querySelector("body"),
+  ".list-group-item",
+  "click",
+  function() {
+    console.log("bingo");
+  }
+);
+```
