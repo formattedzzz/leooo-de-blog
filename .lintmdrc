@@ -4,6 +4,9 @@
     "no-empty-code": 0,
     "no-long-code": [1, {"length": 200}],
     "no-space-in-emphasis": 0,
-    "no-emphasis-as-header": 0
+    "no-emphasis-as-header": 0,
+    "first-line-h1": 0,
+    "first-line-heading": 0,
+    "no-bare-urls": 0
   }
 }

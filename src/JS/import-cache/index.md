@@ -31,9 +31,11 @@ console.log(require("./a.js"));
 console.log(require("./b.js"));
 ```
 
-四个文件的依赖关系如上 运行 node index.js
+四个文件的依赖关系如上 运行
 
 ```js
+node index.js
+
 // lib
 // 1: 1006.003ms
 // 123

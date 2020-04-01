@@ -46,18 +46,22 @@ function debounceEnd(fn, delay, ctx) {
 
 ```js
 // 首次触发便执行依次 之后每次触发距上次执行大于delay才会执行 注意这里时距离上次执行
-function throttle(fn, inter, ctx) {
-  var timer = null;
+var throttle = function(func, delay) {
+  var prev = Date.now();
   return function() {
-    let args = arguments;
-    if (!timer) {
-      timer = setTimeout(() => {
-        fn.apply(ctx, args);
-        clearTimeout(timer);
-      }, inter);
+    var context = this;
+    var args = arguments;
+    var now = Date.now();
+    if (now - prev >= delay) {
+      func.apply(context, args);
+      prev = Date.now();
     }
   };
+};
+function handle() {
+  console.log(Math.random());
 }
+window.addEventListener("scroll", () => throttle(handle, 1000));
 ```
 
 ```js
@@ -76,16 +80,18 @@ window.onscroll = handle2;
 
 ```js
 // 定时器加时间戳
-var throttle = function(func, delay) {
+var throttle = function(func, inter) {
   var timer = null;
   var startTime = Date.now();
   return function() {
     var curTime = Date.now();
-    var remaining = delay - (curTime - startTime);
+    var remaining = inter - (curTime - startTime);
     var context = this;
-    var args = arguments;
-    clearTimeout(timer);
+    var args = [...arguments];
+    timer && clearTimeout(timer);
     if (remaining <= 0) {
+      console.log("inter");
+      // clearTimeout(timer);
       func.apply(context, args);
       startTime = Date.now();
     } else {
@@ -93,8 +99,9 @@ var throttle = function(func, delay) {
     }
   };
 };
+// 时间戳是为了开头执行+定期执行 定时器是为了收尾的时候执行
 function handle() {
-  console.log(Math.random());
+  console.log(123);
 }
 window.addEventListener("scroll", throttle(handle, 1000));
 ```
@@ -118,4 +125,13 @@ console.log(add(1, 2, 3));
 console.log(add(1)(2, 3));
 console.log(add(1, 2)(3));
 console.log(add(1)(2)(3));
+```
+
+上面如果要实现加任意个数呢？这...
+
+可以使用障眼法 修改 `add()` 的 toString 方法 使得它既是一个函数 又能访问出数值
+
+```js
+add(1); // 1
+add(1)(2, 3); // 6
 ```

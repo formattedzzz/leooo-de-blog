@@ -239,3 +239,20 @@ let obj5 = {
 
 console.log(Object.prototype.toString.call(obj5));
 ```
+
+## 扩展 forEach 遍历的中断
+
+推荐使用 `find` `some` 方法 如果非要使用 `forEach` 可以考虑将 `array` 截断 但这会改变原数组
+
+```js
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+arr.forEach((v, i, a) => {
+  if (v > 3) {
+    // console.log(a === arr);
+    a.splice(i);
+    console.log(a);
+    return;
+  }
+  console.log(v, i);
+});
+```

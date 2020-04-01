@@ -8,6 +8,7 @@
 - [`vertical-align` 属性](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
 - [`clip-path` 属性](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [写一个滚动视差效果](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [圣杯布局的实现原理](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 
 ## javascript
 
@@ -66,7 +67,6 @@
 
 ## other
 
-- [一些算法题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/algorithms/index.md)
 - [浏览器渲染机制](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/html-render/index.md)
 - [内容安全策略](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/security-policy.md)
 - [用 gif 图片做数据埋点请求](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/gif-track.md)
@@ -93,6 +93,7 @@
 - [`webpack4.x` 实践及手写 `loader` `plugin`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` 之 `protal`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`node` 子进程、子线程](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [`service worker`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/service-worker.md)
+- [`lavas` 粗读总结](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/service-worker.md)
 - [`TypeScript` 练习札记](https://github.com/formattedzzz/fe-notes/blob/master/src/TS/src/index.ts)
 - [记录一些思考、想法](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts.md)
+- [一些算法题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/algorithms/index.md)

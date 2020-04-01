@@ -136,6 +136,9 @@ const numberWithCommas1 = x => {
 const numberWithCommas2 = x => {
   return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, (a, b) => b + ",");
 };
+const numberWithCommas3 = x => {
+  return x.toString().replace(/(\d)(?=(\d{3})+$)/g, (a, b) => b + ",");
+};
 ```
 
 `replace` 函数的第二个参数
@@ -544,7 +547,68 @@ var reqIns = ajax({ url, timeout: 100 });
 // reqIns.abort();
 ```
 
+## jsonp 的实现原理（Promise 版）
+
+```js
+function jsonp({ url, params, cb }) {
+  return new Promise((resolve, reject) => {
+    window[cb] = function(data) {
+      // 声明全局变量
+      resolve(data);
+      document.body.removeChild(script);
+    };
+    params = { ...params, cb };
+    let arrs = [];
+    for (let key in params) {
+      arrs.push(`${key}=${params[key]}`);
+    }
+    let script = document.createElement("script");
+    script.src = `${url}?${arrs.join("&")}`;
+    document.body.appendChild(script);
+  });
+}
+```
+
 ## react 中执行 `this.forceUpdate()` 会经历那几个生命周期
+
+`forceUpdate` 将会触发正常的生命周期 但不会触发 `componentShouldUpdate` 直接重新触发渲染
+
+```js
+import React from "react";
+
+class ForceUpdate extends React.Component {
+  name = "leo";
+  componentDidMount() {
+    console.log("ForceUpdate---componentDidMount");
+  }
+  componentDidUpdate() {
+    console.log("ForceUpdate---componentDidUpdate");
+  }
+  UNSAFE_componentWillUpdate() {
+    console.log("UNSAFE_componentWillUpdate");
+  }
+  shouldComponentUpdate() {
+    console.log("ForceUpdate---shouldComponentUpdate");
+    return true;
+  }
+  forceupdate = () => {
+    this.name = "npmook";
+    this.forceUpdate();
+  };
+  render() {
+    console.log("render");
+    return (
+      <div>
+        {this.name}
+        <button onClick={this.forceupdate}>force-update</button>
+      </div>
+    );
+  }
+}
+export default ForceUpdate;
+```
+
+像上面这样 完全可以操作实例上面的属性 完了之后统一调用 forceUpdate 视图一样会更新
 
 ## 怎么理解 `redux` 、 `mobx` 状态管理库的通用性
 
@@ -610,4 +674,12 @@ class component extends Component {
     });
   }
 }
+```
+
+## Vue keep-alive 组件的实现原理
+
+> LRU 算法 least recently used
+
+```js
+//
 ```
