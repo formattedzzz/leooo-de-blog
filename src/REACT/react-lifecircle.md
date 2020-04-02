@@ -31,6 +31,7 @@ shouldComponentUpdate(nextProps, nextState) {
 ## `getDerivedStateFromProps`
 
 使用场景：**`state` 的值在任何时候都取决于 `props`**
+也就是你不能在组件中使用 setState 方法 不然报错给你看
 
 ```js
 class ExampleComponent extends React.Component {
@@ -101,6 +102,7 @@ class ScrollingList extends React.Component {
   getSnapshotBeforeUpdate(prevProps, prevState) {
     // Are we adding new items to the list?
     // Capture the scroll position so we can adjust scroll later.
+    // 拿到组件更新之前的一个快照
     if (prevProps.list.length < this.props.list.length) {
       const list = this.listRef.current;
       return list.scrollHeight - list.scrollTop;
@@ -177,3 +179,18 @@ export default class ErrorCon extends React.Component {
   <ErrorCon></ErrorCon>
 </ErrorHandle>;
 ```
+
+## 总结下来
+
+- start
+- constructor
+- static getDerivedStateFromProps
+- UNSAFE_componentWillMount
+- first render
+- componentDidMount (enter runtime)
+- (state props 变更) UNSAFE_componentWillReceiveProps
+- shouldComponentUpdate
+- update render
+- getSnapShotBeforeUpdate
+- componentDidUpdate
+- componentWillUnmount
