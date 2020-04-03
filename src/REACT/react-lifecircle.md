@@ -187,7 +187,7 @@ export default class ErrorCon extends React.Component {
 - static getDerivedStateFromProps
 - UNSAFE_componentWillMount
 - first render
-- componentDidMount (enter runtime)
+- componentDidMount (进入 `runtime` 阶段)
 - (state props 变更) UNSAFE_componentWillReceiveProps
 - shouldComponentUpdate
 - update render

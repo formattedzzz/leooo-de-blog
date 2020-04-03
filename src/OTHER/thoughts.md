@@ -749,3 +749,9 @@ function loop(curTotal, curIndex) {
 }
 loop(total, index);
 ```
+
+## 尾调用及尾递归
+
+尾递归可以保持 `O(1)` 空间复杂度的函数调用栈
+
+## js 浮点数的存储机制
