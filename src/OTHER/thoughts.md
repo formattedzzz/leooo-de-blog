@@ -755,3 +755,68 @@ loop(total, index);
 尾递归可以保持 `O(1)` 空间复杂度的函数调用栈
 
 ## js 浮点数的存储机制
+
+## js 引擎跟 GUI 渲染引擎的关系
+
+```html
+<style>
+  .easy {
+    width: 200px;
+    height: 200px;
+    background: lightgoldenrodyellow;
+  }
+  .hard {
+    background: lightsalmon;
+    transition: 2s all;
+  }
+</style>
+<script>
+  var body = document.querySelector("body");
+  console.log(`1`);
+  var cDiv = document.createElement("div");
+  console.log(cDiv);
+  console.log(`2`);
+  body.appendChild(cDiv);
+  console.log(body);
+  cDiv.classList.add("easy");
+  console.log(`3`);
+  // ======================
+  for (var i = 0; i < 1000000000; i++);
+  cDiv.classList.add("hard");
+  console.log(cDiv);
+  // ======================
+</script>
+```
+
+结论：所有打印确实是按序输出 但是 body cDiv 要过一会才出现 这是因为：
+
+js 引擎线程与 GUI 渲染线程线程间的互斥 引起了对 js 操作 DOM 的 `"异步"` 问题。
+GUI 渲染线程在能够执行的情况下的优化策略 渲染出的是最终得到的样式结果。
+
+也就是 for 循环卡住了 GUI 渲染引擎的优化策略不会终止此次渲染
+
+那么就一下两行的话 为什么没有过渡动画呢
+
+```js
+cDiv.classList.add("easy");
+cDiv.classList.add("hard");
+```
+
+因为没有 from to 两种状态 过渡需要 GUI 两次绘制中保有两种状态 解决方案
+
+1、将 js 操作滞后 让挂起的 渲染引擎完成渲染
+
+```js
+cDiv.classList.add("easy");
+setTimeout(() => {
+  cDiv.classList.add("hard");
+});
+```
+
+2、将渲染引擎提前完成渲染 将 easy 样式进入 from 状态
+
+```js
+cDiv.classList.add("easy");
+cDiv.clientLeft; // 任一触发页面回流的方法皆可
+cDiv.classList.add("hard");
+```

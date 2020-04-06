@@ -8,7 +8,7 @@
 - [`vertical-align` 属性](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
 - [`clip-path` 属性](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [写一个滚动视差效果](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [圣杯布局的实现原理](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [浮动布局中的负边距问题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 
 ## javascript
 
@@ -43,6 +43,7 @@
 - [小程序的完整（注册）登录流程总结](https://github.com/formattedzzz/leo-build-wx/blob/master/summary/register-login.md)
 - [你会怎么实现 `sleep(1000)`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/sleep.md)
 - [我的 `eventBus` 可能得改一改了](https://github.com/formattedzzz/leo-build-wx/blob/master/summary/event-bus.md)
+- [`vue` 之双向绑定基本原理](https://github.com/formattedzzz/fe-notes/blob/master/src/VUE/vue-init.md)
 - [`vue` vuex 跟双向绑定会冲突吗](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`Vue.extend` 在插件中的应用](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`vue` `cli3` 的一些应用](https://github.com/formattedzzz/fe-notes/blob/master/src/VUE/vue-cli.md)

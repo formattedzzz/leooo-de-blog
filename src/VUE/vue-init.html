@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      {{name}}<span>{{age}}</span><input type="text" v-model="name" />
+    </div>
+    <button>change</button>
+    <script type="module">
+      import MVVM from "./vue-init.js";
+      // console.log(CompileUtil);
+      var vm = new MVVM({
+        el: "#root",
+        data: {
+          name: "leooo",
+          age: 23
+        }
+      });
+      document
+        .getElementsByTagName("button")[0]
+        .addEventListener("click", () => {
+          console.log(vm, vm.name);
+          vm.name = Math.random()
+            .toString(36)
+            .slice(6);
+          vm.age = Math.ceil(20 * Math.random());
+        });
+    </script>
+    <script>
+      console.log(document.getElementById("root").attributes);
+    </script>
+  </body>
+</html>
