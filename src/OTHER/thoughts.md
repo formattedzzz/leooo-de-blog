@@ -363,7 +363,7 @@ preload 完在 `$mount`
 
 - 下发给用户的 `cookie` `Samesite` 属性 设置为 `strict` 跨站将不会携带 `cookie`
 
-  `strict` 将表示这个 `cookie` 只为 `a.com` 服务
+  `strict` 将表示这个 `cookie` 只为 a.com 服务
 
   不管是你在 `b.com` 请求 `a.com` 还是 `a.com` 请求 `b.com`
 
@@ -680,9 +680,7 @@ class component extends Component {
 
 > LRU 算法 least recently used
 
-```js
-//
-```
+[详见](https://github.com/formattedzzz/fe-notes/blob/master/src/VUE/vue-keep-alive.md)
 
 ## 怎么样做海量数据的高性能渲染（时间分片）
 
@@ -820,3 +818,43 @@ cDiv.classList.add("easy");
 cDiv.clientLeft; // 任一触发页面回流的方法皆可
 cDiv.classList.add("hard");
 ```
+
+## 行内模块脚本
+
+```html
+<body>
+  <script type="module">
+    import { log } from "./index.js";
+    log("Inline module executed");
+  </script>
+
+  <!-- @2 -->
+  <script src="index_bak.js"></script>
+
+  <!-- @3 -->
+  <script defer type="module">
+    import { log } from "./index.js";
+    log("Inline script executed");
+  </script>
+
+  <!-- @4 -->
+  <script defer src="index_bak.js"></script>
+
+  <script>
+    window.onload = console.log;
+  </script>
+
+  <!-- 
+      index_bak.js:1 index_bak.js excuted
+      index.js:1 index.js excuted
+      index.js:2 Inline module executed
+      index.js:2 Inline script executed
+      index_bak.js:1 index_bak.js excuted 
+    -->
+</body>
+```
+
+- module 脚本 默认设置是 defer 执行晚于普通行内脚本 快于普通行内 defer 脚本
+- module 脚本 只会执行一次
+
+## Server-Sent Events 服务器推送事件

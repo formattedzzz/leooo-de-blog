@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      import { log } from "./index.js";
+      log("Inline module executed");
+    </script>
+
+    <!-- @2 -->
+    <script src="index_bak.js"></script>
+
+    <!-- @3 -->
+    <script defer type="module">
+      import { log } from "./index.js";
+      log("Inline script executed");
+    </script>
+
+    <!-- @4 -->
+    <script defer src="index_bak.js"></script>
+
+    <script>
+      window.onload = console.log;
+    </script>
+
+    <!-- 
+      index_bak.js:1 index_bak.js excuted
+      index.js:1 index.js excuted
+      index.js:2 Inline module executed
+      index.js:2 Inline script executed
+      index_bak.js:1 index_bak.js excuted 
+    -->
+  </body>
+</html>
