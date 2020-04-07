@@ -44,6 +44,7 @@
 - [你会怎么实现 `sleep(1000)`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/sleep.md)
 - [我的 `eventBus` 可能得改一改了](https://github.com/formattedzzz/leo-build-wx/blob/master/summary/event-bus.md)
 - [`vue` 之双向绑定基本原理](https://github.com/formattedzzz/fe-notes/blob/master/src/VUE/vue-init.md)
+- [`vue` keep-alive 组件缓存策略](https://github.com/formattedzzz/fe-notes/blob/master/src/VUE/vue-keep-alive.md)
 - [`vue` vuex 跟双向绑定会冲突吗](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`Vue.extend` 在插件中的应用](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`vue` `cli3` 的一些应用](https://github.com/formattedzzz/fe-notes/blob/master/src/VUE/vue-cli.md)

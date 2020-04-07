@@ -363,7 +363,7 @@ preload 完在 `$mount`
 
 - 下发给用户的 `cookie` `Samesite` 属性 设置为 `strict` 跨站将不会携带 `cookie`
 
-  `strict` 将表示这个 `cookie` 只为 **`a.com`** 服务
+  `strict` 将表示这个 `cookie` 只为 `a.com` 服务
 
   不管是你在 `b.com` 请求 `a.com` 还是 `a.com` 请求 `b.com`
 
