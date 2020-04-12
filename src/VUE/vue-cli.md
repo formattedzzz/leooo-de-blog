@@ -23,3 +23,19 @@ requireAll(component).forEach(({ default: item }) => {
   Vue.component(`wb-${item.name}`, item);
 });
 ```
+
+```js
+const modules = {};
+const context = require.context("./modules", true, /\.js$/);
+context.keys().forEach(m => {
+  try {
+    const moduleName = m.slice(2, m.length - 3);
+    const module = context(m).modules;
+    modules[moduleName] = module;
+  } catch (error) {
+    console.log("importAllModules error: ", error);
+  }
+});
+```
+
+这里的 context 返回的是一个构造函数 context.keys() 获取键数组 context(key) 获取 module
