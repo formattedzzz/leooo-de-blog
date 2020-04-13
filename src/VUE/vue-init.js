@@ -9,12 +9,12 @@ CompileUtil.updater = {
   // 输入框更新
   modelUpdater(node, value) {
     node.value = value;
-  }
+  },
 };
 
 // 文件：CompileUtil.js —— 取值方法
 // 获取 data 值的方法
-CompileUtil.getVal = function(vm, exp) {
+CompileUtil.getVal = function (vm, exp) {
   // 将匹配的值用 . 分割开，如 vm.data.a.b
   exp = exp.split(".");
   // 归并取值
@@ -24,7 +24,7 @@ CompileUtil.getVal = function(vm, exp) {
 };
 
 // 获取文本 {{}} 中变量在 data 对应的值
-CompileUtil.getTextVal = function(vm, exp) {
+CompileUtil.getTextVal = function (vm, exp) {
   // 使用正则匹配出 {{ }} 间的变量名，再调用 getVal 获取值
   return exp.replace(/\{\{([^}]+)\}\}/g, (...args) => {
     return this.getVal(vm, args[1]);
@@ -32,7 +32,7 @@ CompileUtil.getTextVal = function(vm, exp) {
 };
 
 // 设置 data 值的方法
-CompileUtil.setVal = function(vm, exp, newVal) {
+CompileUtil.setVal = function (vm, exp, newVal) {
   exp = exp.split(".");
   return exp.reduce((prev, next, currentIndex) => {
     // 如果当前归并的为数组的最后一项，则将新值设置到该属性
@@ -46,7 +46,7 @@ CompileUtil.setVal = function(vm, exp, newVal) {
 
 // 文件：CompileUtil.js —— model 方法
 // 处理 v-model 指令的方法
-CompileUtil.model = function(node, vm, exp) {
+CompileUtil.model = function (node, vm, exp) {
   // 获取赋值的方法
   let updateFn = this.updater["modelUpdater"];
 
@@ -76,7 +76,7 @@ CompileUtil.model = function(node, vm, exp) {
 
 // 文件：CompileUtil.js —— text 方法
 // 处理文本节点 {{}} 的方法
-CompileUtil.text = function(node, vm, exp) {
+CompileUtil.text = function (node, vm, exp) {
   // 获取赋值的方法
   let updateFn = this.updater["textUpdater"];
   // console.log(node, updateFn, vm, exp);
@@ -300,7 +300,7 @@ class Observer {
           value = newValue;
           dep.notify(); // 通知所有人数据更新了
         }
-      }
+      },
     });
   }
 }
@@ -330,7 +330,7 @@ class MVVM {
         },
         set(newVal) {
           data[key] = newVal;
-        }
+        },
       });
     });
   }

@@ -28,7 +28,7 @@ function LazyLoad(el, options) {
 
 LazyLoad.prototype = {
   loadImage() {
-    return throttle(function() {
+    return throttle(function () {
       let startIndex = 0;
       while (startIndex < this.images.length) {
         const image = this.images[startIndex];
@@ -63,7 +63,7 @@ LazyLoad.prototype = {
     window.removeEventListener("scroll", this.listener, false);
     this.images = null;
     this.listener = null;
-  }
+  },
 };
 ```
 
@@ -83,7 +83,7 @@ tcp 连接复用 会 catch 住一定的服务器资源
 
 ```js
 function logLoadInfo() {
-  setTimeout(function() {
+  setTimeout(function () {
     let t = performance.timing;
     console.log(
       "DNS查询耗时" + (t.domainLookupEnd - t.domainLookupStart).toFixed(0),
@@ -91,17 +91,11 @@ function logLoadInfo() {
       "\nrequest请求耗时" + (t.responseEnd - t.responseStart).toFixed(0),
       "\n解析dom树耗时" + (t.domComplete - t.domInteractive).toFixed(0),
       "\n白屏时间" + (t.responseStart - t.navigationStart).toFixed(0),
-      "\ndomready时间" +
-        (t.domContentLoadedEventEnd - t.navigationStart).toFixed(0),
+      "\ndomready时间" + (t.domContentLoadedEventEnd - t.navigationStart).toFixed(0),
       `\nonload时间 ${(t.loadEventEnd - t.navigationStart).toFixed(0)}%`
     );
     if ((t = performance.memory)) {
-      console.log(
-        `js内存使用占比 ${(
-          (t.usedJSHeapSize / t.totalJSHeapSize) *
-          100
-        ).toFixed(2)}%`
-      );
+      console.log(`js内存使用占比 ${((t.usedJSHeapSize / t.totalJSHeapSize) * 100).toFixed(2)}%`);
     }
   });
 }
@@ -174,7 +168,7 @@ function A(func) {
   func();
   arguments[0]();
 }
-A(function() {
+A(function () {
   console.log(this);
 });
 ```
@@ -197,14 +191,9 @@ function delegate(ele, selector, type, fn) {
   }
   ele.addEventListener(type, callback, false);
 }
-delegate(
-  document.querySelector("body"),
-  ".list-group-item",
-  "click",
-  function() {
-    console.log("bingo");
-  }
-);
+delegate(document.querySelector("body"), ".list-group-item", "click", function () {
+  console.log("bingo");
+});
 ```
 
 ## 连续赋值的优先级问题
@@ -263,8 +252,7 @@ var a = (b = c);
     }
   </style>
   <!-- 编译后插入在 head 中的外链样式文件 -->
-  <link href=/static/css/app.5be76b7d213b43df9723e8ab15122efb.css
-  rel=stylesheet>
+  <link href=/static/css/app.5be76b7d213b43df9723e8ab15122efb.css rel=stylesheet>
 </head>
 <body>
   <div id="root">
@@ -296,12 +284,12 @@ var a = (b = c);
 const app = new Vue({
   router,
   components: { App },
-  template: "<App/>"
+  template: "<App/>",
 });
 /**
  * 挂载 Vue 渲染好的 HTML 元素到 #app 中  替换掉骨架屏
  */
-window.mount = function() {
+window.mount = function () {
   app.$mount("#app");
 };
 ```
@@ -323,10 +311,10 @@ preload 完在 `$mount`
 const app = new Vue({
   router,
   components: { App },
-  template: "<App/>"
+  template: "<App/>",
 });
 // 挂载 Vue 渲染好的 HTML 元素到 #app 中  替换掉骨架屏
-window.mount = function() {
+window.mount = function () {
   app.$mount("#app");
 };
 // 如果样式文件已经加载完成了  直接挂载
@@ -408,14 +396,14 @@ class A extends Component {
   componentDidMount() {
     console.log("SetState调用setState");
     this.setState({
-      index: this.state.index + 1
+      index: this.state.index + 1,
     });
     console.log("state", this.state.index);
   }
   bindEvent = e => {
     console.log("SetState调用setState");
     this.setState({
-      index: this.state.index + 1
+      index: this.state.index + 1,
     });
     console.log("state", this.state.index);
   };
@@ -433,14 +421,14 @@ class A extends Component {
     setTimeout(() => {
       console.log("调用setState");
       this.setState({
-        index: this.state.index + 1
+        index: this.state.index + 1,
       });
       console.log("state", this.state.index);
     });
     document.body.addEventListener("click", () => {
       console.log("调用setState");
       this.setState({
-        index: this.state.index + 1
+        index: this.state.index + 1,
       });
       console.log("state", this.state.index);
     });
@@ -521,23 +509,21 @@ function ajax(options) {
     xhr = new ActiveXObject("Microsoft.XMLHTTP");
   }
   xhr.timeout = timeout;
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       console.log("everything-ok:", xhr);
       success && success(xhr.responseText);
     }
   };
-  xhr.onabort = function() {
+  xhr.onabort = function () {
     console.log("请求停止...");
   };
-  xhr.ontimeout = function() {
+  xhr.ontimeout = function () {
     console.log("请求超时...");
   };
   xhr.open(method, url, async);
   if (headers) {
-    Object.keys(Headers).forEach(key =>
-      xhr.setRequestHeader(key, headers[key])
-    );
+    Object.keys(Headers).forEach(key => xhr.setRequestHeader(key, headers[key]));
   }
   method === "GET" ? xhr.send() : xhr.send(data);
   return xhr;
@@ -552,7 +538,7 @@ var reqIns = ajax({ url, timeout: 100 });
 ```js
 function jsonp({ url, params, cb }) {
   return new Promise((resolve, reject) => {
-    window[cb] = function(data) {
+    window[cb] = function (data) {
       // 声明全局变量
       resolve(data);
       document.body.removeChild(script);
@@ -670,7 +656,7 @@ class component extends Component {
   componentDidMount() {
     console.log(this.store);
     this.store.dispatch({
-      type: "INCREMENT"
+      type: "INCREMENT",
     });
   }
 }
@@ -736,7 +722,7 @@ function loop(curTotal, curIndex) {
   //   loop(curTotal - pageCount, curIndex + pageCount);
   // });
   // 通过 `window.requestAnimationFrame` 接口让浏览器根据实际情况来调度分片
-  window.requestAnimationFrame(function() {
+  window.requestAnimationFrame(function () {
     for (let i = 0; i < pageCount; i++) {
       let li = document.createElement("li");
       li.innerText = curIndex + i + " : " + ~~(Math.random() * total);
@@ -858,3 +844,18 @@ cDiv.classList.add("hard");
 - module 脚本 只会执行一次
 
 ## Server-Sent Events 服务器推送事件
+
+## slash
+
+```js
+"use strict";
+module.exports = input => {
+  const isExtendedLengthPath = /^\\\\\?\\/.test(input);
+  const hasNonAscii = /[^\u0000-\u0080]+/.test(input);
+  // eslint-disable-line no-control-regex
+  if (isExtendedLengthPath || hasNonAscii) {
+    return input;
+  }
+  return input.replace(/\\/g, "/");
+};
+```
