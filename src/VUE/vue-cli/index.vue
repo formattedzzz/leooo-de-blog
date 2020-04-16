@@ -6,7 +6,8 @@
 </template>
 <script>
 import { conf } from "./lib";
-
+import Vue from "vue";
+console.log(Vue.version);
 export default {
   name: "",
   data() {

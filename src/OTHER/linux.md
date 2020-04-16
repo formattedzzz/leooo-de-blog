@@ -982,7 +982,7 @@ sudo cnpm i -g --only=prod https-localhost
 代码中使用
 
 ```js
-const httpsLocalhost = require("https-localhost")();
+const httpsLocalhost = require('https-localhost')();
 // const app = ...
 // const port = 443
 const certs = await httpsLocalhost.getCerts();
