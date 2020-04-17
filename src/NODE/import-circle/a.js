@@ -1,4 +1,3 @@
-
 // ---------------------------block1
 var b = require('./b');
 console.log(b);

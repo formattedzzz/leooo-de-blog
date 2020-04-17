@@ -8,6 +8,7 @@
 import { conf } from "./lib";
 import Vue from "vue";
 console.log(Vue.version);
+console.log(123);
 export default {
   name: "",
   data() {

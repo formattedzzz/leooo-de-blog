@@ -50,11 +50,11 @@
 - [`vue` `cli3` 的一些应用](https://github.com/formattedzzz/fe-notes/blob/master/src/VUE/vue-cli.md)
 - [原生小程序 `computed` 实现原理](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [捋一捋 `babel`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/babel/index.md)
-- [`node` 模块缓存](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/import-cache/index.md)
-- [`node` 模块循环引用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/import-circle/index.md)
-- [`node` 中使用环境变量](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/node/node-env.md)
-- [`node` 内置模块实践](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/node/index.md)
-- [`node` 浅入 `npm` 依赖机制](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/node/peer-dependency.md)
+- [`node` 模块缓存](https://github.com/formattedzzz/fe-notes/blob/master/src/NODE/import-cache/index.md)
+- [`node` 模块循环引用](https://github.com/formattedzzz/fe-notes/blob/master/src/NODE/import-circle/index.md)
+- [`node` 中使用环境变量](https://github.com/formattedzzz/fe-notes/blob/master/src/NODE/node-env.md)
+- [`node` 内置模块实践](https://github.com/formattedzzz/fe-notes/blob/master/src/NODE/index.md)
+- [`node` 浅入 `npm` 依赖机制](https://github.com/formattedzzz/fe-notes/blob/master/src/NODE/peer-dependency.md)
 - [`node` 处理静态资源、实现视频云点播的效果](https://github.com/formattedzzz/leo-build-wx/blob/master/summary/video-flow.md)
 
 ## react

@@ -7,64 +7,64 @@
 ```js
 function LazyLoad(el, options) {
   if (!(this instanceof LazyLoad)) {
-    return new LazyLoad(el);
+    return new LazyLoad(el)
   }
 
   this.setting = Object.assign(
     {},
     { src: 'data-src', srcset: 'data-srcset', selector: '.lazyload' },
     options
-  );
+  )
 
   if (typeof el === 'string') {
-    el = document.querySelectorAll(el);
+    el = document.querySelectorAll(el)
   }
-  this.images = Array.from(el);
+  this.images = Array.from(el)
 
-  this.listener = this.loadImage();
-  this.listener();
-  this.initEvent();
+  this.listener = this.loadImage()
+  this.listener()
+  this.initEvent()
 }
 
 LazyLoad.prototype = {
   loadImage() {
     return throttle(function () {
-      let startIndex = 0;
+      let startIndex = 0
       while (startIndex < this.images.length) {
-        const image = this.images[startIndex];
+        const image = this.images[startIndex]
         if (isElementInViewport(image)) {
-          const src = image.getAttribute(this.setting.src);
-          const srcset = image.getAttribute(this.setting.srcset);
+          const src = image.getAttribute(this.setting.src)
+          const srcset = image.getAttribute(this.setting.srcset)
           if (image.tagName.toLowerCase() === 'img') {
             if (src) {
-              image.src = src;
+              image.src = src
             }
             if (srcset) {
-              image.srcset = srcset;
+              image.srcset = srcset
             }
           } else {
-            image.style.backgroundImage = `url(${src})`;
+            image.style.backgroundImage = `url(${src})`
           }
-          this.images.splice(startIndex, 1);
-          continue;
+          this.images.splice(startIndex, 1)
+          continue
         }
-        startIndex++;
+        startIndex++
       }
 
       if (!this.images.length) {
-        this.destroy();
+        this.destroy()
       }
-    }).bind(this);
+    }).bind(this)
   },
   initEvent() {
-    window.addEventListener('scroll', this.listener, false);
+    window.addEventListener('scroll', this.listener, false)
   },
   destroy() {
-    window.removeEventListener('scroll', this.listener, false);
-    this.images = null;
-    this.listener = null;
-  },
-};
+    window.removeEventListener('scroll', this.listener, false)
+    this.images = null
+    this.listener = null
+  }
+}
 ```
 
 屏幕滚动时节流触发函数 获取所有
@@ -84,20 +84,26 @@ tcp 连接复用 会 catch 住一定的服务器资源
 ```js
 function logLoadInfo() {
   setTimeout(function () {
-    let t = performance.timing;
+    let t = performance.timing
     console.log(
       'DNS查询耗时' + (t.domainLookupEnd - t.domainLookupStart).toFixed(0),
       '\nTCP链接耗时' + (t.connectEnd - t.connectStart).toFixed(0),
       '\nrequest请求耗时' + (t.responseEnd - t.responseStart).toFixed(0),
       '\n解析dom树耗时' + (t.domComplete - t.domInteractive).toFixed(0),
       '\n白屏时间' + (t.responseStart - t.navigationStart).toFixed(0),
-      '\ndomready时间' + (t.domContentLoadedEventEnd - t.navigationStart).toFixed(0),
+      '\ndomready时间' +
+        (t.domContentLoadedEventEnd - t.navigationStart).toFixed(0),
       `\nonload时间 ${(t.loadEventEnd - t.navigationStart).toFixed(0)}%`
-    );
+    )
     if ((t = performance.memory)) {
-      console.log(`js内存使用占比 ${((t.usedJSHeapSize / t.totalJSHeapSize) * 100).toFixed(2)}%`);
+      console.log(
+        `js内存使用占比 ${(
+          (t.usedJSHeapSize / t.totalJSHeapSize) *
+          100
+        ).toFixed(2)}%`
+      )
     }
-  });
+  })
 }
 ```
 
@@ -125,39 +131,39 @@ function logLoadInfo() {
 
 ```js
 const numberWithCommas1 = x => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-};
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
 const numberWithCommas2 = x => {
-  return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, (a, b) => b + ',');
-};
+  return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, (a, b) => b + ',')
+}
 const numberWithCommas3 = x => {
-  return x.toString().replace(/(\d)(?=(\d{3})+$)/g, (a, b) => b + ',');
-};
+  return x.toString().replace(/(\d)(?=(\d{3})+$)/g, (a, b) => b + ',')
+}
 ```
 
 `replace` 函数的第二个参数
 
 ```js
-var str = 'abcing npmingkkk';
-str.replace(/ab(\w)(?=ing)/g, console.log);
+var str = 'abcing npmingkkk'
+str.replace(/ab(\w)(?=ing)/g, console.log)
 // abc c 0 abcing npmingkkk
 
-str.replace(/(?=ing)(\w)+/g, console.log);
+str.replace(/(?=ing)(\w)+/g, console.log)
 ```
 
 这里有四个参数 匹配成功一次的 `整项`、`子项1`、`整项index`、`字符串`
 
 ```js
-'bing abcing'.match(/\b\w+(?=ing)/g);
+'bing abcing'.match(/\b\w+(?=ing)/g)
 // ["b", "abc"]
 
-'bing abcingqwenpm'.match(/\b\w+(?:ing)/g);
+'bing abcingqwenpm'.match(/\b\w+(?:ing)/g)
 // ["bing", "abcing"]
 
-'bingcvb abcingnpm'.match(/(?<=ing)\w+\b/g);
+'bingcvb abcingnpm'.match(/(?<=ing)\w+\b/g)
 // ["cvb", "npm"]
 
-'ingqwe bingcvb abcingnpm'.match(/(?<!ing)\w+\b/g); // js不支持
+'ingqwe bingcvb abcingnpm'.match(/(?<!ing)\w+\b/g) // js不支持
 // ["ingqwe", "bingcvb", "abcingnpm"]
 ```
 
@@ -165,12 +171,12 @@ str.replace(/(?=ing)(\w)+/g, console.log);
 
 ```js
 function A(func) {
-  func();
-  arguments[0]();
+  func()
+  arguments[0]()
 }
 A(function () {
-  console.log(this);
-});
+  console.log(this)
+})
 ```
 
 解析：
@@ -182,36 +188,41 @@ A(function () {
 ```js
 function delegate(ele, selector, type, fn) {
   function callback(e) {
-    e = e || window.event;
-    let target = e.target || e.srcElement;
+    e = e || window.event
+    let target = e.target || e.srcElement
     while (!target.matches(selector)) {
-      target = target.parentNode;
+      target = target.parentNode
     }
-    fn.call(target, e);
+    fn.call(target, e)
   }
-  ele.addEventListener(type, callback, false);
+  ele.addEventListener(type, callback, false)
 }
-delegate(document.querySelector('body'), '.list-group-item', 'click', function () {
-  console.log('bingo');
-});
+delegate(
+  document.querySelector('body'),
+  '.list-group-item',
+  'click',
+  function () {
+    console.log('bingo')
+  }
+)
 ```
 
 ## 连续赋值的优先级问题
 
 ```js
-var a = { name: 'a' };
-a.x = a = {};
-console.log(a.x);
+var a = { name: 'a' }
+a.x = a = {}
+console.log(a.x)
 ```
 
 很明显是 `undefined` 呀 来看个复杂一点的
 
 ```js
-var a = { n: 1 };
-var b = a;
-a.x = a = { n: 2 };
-console.log(a.x); // undefined
-console.log(b.x); // { n: 2}
+var a = { n: 1 }
+var b = a
+a.x = a = { n: 2 }
+console.log(a.x) // undefined
+console.log(b.x) // { n: 2}
 ```
 
 - 首先 a 和 b 同时引用了 `{ n: 1 }` 对象
@@ -228,7 +239,7 @@ console.log(b.x); // { n: 2}
   故此时旧对象的 `x` 的值为 `{ n: 2 }` 旧对象为 `{ n: 1, x : { n: 2 } }` 它被 `b` 引用着
 
 ```js
-var a = (b = c);
+var a = (b = c)
 // 猜想其复制过程(从左到右)
 // 猜想1: b = c; a = b; 正确。c的值只会被读取一次。
 // vccode 在代码格式化的时候也是将 b = c 包起来的
@@ -252,7 +263,8 @@ var a = (b = c);
     }
   </style>
   <!-- 编译后插入在 head 中的外链样式文件 -->
-  <link href=/static/css/app.5be76b7d213b43df9723e8ab15122efb.css rel=stylesheet>
+  <link href=/static/css/app.5be76b7d213b43df9723e8ab15122efb.css
+  rel=stylesheet>
 </head>
 <body>
   <div id="root">
@@ -284,14 +296,14 @@ var a = (b = c);
 const app = new Vue({
   router,
   components: { App },
-  template: '<App/>',
-});
+  template: '<App/>'
+})
 /**
  * 挂载 Vue 渲染好的 HTML 元素到 #app 中  替换掉骨架屏
  */
 window.mount = function () {
-  app.$mount('#app');
-};
+  app.$mount('#app')
+}
 ```
 
 preload 完在 `$mount`
@@ -311,15 +323,15 @@ preload 完在 `$mount`
 const app = new Vue({
   router,
   components: { App },
-  template: '<App/>',
-});
+  template: '<App/>'
+})
 // 挂载 Vue 渲染好的 HTML 元素到 #app 中  替换掉骨架屏
 window.mount = function () {
-  app.$mount('#app');
-};
+  app.$mount('#app')
+}
 // 如果样式文件已经加载完成了  直接挂载
 if (window.STYLE_READY) {
-  window.mount();
+  window.mount()
 }
 ```
 
@@ -392,21 +404,21 @@ node 应用可以用的 csurf 这个库防范
 
 ```js
 class A extends Component {
-  state = { index: 0 };
+  state = { index: 0 }
   componentDidMount() {
-    console.log('SetState调用setState');
+    console.log('SetState调用setState')
     this.setState({
-      index: this.state.index + 1,
-    });
-    console.log('state', this.state.index);
+      index: this.state.index + 1
+    })
+    console.log('state', this.state.index)
   }
   bindEvent = e => {
-    console.log('SetState调用setState');
+    console.log('SetState调用setState')
     this.setState({
-      index: this.state.index + 1,
-    });
-    console.log('state', this.state.index);
-  };
+      index: this.state.index + 1
+    })
+    console.log('state', this.state.index)
+  }
 }
 ```
 
@@ -416,22 +428,22 @@ class A extends Component {
 
 ```js
 class A extends Component {
-  state = { index: 0 };
+  state = { index: 0 }
   componentDidMount() {
     setTimeout(() => {
-      console.log('调用setState');
+      console.log('调用setState')
       this.setState({
-        index: this.state.index + 1,
-      });
-      console.log('state', this.state.index);
-    });
+        index: this.state.index + 1
+      })
+      console.log('state', this.state.index)
+    })
     document.body.addEventListener('click', () => {
-      console.log('调用setState');
+      console.log('调用setState')
       this.setState({
-        index: this.state.index + 1,
-      });
-      console.log('state', this.state.index);
-    });
+        index: this.state.index + 1
+      })
+      console.log('state', this.state.index)
+    })
   }
 }
 ```
@@ -474,8 +486,8 @@ useLayoutEffect 里面的 callback 函数会在 DOM 更新完成后立即执行,
 ## 拷贝与赋值的区别
 
 ```js
-var arr = [1, 2, 3];
-var arr_copy = arr.slice(0);
+var arr = [1, 2, 3]
+var arr_copy = arr.slice(0)
 ```
 
 这样算是拷贝嘛 这显然就是赋值而已
@@ -500,36 +512,36 @@ function ajax(options) {
     async = options.async === false ? false : true,
     success = options.success,
     timeout = options.timeout || 6000,
-    headers = options.headers;
-  let xhr;
+    headers = options.headers
+  let xhr
   // 创建xhr对象
   if (window.XMLHttpRequest) {
-    xhr = new XMLHttpRequest();
+    xhr = new XMLHttpRequest()
   } else {
-    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+    xhr = new ActiveXObject('Microsoft.XMLHTTP')
   }
-  xhr.timeout = timeout;
+  xhr.timeout = timeout
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log('everything-ok:', xhr);
-      success && success(xhr.responseText);
+      console.log('everything-ok:', xhr)
+      success && success(xhr.responseText)
     }
-  };
-  xhr.onabort = function () {
-    console.log('请求停止...');
-  };
-  xhr.ontimeout = function () {
-    console.log('请求超时...');
-  };
-  xhr.open(method, url, async);
-  if (headers) {
-    Object.keys(Headers).forEach(key => xhr.setRequestHeader(key, headers[key]));
   }
-  method === 'GET' ? xhr.send() : xhr.send(data);
-  return xhr;
+  xhr.onabort = function () {
+    console.log('请求停止...')
+  }
+  xhr.ontimeout = function () {
+    console.log('请求超时...')
+  }
+  xhr.open(method, url, async)
+  if (headers) {
+    Object.keys(Headers).forEach(key => xhr.setRequestHeader(key, headers[key]))
+  }
+  method === 'GET' ? xhr.send() : xhr.send(data)
+  return xhr
 }
-var url = 'https://wx.nnleo.cn/views/users';
-var reqIns = ajax({ url, timeout: 100 });
+var url = 'https://wx.nnleo.cn/views/users'
+var reqIns = ajax({ url, timeout: 100 })
 // reqIns.abort();
 ```
 
@@ -540,18 +552,18 @@ function jsonp({ url, params, cb }) {
   return new Promise((resolve, reject) => {
     window[cb] = function (data) {
       // 声明全局变量
-      resolve(data);
-      document.body.removeChild(script);
-    };
-    params = { ...params, cb };
-    let arrs = [];
-    for (let key in params) {
-      arrs.push(`${key}=${params[key]}`);
+      resolve(data)
+      document.body.removeChild(script)
     }
-    let script = document.createElement('script');
-    script.src = `${url}?${arrs.join('&')}`;
-    document.body.appendChild(script);
-  });
+    params = { ...params, cb }
+    let arrs = []
+    for (let key in params) {
+      arrs.push(`${key}=${params[key]}`)
+    }
+    let script = document.createElement('script')
+    script.src = `${url}?${arrs.join('&')}`
+    document.body.appendChild(script)
+  })
 }
 ```
 
@@ -560,38 +572,38 @@ function jsonp({ url, params, cb }) {
 `forceUpdate` 将会触发正常的生命周期 但不会触发 `componentShouldUpdate` 直接重新触发渲染
 
 ```js
-import React from 'react';
+import React from 'react'
 
 class ForceUpdate extends React.Component {
-  name = 'leo';
+  name = 'leo'
   componentDidMount() {
-    console.log('ForceUpdate---componentDidMount');
+    console.log('ForceUpdate---componentDidMount')
   }
   componentDidUpdate() {
-    console.log('ForceUpdate---componentDidUpdate');
+    console.log('ForceUpdate---componentDidUpdate')
   }
   UNSAFE_componentWillUpdate() {
-    console.log('UNSAFE_componentWillUpdate');
+    console.log('UNSAFE_componentWillUpdate')
   }
   shouldComponentUpdate() {
-    console.log('ForceUpdate---shouldComponentUpdate');
-    return true;
+    console.log('ForceUpdate---shouldComponentUpdate')
+    return true
   }
   forceupdate = () => {
-    this.name = 'npmook';
-    this.forceUpdate();
-  };
+    this.name = 'npmook'
+    this.forceUpdate()
+  }
   render() {
-    console.log('render');
+    console.log('render')
     return (
       <div>
         {this.name}
         <button onClick={this.forceupdate}>force-update</button>
       </div>
-    );
+    )
   }
 }
-export default ForceUpdate;
+export default ForceUpdate
 ```
 
 像上面这样 完全可以操作实例上面的属性 完了之后统一调用 forceUpdate 视图一样会更新
@@ -608,32 +620,32 @@ export default ForceUpdate;
     <script>
       /** Action Creators */
       function inc() {
-        return { type: 'INCREMENT' };
+        return { type: 'INCREMENT' }
       }
       function dec() {
-        return { type: 'DECREMENT' };
+        return { type: 'DECREMENT' }
       }
       function reducer(state, action) {
         // 首次调用本函数时设置初始 state
-        state = state || { counter: 0 };
+        state = state || { counter: 0 }
         switch (action.type) {
           case 'INCREMENT':
-            return { counter: state.counter + 1 };
+            return { counter: state.counter + 1 }
           case 'DECREMENT':
-            return { counter: state.counter - 1 };
+            return { counter: state.counter - 1 }
           default:
-            return state; // 无论如何都返回一个 state
+            return state // 无论如何都返回一个 state
         }
       }
 
-      var store = Redux.createStore(reducer);
-      console.log(store.getState()); // { counter: 0 }
-      store.dispatch(inc());
-      console.log(store.getState()); // { counter: 1 }
-      store.dispatch(inc());
-      console.log(store.getState()); // { counter: 2 }
-      store.dispatch(dec());
-      console.log(store.getState()); // { counter: 1 }
+      var store = Redux.createStore(reducer)
+      console.log(store.getState()) // { counter: 0 }
+      store.dispatch(inc())
+      console.log(store.getState()) // { counter: 1 }
+      store.dispatch(inc())
+      console.log(store.getState()) // { counter: 2 }
+      store.dispatch(dec())
+      console.log(store.getState()) // { counter: 1 }
     </script>
   </body>
 </html>
@@ -644,20 +656,20 @@ export default ForceUpdate;
 或者把它挂载到组件全局都能访问到的地方 只要 `this` 指向组件实例 我们就能访问到
 
 ```js
-import Vue from 'vue';
-import { Component } from 'react';
-var store = Redux.createStore(reducer);
-Vue.prototype.$store = store;
-Component.prototype.store = store;
+import Vue from 'vue'
+import { Component } from 'react'
+var store = Redux.createStore(reducer)
+Vue.prototype.$store = store
+Component.prototype.store = store
 
 class component extends Component {
-  state = {};
+  state = {}
 
   componentDidMount() {
-    console.log(this.store);
+    console.log(this.store)
     this.store.dispatch({
-      type: 'INCREMENT',
-    });
+      type: 'INCREMENT'
+    })
   }
 }
 ```
@@ -671,24 +683,24 @@ class component extends Component {
 ## 怎么样做海量数据的高性能渲染（时间分片）
 
 ```js
-<ul id="container"></ul>;
+;<ul id="container"></ul>
 
 // 记录任务开始时间
-let now = Date.now();
+let now = Date.now()
 // 插入十万条数据
-const total = 100000;
+const total = 100000
 // 获取容器
-let ul = document.getElementById('container');
+let ul = document.getElementById('container')
 // 将数据插入容器中
 for (let i = 0; i < total; i++) {
-  let li = document.createElement('li');
-  li.innerText = ~~(Math.random() * total);
-  ul.appendChild(li);
+  let li = document.createElement('li')
+  li.innerText = ~~(Math.random() * total)
+  ul.appendChild(li)
 }
-console.log('JS运行时间：', Date.now() - now);
+console.log('JS运行时间：', Date.now() - now)
 setTimeout(() => {
-  console.log('总运行时间：', Date.now() - now);
-}, 0);
+  console.log('总运行时间：', Date.now() - now)
+}, 0)
 // print: JS运行时间： 187
 // print: 总运行时间： 2844
 ```
@@ -697,22 +709,22 @@ setTimeout(() => {
 
 ```js
 //需要插入的容器
-let ul = document.getElementById('container');
+let ul = document.getElementById('container')
 // 插入十万条数据
-let total = 100000;
+let total = 100000
 // 一次插入 20 条
-let once = 20;
+let once = 20
 //总页数
-let page = total / once;
+let page = total / once
 //每条记录的索引
-let index = 0;
+let index = 0
 //循环加载数据
 function loop(curTotal, curIndex) {
   if (curTotal <= 0) {
-    return false;
+    return false
   }
   //每页多少条
-  let pageCount = Math.min(curTotal, once);
+  let pageCount = Math.min(curTotal, once)
   // setTimeout(() => {
   //   for (let i = 0; i < pageCount; i++) {
   //     let li = document.createElement("li");
@@ -724,14 +736,14 @@ function loop(curTotal, curIndex) {
   // 通过 `window.requestAnimationFrame` 接口让浏览器根据实际情况来调度分片
   window.requestAnimationFrame(function () {
     for (let i = 0; i < pageCount; i++) {
-      let li = document.createElement('li');
-      li.innerText = curIndex + i + ' : ' + ~~(Math.random() * total);
-      ul.appendChild(li);
+      let li = document.createElement('li')
+      li.innerText = curIndex + i + ' : ' + ~~(Math.random() * total)
+      ul.appendChild(li)
     }
-    loop(curTotal - pageCount, curIndex + pageCount);
-  });
+    loop(curTotal - pageCount, curIndex + pageCount)
+  })
 }
-loop(total, index);
+loop(total, index)
 ```
 
 ## 尾调用及尾递归
@@ -755,19 +767,19 @@ loop(total, index);
   }
 </style>
 <script>
-  var body = document.querySelector('body');
-  console.log(`1`);
-  var cDiv = document.createElement('div');
-  console.log(cDiv);
-  console.log(`2`);
-  body.appendChild(cDiv);
-  console.log(body);
-  cDiv.classList.add('easy');
-  console.log(`3`);
+  var body = document.querySelector('body')
+  console.log(`1`)
+  var cDiv = document.createElement('div')
+  console.log(cDiv)
+  console.log(`2`)
+  body.appendChild(cDiv)
+  console.log(body)
+  cDiv.classList.add('easy')
+  console.log(`3`)
   // ======================
   for (var i = 0; i < 1000000000; i++);
-  cDiv.classList.add('hard');
-  console.log(cDiv);
+  cDiv.classList.add('hard')
+  console.log(cDiv)
   // ======================
 </script>
 ```
@@ -782,8 +794,8 @@ GUI 渲染线程在能够执行的情况下的优化策略 渲染出的是最终
 那么就一下两行的话 为什么没有过渡动画呢
 
 ```js
-cDiv.classList.add('easy');
-cDiv.classList.add('hard');
+cDiv.classList.add('easy')
+cDiv.classList.add('hard')
 ```
 
 因为没有 from to 两种状态 过渡需要 GUI 两次绘制中保有两种状态 解决方案
@@ -791,18 +803,18 @@ cDiv.classList.add('hard');
 1、将 js 操作滞后 让挂起的 渲染引擎完成渲染
 
 ```js
-cDiv.classList.add('easy');
+cDiv.classList.add('easy')
 setTimeout(() => {
-  cDiv.classList.add('hard');
-});
+  cDiv.classList.add('hard')
+})
 ```
 
 2、将渲染引擎提前完成渲染 将 easy 样式进入 from 状态
 
 ```js
-cDiv.classList.add('easy');
-cDiv.clientLeft; // 任一触发页面回流的方法皆可
-cDiv.classList.add('hard');
+cDiv.classList.add('easy')
+cDiv.clientLeft // 任一触发页面回流的方法皆可
+cDiv.classList.add('hard')
 ```
 
 ## 行内模块脚本
@@ -810,8 +822,8 @@ cDiv.classList.add('hard');
 ```html
 <body>
   <script type="module">
-    import { log } from './index.js';
-    log('Inline module executed');
+    import { log } from './index.js'
+    log('Inline module executed')
   </script>
 
   <!-- @2 -->
@@ -819,17 +831,16 @@ cDiv.classList.add('hard');
 
   <!-- @3 -->
   <script defer type="module">
-    import { log } from './index.js';
-    log('Inline script executed');
+    import { log } from './index.js'
+    log('Inline script executed')
   </script>
 
   <!-- @4 -->
   <script defer src="index_bak.js"></script>
 
   <script>
-    window.onload = console.log;
+    window.onload = console.log
   </script>
-
   <!-- 
       index_bak.js:1 index_bak.js excuted
       index.js:1 index.js excuted
@@ -848,31 +859,31 @@ cDiv.classList.add('hard');
 ## slash
 
 ```js
-'use strict';
+'use strict'
 module.exports = input => {
-  const isExtendedLengthPath = /^\\\\\?\\/.test(input);
-  const hasNonAscii = /[^\u0000-\u0080]+/.test(input);
+  const isExtendedLengthPath = /^\\\\\?\\/.test(input)
+  const hasNonAscii = /[^\u0000-\u0080]+/.test(input)
   // eslint-disable-line no-control-regex
   if (isExtendedLengthPath || hasNonAscii) {
-    return input;
+    return input
   }
-  return input.replace(/\\/g, '/');
-};
+  return input.replace(/\\/g, '/')
+}
 ```
 
 ## 时区问题
 
 ```js
-var date = new Date(); // 北京时间 2020-02-19 00:16:15
-console.log('toDateString', date.toDateString());
-console.log('toISOString', date.toISOString());
-console.log('toJSON', date.toJSON());
-console.log('toLocaleDateString', date.toLocaleDateString());
-console.log('toLocaleString', date.toLocaleString());
-console.log('toString', date.toString());
-console.log('toTimeString', date.toTimeString());
-console.log('toUTCString', date.toUTCString());
-console.log('getTimezoneOffset', date.getTimezoneOffset());
+var date = new Date() // 北京时间 2020-02-19 00:16:15
+console.log('toDateString', date.toDateString())
+console.log('toISOString', date.toISOString())
+console.log('toJSON', date.toJSON())
+console.log('toLocaleDateString', date.toLocaleDateString())
+console.log('toLocaleString', date.toLocaleString())
+console.log('toString', date.toString())
+console.log('toTimeString', date.toTimeString())
+console.log('toUTCString', date.toUTCString())
+console.log('getTimezoneOffset', date.getTimezoneOffset())
 
 // toDateString Wed Feb 19 2020
 // toISOString 2020-02-18T16:16:15.133Z
