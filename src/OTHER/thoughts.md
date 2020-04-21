@@ -2,6 +2,8 @@
 
 ## 一个很长的 div 里面罗列了很多图片 形成了瀑布流 怎么实现懒加载
 
+### 用 getBoundingClientReact 来探测图片是否进入父级元素
+
 `getBoundingClientRect` + `setSrc`
 
 ```js
@@ -68,6 +70,32 @@ LazyLoad.prototype = {
 ```
 
 屏幕滚动时节流触发函数 获取所有
+
+### 用 IntersectionObserver 构造器
+
+```js
+const io = new IntersectionObserver(() => {
+  // 实例化 默认基于当前视窗
+})
+let ings = document.querySelectorAll('[data-src]')
+// 将图片的真实url设置为data-src src属性为占位图 元素可见时候替换src
+function callback(entries) {
+  entries.forEach(item => {
+    // 遍历entries数组
+    if (item.isIntersecting) {
+      // 当前元素可见
+      item.target.src = item.target.dataset.src
+      // 替换src
+      io.unobserve(item.target)
+      // 停止观察当前元素 避免不可见时候再次调用callback函数
+    }
+  })
+}
+imgs.forEach(item => {
+  // io.observe接受一个DOM元素，添加多个监听 使用forEach
+  io.observe(item)
+})
+```
 
 ## a 链接的 `target` 设置为 `_blank` 有什么隐患 解决方案
 
@@ -482,6 +510,10 @@ useLayoutEffect 里面的 callback 函数会在 DOM 更新完成后立即执行,
 - 试图直接从分目录下引入需要的函数
 
 ### 布置合适的 service worker 来缓存一部分不常改变的静态资源
+
+### 打包目标为 es2015+语法
+
+通过 module-script 标签加载（大部分浏览器均以原生实现）不支持的则使用 `nomodule` 做向下兼容
 
 ## 拷贝与赋值的区别
 
@@ -901,3 +933,119 @@ console.log('getTimezoneOffset', date.getTimezoneOffset())
 该死的 js 横杆跟斜杆的效果居然是不一样的
 
 [https://cloud.tencent.com/developer/article/1562282](https://cloud.tencent.com/developer/article/1562282)
+
+## IntersectionObserver
+
+```js
+const io = new IntersectionObserver(() => {
+  // 实例化 默认基于当前视窗
+})
+let ings = document.querySelectorAll('[data-src]')
+// 将图片的真实url设置为data-src src属性为占位图 元素可见时候替换src
+function callback(entries) {
+  entries.forEach(item => {
+    // 遍历entries数组
+    if (item.isIntersecting) {
+      // 当前元素可见
+      item.target.src = item.target.dataset.src
+      // 替换src
+      io.unobserve(item.target)
+      // 停止观察当前元素 避免不可见时候再次调用callback函数
+    }
+  })
+}
+imgs.forEach(item => {
+  // io.observe接受一个DOM元素，添加多个监听 使用forEach
+  io.observe(item)
+})
+```
+
+## 浏览器的滚动与视窗尺寸
+
+### 文档滚动到某个地方
+
+```js
+// 绝对滚动
+window.scrollTo({
+  left: 0,
+  top: 0
+})
+
+// 相对滚动(相对嘛 顾名思义)
+window.scrollBy({
+  left: 0,
+  top: 100
+})
+
+// 直接赋值
+document.scrollingElement.scrollTop = 100
+```
+
+### 某个元素滚动到视窗内
+
+```js
+// 获取元素的offsetTop(元素距离文档顶部的距离)
+let offsetTop = document.querySelector('.box').offsetTop
+// 设置滚动条的高度
+window.scrollTo(0, offsetTop)
+```
+
+```js
+document.querySelector('.box').scrollIntoView({
+  block: 'start' || 'center' || 'end'
+})
+```
+
+### 怎么设置平滑滚动
+
+- 设置方法属性
+
+```js
+window.scrollTo({
+  behavior: 'smooth'
+})
+window.scrollBy({
+  behavior: 'smooth'
+})
+document.querySelector('.box').scrollIntoView({
+  behavior: 'smooth'
+})
+```
+
+- 直接设置样式
+
+```css
+/* 全局滚动具有平滑效果 */
+html {
+  scroll-behavior: smooth;
+}
+/* 或者所有 */
+* {
+  scroll-behavior: smooth;
+}
+```
+
+- scrollingElement 是什么
+
+> 标准模式返回 documentElement，怪异模式返回 body --MDN
+
+该对象可以非常兼容地获取 scrollTop、scrollHeight 等属性
+
+### 内部 div 滚动到边界怎么防止传播到父级
+
+```css
+.inner {
+  overscroll-behavior: contain;
+}
+```
+
+### 滚动结束锁定到指定元素
+
+```less
+ul {
+  scroll-snap-type: x mandatory;
+  li {
+    scroll-snap-align: start;
+  }
+}
+```

@@ -1,7 +1,7 @@
-const storageInfo = {};
+const storageInfo = {}
 
 const Storage = {
   save(key, val, time) {}
-};
+}
 
-export default Storage;
+export default Storage

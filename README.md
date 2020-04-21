@@ -92,13 +92,15 @@
 - [`koa` 洋葱圈模型](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [关于前端测试](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [前端错误监控异常上报](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [`webpack4.x` 实践及手写 `loader` `plugin`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [`webpack4.x` `loader` `plugin` 实践](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` 之 `protal`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`node` 子进程、子线程](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`lavas` 粗读总结](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/service-worker.md)
 - [`TypeScript` 练习札记](https://github.com/formattedzzz/fe-notes/blob/master/src/TS/src/index.ts)
-- [记录一些思考、想法](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts.md)
 - [一些算法题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/algorithms/index.md)
+- [记录一些思考、想法(1)](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts.md)
+- [记录一些思考、想法(2)](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts.md)
+- [记录一些思考、想法(3)](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts.md)
 
 ## 文章
 
