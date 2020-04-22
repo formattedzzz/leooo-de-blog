@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script></script>
+  </head>
+  <body>
+    <!-- html部分 -->
+    <a id="h">点此进行下载</a>
+    <input id="file" type="file" />
+    <img id="img" src="" alt="" />
+    <!-- js部分 -->
+    <script>
+      var filebtn = document.getElementById('file')
+      filebtn.onchange = e => {
+        console.log(filebtn.files[0])
+        document.getElementById('img').src = URL.createObjectURL(
+          filebtn.files[0]
+        )
+        const file = filebtn.files[0]
+        const reader = new FileReader()
+        reader.onload = () => {
+          // console.log('Jartto files logs: ', file)
+          const fileAsBinaryString = reader.result
+          console.log(fileAsBinaryString)
+          // Todo...
+        }
+        reader.onabort = () => console.log('file reading was aborted')
+        reader.onerror = () => console.log('file reading has failed')
+
+        reader.readAsBinaryString(file)
+      }
+      // var blob = new Blob([''])
+      // var url = window.URL.createObjectURL(blob)
+      // var a = document.getElementById('h')
+      // a.download = 'helloworld.txt'
+      // a.href = url
+    </script>
+  </body>
+</html>

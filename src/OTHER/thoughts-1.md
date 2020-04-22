@@ -1,4 +1,4 @@
-# 记录一些还暂未实践的想法
+#
 
 ## 一个很长的 div 里面罗列了很多图片 形成了瀑布流 怎么实现懒加载
 
@@ -1039,13 +1039,24 @@ html {
 }
 ```
 
-### 滚动结束锁定到指定元素
+## antd 跟 element modal 组件的一些区别
 
-```less
-ul {
-  scroll-snap-type: x mandatory;
-  li {
-    scroll-snap-align: start;
-  }
-}
-```
+- antd
+
+直接将 modal 本身及 modal-mask 组件直接塞到 body 尾部
+
+所以组件内部直接加样式不并不会生效
+
+因此 modal 方法中获取不到 context、redux 中的内容
+
+不需要考虑层级关系
+
+- element
+
+支持两种模式 modal 本身及 modal-mask 选择性支持直接塞到 body 尾部
+
+默认情况下加样式可以直接生效
+
+层级关系是通过 z-index 来控制的 modal 本身每调用一次+1 确保于 modal-mask 之上
+
+默认情况下如果如果父级定位且设置了 z-index 可能会造成问题

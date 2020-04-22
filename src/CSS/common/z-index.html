@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>z-index</title>
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+      }
+      #app {
+        position: relative;
+      }
+      .modal {
+        position: absolute;
+        z-index: 2001;
+        width: 200px;
+        height: 200px;
+        background: #fff;
+        left: 20%;
+        top: 10%;
+      }
+      .modal-mask {
+        position: absolute;
+        z-index: 2000;
+        width: 100vw;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        background: #000;
+        opacity: 0.1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      123<br />
+      123<br />
+      123<br />
+      123<br />
+      123<br />
+      123<br />
+      123<br />
+      123<br />
+      <div class="modal"></div>
+    </div>
+    <div class="modal-mask"></div>
+  </body>
+</html>

@@ -98,10 +98,9 @@
 - [`lavas` 粗读总结](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/service-worker.md)
 - [`TypeScript` 练习札记](https://github.com/formattedzzz/fe-notes/blob/master/src/TS/src/index.ts)
 - [一些算法题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/algorithms/index.md)
-- [记录一些思考、想法(1)](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts.md)
-- [记录一些思考、想法(2)](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts.md)
-- [记录一些思考、想法(3)](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts.md)
+- [怎么判断页面内存泄露或溢出](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 
-## 文章
+## 碎片化的笔记、思考、想法
 
-- [【读】一个简洁、有趣的无限下拉方案](https://juejin.im/post/5de5baf2518825235b095cbe)
+- [FREGMENTS(1)](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts-1.md)
+- [FREGMENTS(2)](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts-2.md)
