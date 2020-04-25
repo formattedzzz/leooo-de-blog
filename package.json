@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cd ELECTRON && electron index.js",
-    "lint": "npx lint-md ./src"
+    "lint": "npx lint-md ./src",
+    "list": "rm directoryList.md && mddir src"
   },
   "author": "",
   "license": "ISC",

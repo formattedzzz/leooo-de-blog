@@ -104,6 +104,10 @@ Number(null) === 0;
 
   😀 打扰了...
 
+- 总之 见相关流程图
+
+![process](https://user-gold-cdn.xitu.io/2020/4/21/1719d4f703af20a1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
 ## js 进制转换
 
 任意进制的字符串转十进制
