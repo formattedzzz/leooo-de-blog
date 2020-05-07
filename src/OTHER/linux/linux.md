@@ -120,6 +120,24 @@ source ~/.bash_profile
 
   report.zip 输出文件夹的内容 img 文件夹名称（路径）
 
+- tar 命令
+
+```sh
+tar -zxvf nginx.1.17.9.tar.gz
+# -c 建立压缩档案
+# -x 解压
+# -t 查看内容
+# -r 向压缩归档文件末尾追加文件
+# -u 更新原压缩包中的文件
+# 这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。
+# 下面的参数是根据需要在压缩或解压档案时可选的。
+# -z 有gzip属性的
+# -j 有bz2属性的
+# -Z 有compress属性的
+# -v 显示所有过程
+# -O 将文件解开到标准输出
+```
+
 - 删除文件里面的内容 但是不要删除文件
 
   ```sh
@@ -279,17 +297,17 @@ pm2 restart all
 ## 文件传输 scp
 
 ```sh
-scp /Users/mac/Desktop/test-video.mp4 ubuntu@134.175.168.18:/home/ubuntu/account-server/upload/video
+scp /Users/liufulin/Desktop/test-video.mp4 ubuntu@134.175.168.18:/home/ubuntu/account-server/upload/video
 # ubuntu 系统下复制文件到 Mac 本地电脑上
 
-scp ubuntu@134.175.168.18:/home/ubuntu/account-server/upload/video/R-PvhOqCjri37gHhyPTt5bY7.mp4 /Users/mac/Desktop/
+scp ubuntu@134.175.168.18:/home/ubuntu/account-server/upload/video/R-PvhOqCjri37gHhyPTt5bY7.mp4 /Users/liufulin/Desktop/
 
-scp ubuntu@134.175.168.18:/home/ubuntu/account.sql /Users/mac/Desktop/
+scp ubuntu@134.175.168.18:/home/ubuntu/account.sql /Users/liufulin/Desktop/
 
-# scp /Users/mac/Desktop/ ubuntu@134.175.168.18:/home/ubuntu/
-
-# scp ubuntu@134.175.168.18:/home/ubuntu/ /Users/mac/Desktop/
-
+# scp /Users/liufulin/Desktop/ ubuntu@134.175.168.18:/home/ubuntu/
+# scp -p 19889 /Users/liufulin/Desktop/dapp.zip root@124.117.245.72:/root
+# scp ubuntu@134.175.168.18:/home/ubuntu/ /Users/liufulin/Desktop/
+scp /Users/liufulin/Desktop/cert.zip ubuntu@134.175.168.18:/etc/nginx
 # 不能传文件夹 需要压缩 unzip weui.zip
 ```
 
@@ -324,15 +342,15 @@ flutter doctor --android-licenses
 
 ```conf
 export PATH=${PATH}:/usr/local/mysql/bin
-export PATH=${PATH}:/Users/mac/Documents/flutter/bin
-export PATH=${PATH}:/Users/mac/Documents/android-sdk-macosx
-export PATH=${PATH}:/Users/mac/Documents/android-sdk-macosx/platform-tools
+export PATH=${PATH}:/Users/liufulin/Documents/flutter/bin
+export PATH=${PATH}:/Users/liufulin/Documents/android-sdk-macosx
+export PATH=${PATH}:/Users/liufulin/Documents/android-sdk-macosx/platform-tools
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 
 GOROOT=/usr/local/Cellar/go/1.11.2/libexec
 export GOROOT
-export GOPATH=/Users/mac/Desktop/GO
+export GOPATH=/Users/liufulin/Desktop/GO
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN:$GOROOT/bin
 ```
@@ -567,6 +585,9 @@ ps aux | grep redis
 
 ```sh
 cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c
+
+# 查看系统
+cat /etc/issue
 ```
 
 ## apt get
@@ -682,153 +703,6 @@ sudo vim /etc/rc.local
 ```conf
 service mysqld start      # 用来重启mysql
 /etc/init.d/nginx start   # 用来重启nginx
-```
-
-## nginx 基本配置
-
-```yaml
-# For more information on configuration, see:
-#   * Official English Documentation: http://nginx.org/en/docs/
-#   * Official Russian Documentation: http://nginx.org/ru/docs/
-user www-data;
-worker_processes auto;
-pid /run/nginx.pid;
-# Basic Settings:
-events {
-    worker_connections 768;
-    # multi_accept on;
-}
-
-http {
-
-    ##
-    # Basic Settings
-    ##
-
-    sendfile on;
-    tcp_nopush on;
-    tcp_nodelay on;
-    keepalive_timeout 65;
-    types_hash_max_size 2048;
-    # server_tokens off;
-
-    # server_names_hash_bucket_size 64;
-    # server_name_in_redirect off;
-
-    include /etc/nginx/mime.types;
-    default_type application/octet-stream;
-
-    ##
-    # SSL Settings
-    ##
-
-    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE
-    ssl_prefer_server_ciphers on;
-
-    ##
-    # Logging Settings
-    ##
-
-    access_log /var/log/nginx/access.log;
-    error_log /var/log/nginx/error.log;
-
-    ##
-    # Gzip Settings
-    ##
-
-    gzip on;
-    gzip_disable "msie6";
-
-    # gzip_vary on;
-    # gzip_proxied any;
-    # gzip_comp_level 6;
-    # gzip_buffers 16 8k;
-    # gzip_http_version 1.1;
-    # gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
-
-    ##
-    # Virtual Host Configs
-    ##
-
-    #server{
-    #    listen 80 default_server;
-    #    listen [::]:80 default_server;
-    #    server_name wx.nnleo.cn;
-    #    charset utf8;
-    #    root /home/ubuntu/account-server;
-    #     location / {
-    #        proxy_pass http://127.0.0.1:7003;
-    #        proxy_set_header X-Real-IP $remote_addr;
-    #        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    #    }
-    #}
-    # 博客静态资源配置
-    server {
-        listen                          443 ssl;
-        server_name                     www.nnleo.cn;
-        ssl_certificate         1_nnleo.cn_bundle.crt;
-        ssl_certificate_key     2_nnleo.cn.key;
-        location / {
-            index index.html;
-            root  /home/ubuntu/leo-blog/;
-        }
-    }
-    # 小程序后台配置
-    upstream nnleo {
-        server 127.0.0.1:7003 weight=1;
-    }
-    map $http_upgrade $connection_upgrade {
-    default upgrade;
-    ''      close;
-    }
-    server {
-        listen                    443 ssl;
-        server_name         wx.nnleo.cn;
-        #ssl on;
-        ssl_certificate             1_wx.nnleo.cn_bundle.crt;
-        ssl_certificate_key     2_wx.nnleo.cn.key;
-        #ssl_password_file /etc/nginx/
-        #ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-        ssl_ciphers                      HIGH:!aNULL:!MD5;
-        proxy_set_header             Upgrade $http_upgrade;
-        proxy_set_header             Connection $connection_upgrade;
-        #ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HTGH:!aNULL:!MD5:!RC4:!DHE;
-        ssl_prefer_server_ciphers on;
-        client_max_body_size 20m;
-        location / {
-            proxy_pass http://nnleo;
-        }
-    }
-    include /etc/nginx/conf.d/*.conf;
-    include /etc/nginx/sites-enabled/*;
-}
-# mail {
-#     # See sample authentication script at:
-#     # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
-#     # auth_http localhost/auth.php;
-#     # pop3_capabilities "TOP" "USER";
-#     # imap_capabilities "IMAP4rev1" "UIDPLUS";
-#     server {
-#         listen     localhost:110;
-#         protocol   pop3;
-#         proxy      on;
-#     }
-#     server {
-#         listen     localhost:143;
-#         protocol   imap;
-#         proxy      on;
-#     }
-# }
-```
-
-`nginx` 解决 SPA `history` 刷新页面的问题 不管什么页面进来 一律返回 `index.html`
-
-所有页面的路由跳转交给前端～
-
-```txt
-location / {
-    try_files $uri $uri/ /index.html;
-}
 ```
 
 ## systemctl
@@ -982,11 +856,11 @@ sudo cnpm i -g --only=prod https-localhost
 代码中使用
 
 ```js
-const httpsLocalhost = require('https-localhost')();
+const httpsLocalhost = require('https-localhost')()
 // const app = ...
 // const port = 443
-const certs = await httpsLocalhost.getCerts();
-const server = https.createServer(certs, app).listen(port);
+const certs = await httpsLocalhost.getCerts()
+const server = https.createServer(certs, app).listen(port)
 ```
 
 命令行托管静态资源
@@ -1013,3 +887,13 @@ alias servedir="/usr/local/lib/node_modules/serve/bin/serve.js"
 ```
 
 把这个配置写进用户环境 `~/.bash_profile` 如果最新 zsh 终端 则写到 `~/.zshrc` 中
+
+## 记一次 MacBook 连接某个网络似断非断的经历
+
+### 内外网的区别
+
+### 统一路由器下每台设备的 IP
+
+### DNS 服务器
+
+### 怎样进行内网穿透

@@ -1,0 +1,23 @@
+{
+  "name": "global-cli",
+  "version": "1.0.0",
+  "description": "a global-cli demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "formattedzzz",
+  "license": "ISC",
+  "bin": {
+    "leo": "bin/leo.js"
+  },
+  "devDependencies": {
+    "chalk": "^4.0.0",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^5.1.0",
+    "download-git-repo": "^3.0.2",
+    "ora": "^4.0.4"
+  }
+}

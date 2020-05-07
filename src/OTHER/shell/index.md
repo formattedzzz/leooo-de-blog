@@ -1,8 +1,33 @@
 # shell 脚本
 
-## 脚本开光命令
+## 脚本开光
 
-chmod -x ./shell.sh
+```sh
+# u 所有者 +x 增加可执行权限
+chmod u+x leo.sh
+# - 表示去除权限
+
+# u 所有者
+# g 同一群组的（不常用）
+# o 外人
+# a 所有人
+# User Group Other All
+
+# + 增加
+# - 去除
+
+# x 可执行(1)
+# w 可写(2)
+# r 可读(4)
+
+chmod 777 ./shell.sh
+# 这条命令就是这么来的 三个7依次代表 u、g、o 每个7代表 x+w+r
+# 故也等价于
+chmod a=rwx ./shell.sh
+
+# 通法
+chmod ug+w,o-w leo.sh bob.sh
+```
 
 ## 最高权限
 
@@ -100,17 +125,17 @@ echo "第二个参数\$2: $2"
 ## 利用子进程来执行一个脚本
 
 ```js
-let { execFile } = require("child_process");
+let { execFile } = require('child_process')
 execFile(
   `${__dirname}/shell.sh`,
-  ["--dev", "--version"],
+  ['--dev', '--version'],
   (error, stdout, stderr) => {
     if (error) {
-      throw error;
+      throw error
     }
-    console.log(stdout);
+    console.log(stdout)
   }
-);
+)
 ```
 
 ## 函数传参数及返回值

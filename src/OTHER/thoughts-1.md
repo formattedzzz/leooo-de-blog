@@ -214,16 +214,30 @@ A(function () {
 ## 写一个事件委托
 
 ```js
-function delegate(ele, selector, type, fn) {
-  function callback(e) {
-    e = e || window.event
-    let target = e.target || e.srcElement
-    while (!target.matches(selector)) {
-      target = target.parentNode
+// div.isdiv
+//   ul.isul
+//     li.isli
+//       span.isspan
+//     li.isli
+
+// 假设我们要将 li 代理到 div 上
+function delegate(element, eventType, selector, fn) {
+  element.addEventListener(eventType, e => {
+    let el = e.target
+    while (!el.matches(selector)) {
+      // 如果不是li.isli el 冒泡变成父节点
+      if (element === el) {
+        // 如果冒泡到父节点还没匹配到li.isli 说明点击的不是li.isli 置空
+        el = null
+        break
+      }
+      el = el.parentNode
     }
-    fn.call(target, e)
-  }
-  ele.addEventListener(type, callback, false)
+    if (el) {
+      fn.call(el, e)
+    }
+  })
+  return element
 }
 delegate(
   document.querySelector('body'),

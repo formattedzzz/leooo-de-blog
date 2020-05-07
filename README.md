@@ -75,7 +75,8 @@
 - [初识 `puppeteer`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/puppeteer/index.md)
 - [搞清 `umd` 模块结构](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/umd-struct.md)
 - [`git` 时光机](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/nice-git.md)
-- [`git` `hooks`实现自动部署](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/git-hooks.md)
+- [`git` `hooks`实现 node 应用自动部署](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/git-hooks.md)
+- [nginx 部署 spa 接口代理、history 路由、gzip](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/nginx/nginx.md)
 - [小试 `vscode` 文档神器 `REST Client`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/rest-client.md)
 - [GO `channel` 再理解](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/go-channel.md)
 - [币加索的区块链时光](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/block-chain.md)
@@ -83,7 +84,7 @@
 - [`flutter` 初识笔记](https://github.com/formattedzzz/fe-notes/blob/master/src/DART/flutter.md)
 - [币加索的区块链时光](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/block-chain.md)
 - [笔记 `shell` 脚本](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/shell/index.md)
-- [笔记 `Linux` 命令](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/linux.md)
+- [笔记 `Linux` 命令](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/linux/linux.md)
 
 ## todo
 
