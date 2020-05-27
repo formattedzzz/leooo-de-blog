@@ -81,3 +81,11 @@ git checkout -b branchname origin/branchname
 ```bash
 git rm --cached file_path
 ```
+
+## 分支删除
+
+```sh
+git branch -d dev/leooo
+git branch -D dev/leooo
+git push origin --delete origin/dev/leooo
+```

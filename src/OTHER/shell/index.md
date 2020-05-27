@@ -177,3 +177,28 @@ echo "sum=$?"
 - 作用范围只限于脚本执行的当前进行 **不作用于其创建的子进程** 所以根据上面提到的 在父脚本中 通过 source 命令启动子脚本时**例外**
 
 - 如果返回值为非零时 那么该函数里面的 log 不会输出 所以最好通过判断调用**exit**语句退出好
+
+## 获取当前工作目录的绝对路径及文件夹名称
+
+```sh
+project_path=$(
+  cd $(dirname $0)
+  pwd
+)
+project_name="${project_path##*/}"
+echo $project_path
+echo $project_name
+```
+
+## find、grep
+
+```sh
+find .
+#打印当前目录下所有的文件目录列表
+find . -name "*.js"
+#打印当前目录所有以.js结尾的文件
+find . ! -name "*.js"
+#打印当前目录所有不以.js结尾的文件
+find . \( -name "*.pdf" -or -name "*.txt" \)
+#打印当前目录下所有以.txt或.pdf为结尾的文件名
+```

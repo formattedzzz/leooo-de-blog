@@ -86,3 +86,5 @@ export default function({ types: babelTypes, template: babelTemplate }) {
   };
 }
 ```
+
+### boswerList 的指定范围

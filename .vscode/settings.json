@@ -3,4 +3,10 @@
    "editor.tabSize": 2,
    "prettier.useTabs": false,
    "prettier.semi": false,
+   "files.exclude": {
+      "**/.classpath": true,
+      "**/.project": true,
+      "**/.settings": true,
+      "**/.factorypath": true
+   },
 }

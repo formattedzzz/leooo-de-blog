@@ -887,13 +887,3 @@ alias servedir="/usr/local/lib/node_modules/serve/bin/serve.js"
 ```
 
 把这个配置写进用户环境 `~/.bash_profile` 如果最新 zsh 终端 则写到 `~/.zshrc` 中
-
-## 记一次 MacBook 连接某个网络似断非断的经历
-
-### 内外网的区别
-
-### 统一路由器下每台设备的 IP
-
-### DNS 服务器
-
-### 怎样进行内网穿透
