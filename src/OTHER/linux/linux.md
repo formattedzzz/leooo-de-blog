@@ -616,6 +616,19 @@ cat /etc/issue
 cat /proc/version
 ```
 
+## 升级 Ubuntu 系统
+
+```sh
+sudo apt update
+# 更新软件源
+sudo apt upgrade
+# 更新内核相关的包
+sudo apt dist-upgrade
+sudo apt-get autoremove
+sudo apt install update-manager-core
+sudo do-release-upgrade
+```
+
 ## ubuntu 安装 docker
 
 ```sh

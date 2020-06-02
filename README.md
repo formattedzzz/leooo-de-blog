@@ -100,6 +100,11 @@
 - [`TypeScript` 练习札记](https://github.com/formattedzzz/fe-notes/blob/master/src/TS/src/index.ts)
 - [一些算法题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/algorithms/index.md)
 - [怎么判断页面内存泄露或溢出](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [js 的内存模型](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [webpack 异步模块加载原理](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [vue 组件单元测试怎么写](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [js 怎么写一个 hash 生成器](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [基于大对象的快照思路](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 
 ## 碎片化的笔记、思考、想法
 
