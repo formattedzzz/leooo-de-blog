@@ -2,6 +2,10 @@
 
 ## `String` 与 `unicode` 之间的转换
 
+我们平常用的字符串就是二进制字符串的一部分 而 unicode 是的 0-65535 之间的整数
+
+('65535').toString(2) === '1111111111111111' 16 位 即每个字符占两个字节 ascii 码则是一个
+
 ```js
 str = 'A'
 code = str.charCodeAt() // 65
@@ -9,7 +13,27 @@ str2 = String.fromCharCode(code) // 'A'
 str3 = String.fromCharCode(0x60 + 26) // 'z'
 ```
 
-## `String` 转 `base64` 基本原理
+打出来康康 可以看到 0-32 对应的字符串都是不同格式的空格 这些空格都是特殊的独一无的二进制(乱码)字符
+
+```js
+new Array(1024).fill(1).forEach((i, idx) => {
+  console.log(String.fromCharCode(idx))
+})
+```
+
+那 js 中是怎么检测中文的呢 比如 '我' 这个字符
+
+```js
+// 对应unicode 25105
+// 转化成16进制的字符串
+'我'.charCodeAt()(25105).toString(16) // "6211" 对应数字 25105 也就是 0x6211
+// 直接用 \u 转义 '\u6211' 如果不足4位则前面添0补齐
+console.log('\u6211' === '我') // true
+```
+
+而所有的中文字符都在一段区间内 所以 unicode 能表达很多语言的的字符串
+
+## `String` 转 `base64`(ascii 码) 基本原理
 
 ```js
 var str = 'A'

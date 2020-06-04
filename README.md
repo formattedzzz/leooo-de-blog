@@ -24,7 +24,7 @@
 - [`js` 当 `exec` 遇上全局匹配](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/regexp-exec.md)
 - [`js` 从函数调用栈看递归](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/stack-flow.md)
 - [`js` 多叉树遍历及还原](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/tree-iterator/index.md)
-- [`js` `Blob` 对象的应用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/blob/index.md)
+- [`js` 前端编码及 `Blob` 对象的应用](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/blob/index.md)
 - [`js` 数据劫持](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/data-hijack.md)
 - [`es5` 构造一个迭代器](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/es6-iterator.md)
 - [`es5` 从继承角度看 `bind-ployfill`](https://github.com/formattedzzz/fe-notes/blob/master/src/JS/common/nice-inherit.md)
@@ -105,6 +105,7 @@
 - [vue 组件单元测试怎么写](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [js 怎么写一个 hash 生成器](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [基于大对象的快照思路](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [index.d.ts](https://www.cnblogs.com/silin6/p/7793753.html)
 
 ## 碎片化的笔记、思考、想法
 
