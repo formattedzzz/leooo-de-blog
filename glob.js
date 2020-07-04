@@ -9,3 +9,7 @@ const glob = require('glob')
 glob('src/**/index.md', {}, (err, files) => {
   console.log(err, files)
 })
+const tool = require('util')
+const obj = {}
+console.log(tool.isPrimitive(true))
+console.log(tool.isPrimitive(obj))

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        box-sizing: border-box;
+        font-size: 30px;
+      }
+      input[type='range'] {
+        width: 100%;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body style="font-size: 30px;">
+    <del><code>var a = new Leooo()</code></del>
+    <del><code>console.log(a.getName())</code></del>
+    <br />
+    <ins><code>var b = new Leooo()</code></ins>
+    <ins><code>console.log(b.getName())</code></ins>
+    <input type="range" id="range" />
+    <script>
+      document.getElementById('range').onchange = function (ev) {
+        console.log(ev)
+      }
+    </script>
+  </body>
+</html>

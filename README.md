@@ -105,7 +105,7 @@
 - [vue 组件单元测试怎么写](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [js 怎么写一个 hash 生成器](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [基于大对象的快照思路](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [index.d.ts](https://www.cnblogs.com/silin6/p/7793753.html)
+- [js 与 ts 的交叉口 index.d.ts](https://www.cnblogs.com/silin6/p/7793753.html)
 
 ## 碎片化的笔记、思考、想法
 
