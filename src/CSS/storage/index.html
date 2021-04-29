@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    leoooo666
+    <script>
+      window.addEventListener('storage', function (e) {
+        // alert(e.key + '=' + e.newValue)
+        console.log('storage', e.key + '=' + e.newValue)
+      })
+      window.addEventListener('load', function () {
+        let key = location.host
+        let now = Number(localStorage.getItem(key))
+        if (now) {
+          localStorage.setItem(key, now + 1)
+        } else {
+          localStorage.setItem(key, 1)
+        }
+      })
+      window.addEventListener('close', function (e) {
+        let key = location.host
+        let now = Number(localStorage.getItem(key))
+        if (now > 0) {
+          localStorage.setItem(key, now - 1)
+        }
+      })
+    </script>
+  </body>
+</html>

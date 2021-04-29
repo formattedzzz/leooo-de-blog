@@ -212,7 +212,7 @@ setTimeout(() => {
 // promise2
 ```
 
-咋和浏览器不一样呢 根据 Node.js 官方介绍 每次事件循环都包含了 6 个阶段:
+咋和浏览器不一样呢 根据 Node.js [官方介绍](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#setimmediate-vs-settimeout) 每次事件循环都包含了 6 个阶段:
 
 - `timers` 阶段: 这个阶段执行 `timer`（setTimeout、setInterval）的回调
 - `I/O callbacks` 阶段: 执行一些系统调用错误 比如网络通信的错误回调

@@ -26,7 +26,7 @@ new Array(1024).fill(1).forEach((i, idx) => {
 ```js
 // 对应unicode 25105
 // 转化成16进制的字符串
-'我'.charCodeAt()(25105).toString(16) // "6211" 对应数字 25105 也就是 0x6211
+'我'.charCodeAt().toString(16) // "6211" 对应数字 25105 也就是 0x6211
 // 直接用 \u 转义 '\u6211' 如果不足4位则前面添0补齐
 console.log('\u6211' === '我') // true
 ```
@@ -57,6 +57,10 @@ str = (['010000', '010000', '000000', '000000']) => ([16, 16, 0, 0]) => [
 // 查表得到字符串,两个==表示补了两字节0x00，也取代了原来的A的作用，补了0x00之后，生成的base64字符串末尾肯定是0
 // QQ==
 ```
+
+## utf-8 跟 unicode
+
+[阮一峰的网络日志](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)
 
 ## `File` 对象与其他形式的转化
 
@@ -347,3 +351,5 @@ textReader.onload = function () {
   </script>
 </body>
 ```
+
+## TextEncoder

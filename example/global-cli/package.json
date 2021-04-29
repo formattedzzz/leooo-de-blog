@@ -1,17 +1,22 @@
 {
   "name": "global-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a global-cli demo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "leo": "ENV=leo node argv.js"
+    "argv": "ENV=leo node argv.js",
+    "leo": "leo",
+    "uuid": "uuid v4"
   },
   "keywords": [],
   "author": "formattedzzz",
   "license": "ISC",
   "bin": {
     "leo": "bin/leo.js"
+  },
+  "dependencies": {
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "chalk": "^4.0.0",

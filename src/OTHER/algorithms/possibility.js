@@ -49,3 +49,4 @@ for (let select_1 = 1; select_1 <= ballList.length; select_1++) {
 console.log(JSON.stringify(res, null, 2))
 
 // 枚举法
+// 多是试验法

@@ -111,3 +111,5 @@
 
 - [FREGMENTS(1)](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts-1.md)
 - [FREGMENTS(2)](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/thoughts-2.md)
+
+![formattedzzz's github stats](https://github-readme-stats.vercel.app/api?username=formattedzzz&show_icons=true&theme=merko)

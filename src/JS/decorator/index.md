@@ -43,36 +43,36 @@ class MyApp extends StatelessWidget {
 
 ```js
 // stroe/index.js
-import { observable, computed, action } from "mobx";
+import { observable, computed, action } from 'mobx'
 class Appstore {
   @observable store = {
     num: 0,
     todos: [1, 2, 3]
-  };
+  }
   @computed get todotext() {
-    return this.store.todos.join("T");
+    return this.store.todos.join('T')
   }
   @action add(num) {
-    this.store.todos.push(num);
+    this.store.todos.push(num)
   }
 }
-export default new Appstore();
+export default new Appstore()
 
 // app.jsx
-import React from "react";
-import ReactDOM from "react-dom";
-import Store from "@/stroe/index.js";
-import { Provider } from "mobx-react";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Store from '@/stroe/index.js'
+import { Provider } from 'mobx-react'
 ReactDOM.render(
   <Provider store={Store}>
     <RouteView></RouteView>
   </Provider>,
-  document.getElementById("root")
-);
+  document.getElementById('root')
+)
 
 // component.jsx
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 @connect(
   state => ({
@@ -83,15 +83,15 @@ import { connect } from "react-redux";
   })
 )
 class CounterUI extends Component {
-  state = {};
+  state = {}
   componentDidMount() {
-    console.log(this.props);
+    console.log(this.props)
   }
   render() {
-    return <div>CounterUI</div>;
+    return <div>CounterUI</div>
   }
 }
-export default CounterUI;
+export default CounterUI
 ```
 
 其中 connect 就是一个函数 其返回值为一个高阶组件 (component) => {}
@@ -102,16 +102,16 @@ export default CounterUI;
 ```js
 // 给空类Cat加一个isAnimal的静态属性
 function isAnimal(target) {
-  target.isAnimal = true;
-  return target;
+  target.isAnimal = true
+  return target
 }
 
 @isAnimal
 class Cat {}
-console.log(Cat.isAnimal); // true
+console.log(Cat.isAnimal) // true
 
 // 代码等价于
-Cat = isAnimal(function Cat() {});
+Cat = isAnimal(function Cat() {})
 ```
 
 ## 作用于类属性的 decorator
@@ -128,26 +128,26 @@ function fast(target, name, descriptor) {
   // configurable: true,
   // writable: true
   // };
-  target.speed = 20;
-  let run = descriptor.value;
-  descriptor.value = function() {
-    run();
-    console.log(`speed ${this.speed}`);
-  };
-  return descriptor;
+  target.speed = 20
+  let run = descriptor.value
+  descriptor.value = function () {
+    run()
+    console.log(`speed ${this.speed}`)
+  }
+  return descriptor
 }
 class Rabbit {
   @fast
   run() {
-    console.log("running~");
+    console.log('running~')
   }
 }
 
-var bunny = new Rabbit();
-bunny.run();
+var bunny = new Rabbit()
+bunny.run()
 // running~
 // speed 20
-console.log(bunny.speed); // 20
+console.log(bunny.speed) // 20
 ```
 
 这里的装饰器`fast`本质就是用来得出重新定义某属性的`descriptor`的一个方法
@@ -164,7 +164,7 @@ babel --plugins transform-decorators-legacy index.js > index_prod.js && node ind
 转换之后：
 
 ```js
-var _desc, _value, _class;
+var _desc, _value, _class
 
 function _applyDecoratedDescriptor(
   target,
@@ -173,69 +173,69 @@ function _applyDecoratedDescriptor(
   descriptor,
   context
 ) {
-  var desc = {};
-  Object["ke" + "ys"](descriptor).forEach(function(key) {
-    desc[key] = descriptor[key];
-  });
-  desc.enumerable = !!desc.enumerable;
-  desc.configurable = !!desc.configurable;
+  var desc = {}
+  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+    desc[key] = descriptor[key]
+  })
+  desc.enumerable = !!desc.enumerable
+  desc.configurable = !!desc.configurable
 
-  if ("value" in desc || desc.initializer) {
-    desc.writable = true;
+  if ('value' in desc || desc.initializer) {
+    desc.writable = true
   }
 
   desc = decorators
     .slice()
     .reverse()
-    .reduce(function(desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
+    .reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc
+    }, desc)
 
   if (context && desc.initializer !== void 0) {
-    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-    desc.initializer = undefined;
+    desc.value = desc.initializer ? desc.initializer.call(context) : void 0
+    desc.initializer = undefined
   }
 
   if (desc.initializer === void 0) {
-    Object["define" + "Property"](target, property, desc);
-    desc = null;
+    Object['define' + 'Property'](target, property, desc)
+    desc = null
   }
 
-  return desc;
+  return desc
 }
 
 function fast(target, name, descriptor) {
-  target.speed = 20;
-  let run = descriptor.value;
-  descriptor.value = function() {
-    run();
-    console.log(`speed ${this.speed}`);
-  };
-  return descriptor;
+  target.speed = 20
+  let run = descriptor.value
+  descriptor.value = function () {
+    run()
+    console.log(`speed ${this.speed}`)
+  }
+  return descriptor
 }
 
 let Rabbit =
   ((_class = class Rabbit {
     run() {
-      console.log("running~");
+      console.log('running~')
     }
   }),
   _applyDecoratedDescriptor(
     _class.prototype,
-    "run",
+    'run',
     [fast],
-    Object.getOwnPropertyDescriptor(_class.prototype, "run"),
+    Object.getOwnPropertyDescriptor(_class.prototype, 'run'),
     _class.prototype
   ),
-  _class);
+  _class)
 
-var bunny = new Rabbit();
+var bunny = new Rabbit()
 
-bunny.run();
+bunny.run()
 // running~
 // speed 20
 
-console.log(bunny.speed); // 20
+console.log(bunny.speed) // 20
 ```
 
 很显然 `babel-plugin-transform-decorators-legacy` 转义的考虑了多个装饰器的情况
@@ -244,7 +244,7 @@ console.log(bunny.speed); // 20
 ## 更多玩法
 
 ```js
-import { override } from "core-decorators";
+import { override } from 'core-decorators'
 // 限制重载提示
 class Parent {
   speak(first, second) {}
@@ -264,30 +264,30 @@ class Child extends Parent {
 ```
 
 ```js
-import { deprecate } from "core-decorators";
+import { deprecate } from 'core-decorators'
 
 class Person {
   @deprecate
   facepalm() {}
 
-  @deprecate("We stopped facepalming")
+  @deprecate('We stopped facepalming')
   facepalmHard() {}
 
-  @deprecate("We stopped facepalming", {
-    url: "http://knowyourmeme.com/memes/facepalm"
+  @deprecate('We stopped facepalming', {
+    url: 'http://knowyourmeme.com/memes/facepalm'
   })
   facepalmHarder() {}
 }
 
-let person = new Person();
+let person = new Person()
 
-person.facepalm();
+person.facepalm()
 // DEPRECATION Person#facepalm: This function will be removed in future versions.
 
-person.facepalmHard();
+person.facepalmHard()
 // DEPRECATION Person#facepalmHard: We stopped facepalming
 
-person.facepalmHarder();
+person.facepalmHarder()
 // DEPRECATION Person#facepalmHarder: We stopped facepalming
 // See http://knowyourmeme.com/memes/facepalm for more details.
 ```

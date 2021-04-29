@@ -6,7 +6,7 @@ Ubuntu 下 apt-get 安装的
 
 ```yaml
 /var/log/nginx # 日志目录
-/usr/share/nginx # 安装陌路
+/usr/share/nginx # 安装目录
 /etc/nginx # 配置目录
 ```
 

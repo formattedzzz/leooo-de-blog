@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#
+# check whether current directory is inside a git repository
+#
+
+is_git_repo() {
+  git rev-parse --show-toplevel >/dev/null 2>&1
+  result=$?
+  if test $result != 0; then
+    echo >&2 'Not a git repo!'
+    exit $result
+  fi
+}
+
+echo is_git_repo

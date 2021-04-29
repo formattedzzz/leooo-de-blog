@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function initGtag() {
+        console.log('initGtag', dataLayer)
+        window.dataLayer = window.dataLayer || []
+        function gtag() {
+          dataLayer.push(arguments)
+        }
+        gtag('js', new Date())
+        gtag('config', 'UA-64451198-7')
+      }
+    </script>
+    <script
+      defer
+      src="https://www.googletagmanager.com/gtag/js?id=UA-64451198-7&a=9"
+      onload="initGtag()"
+    ></script>
+  </head>
+  <body>
+    https://www.googletagmanager.com/gtag/js?id=UA-64451198-7&a=n
+    https://www.googletagmanager.com/gtag/js?id=UA-64451198-7&a=n
+    https://www.googletagmanager.com/gtag/js?id=UA-64451198-7&a=n
+  </body>
+</html>
