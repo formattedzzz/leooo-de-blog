@@ -97,7 +97,7 @@
 - [`react` 之 `protal`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`node` 子进程、子线程](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`lavas` 粗读总结](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/service-worker.md)
-- [`TypeScript` 练习札记](https://github.com/formattedzzz/fe-notes/blob/master/src/TS/src/index.md)
+- [`TypeScript` 练习札记](https://github.com/formattedzzz/fe-notes/blob/master/example/TS/src/index.md)
 - [一些算法题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/algorithms/index.md)
 - [动态规划基本思路](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/algorithms/index-1.md)
 - [怎么判断页面内存泄露或溢出](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
