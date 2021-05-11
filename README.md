@@ -65,7 +65,7 @@
 - [`react` 组件混入、复用、赋能](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-component.md)
 - [`react` 写一个 useEvent `hooks`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`react` 用 `puppeteer` 来测试组件](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-test.md)
-- [`react` 重新认识 `Suspense`](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-suspense.md)
+- [`react` 认识 `Suspense`](https://github.com/formattedzzz/fe-notes/blob/master/src/REACT/react-suspense.md)
 
 ## other
 
@@ -97,8 +97,9 @@
 - [`react` 之 `protal`](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`node` 子进程、子线程](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [`lavas` 粗读总结](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/service-worker.md)
-- [`TypeScript` 练习札记](https://github.com/formattedzzz/fe-notes/blob/master/src/TS/src/index.ts)
+- [`TypeScript` 练习札记](https://github.com/formattedzzz/fe-notes/blob/master/src/TS/src/index.md)
 - [一些算法题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/algorithms/index.md)
+- [动态规划基本思路](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/algorithms/index-1.md)
 - [怎么判断页面内存泄露或溢出](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [js 的内存模型](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [webpack 异步模块加载原理](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)

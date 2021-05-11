@@ -79,7 +79,7 @@ async function gen() {
 }
 window.gen = gen
 
-debugger;
+// debugger;
 function* genfunc(num) {
   const res1 = 2 * (yield num)
   console.log(res1) // 12
@@ -92,3 +92,47 @@ const res = genfunc(5)
 console.log(res.next()) // 5
 console.log(res.next(6)) // 4
 console.log(res.next(4)) // 40
+
+fetch("http://127.0.0.1:5500/example/esm/lib-2.js", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "if-modified-since": "Sun, 09 May 2021 14:21:39 GMT",
+    "if-none-match": "W/\"2d-179518150ca\"",
+    "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Google Chrome\";v=\"90\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-fetch-dest": "script",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin"
+  },
+  "referrer": "http://127.0.0.1:5500/example/esm/lib.js",
+  "referrerPolicy": "strict-origin-when-cross-origin",
+  "body": null,
+  "method": "GET",
+  "mode": "cors",
+  "credentials": "include"
+}).then(res => {
+  return res.text()
+}).then(res => {
+  console.log(res)
+})
+
+// fetch("http://127.0.0.1:5500/example/esm/lib-1.js", {
+//   "headers": {
+//     "accept": "*/*",
+//     "accept-language": "zh-CN,zh;q=0.9",
+//     "cache-control": "max-age=0",
+//     "if-modified-since": "Sun, 09 May 2021 14:21:39 GMT",
+//     "if-none-match": "W/\"2d-179518150ca\"",
+//     "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Google Chrome\";v=\"90\"",
+//     "sec-ch-ua-mobile": "?0",
+//     "sec-fetch-dest": "empty",
+//     "sec-fetch-mode": "cors",
+//     "sec-fetch-site": "same-origin"
+//   },
+//   "referrer": "http://127.0.0.1:5500/example/esm/lib.js",
+//   "referrerPolicy": "strict-origin-when-cross-origin",
+//   "body": null,
+//   "method": "GET",
+//   "mode": "cors"
+// });
