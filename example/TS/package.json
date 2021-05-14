@@ -1,0 +1,17 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "ts-learn",
+  "main": "build/index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc && node ./build/index.js"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "leooo",
+  "license": "MIT"
+}
