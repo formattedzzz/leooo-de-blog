@@ -44,9 +44,11 @@
     |   |-- index.js
     |   |-- tray.png
     |-- EXTENSION
+    |   |-- download.js
     |   |-- icon.png
     |   |-- index.html
     |   |-- mainfest.json
+    |   |-- utils.js
     |-- INTERVIEW
     |   |-- .DS_Store
     |   |-- index.md

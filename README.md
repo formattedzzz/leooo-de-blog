@@ -1,4 +1,4 @@
-# 好记性不如烂笔头 边读、边实践、边记录
+# 牧码人的编码日志～～
 
 ## css
 
@@ -7,7 +7,7 @@
 - [`margin` 在 FFC、GFC 中的妙用](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/common/ffc-margin.md)
 - [`vertical-align` 属性](https://github.com/formattedzzz/fe-notes/blob/master/src/CSS/text-over/index.md)
 - [`clip-path` 属性](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
-- [写一个滚动视差效果](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [滚动视差](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [浮动布局中的负边距问题](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 
 ## javascript
@@ -56,6 +56,7 @@
 - [`node` 内置模块实践](https://github.com/formattedzzz/fe-notes/blob/master/src/NODE/index.md)
 - [`node` 浅入 `npm` 依赖机制](https://github.com/formattedzzz/fe-notes/blob/master/src/NODE/peer-dependency.md)
 - [`node` 处理静态资源、实现视频云点播的效果](https://github.com/formattedzzz/leo-build-wx/blob/master/summary/video-flow.md)
+- [`weapp` 小程序新版 canvas2d](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/weapp-canvas.md)
 
 ## react
 
@@ -107,6 +108,8 @@
 - [js 怎么写一个 hash 生成器](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [基于大对象的快照思路](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 - [js 与 ts 的交叉口 index.d.ts](https://www.cnblogs.com/silin6/p/7793753.html)
+- [echarts 实例被 vue3 reactive 之后会发生什么？](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
+- [electron 打包大小优化实践](https://github.com/formattedzzz/fe-notes/blob/master/src/OTHER/todo.md)
 
 ## 碎片化的笔记、思考、想法
 
