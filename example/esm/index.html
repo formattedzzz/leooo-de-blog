@@ -17,5 +17,22 @@
         })
       })
     </script>
+    <script>
+      // function handle(event) {
+      //   var e = event || window.event || arguments.callee.caller.arguments[0]
+      //   console.log(e)
+      //   if (e && e.keyCode == 123) {
+      //     alert('禁止打开控制台')
+      //     e.returnValue = false
+      //     return false
+      //   }
+      // }
+      // document.addEventListener('keyup', handle)
+      document.querySelector('button').addEventListener('contextmenu', ev => {
+        ev.preventDefault()
+        ev.stopPropagation()
+        return false
+      })
+    </script>
   </body>
 </html>

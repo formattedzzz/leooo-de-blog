@@ -139,6 +139,7 @@
     |   |-- thoughts-2.md
     |   |-- thoughts-3.md
     |   |-- todo.md
+    |   |-- weapp-canvas.md
     |   |-- algorithms
     |   |   |-- index-1.js
     |   |   |-- index-1.md

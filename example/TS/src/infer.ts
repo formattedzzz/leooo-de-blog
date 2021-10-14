@@ -45,3 +45,7 @@ type Tuple = [string, number]
 type TupleArray = Array<string | number>
 const tuple: Tuple = ['', 12]
 type ok = Tuple extends TupleArray ? true : false
+
+let num: number = 12_3456.3_456
+
+console.log(num)
