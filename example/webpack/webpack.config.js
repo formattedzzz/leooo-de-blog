@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 /**
@@ -58,14 +59,44 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
  * @param {自定义plugin探究}
  */
 
-// const LeoPlugin = require('./leo-plugin.js')
-function LeoPlugin() {}
+class LeoooPlugin {
+  apply(compiler) {
+    console.log(compiler)
+  }
+}
+
 module.exports = {
+  mode: 'production',
   entry: {
     app: './src-2/app.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist')
+    // libraryTarget: 'commonjs'
   },
-  plugins: [new CleanWebpackPlugin(), new LeoPlugin()]
+  module: {
+    rules: [
+      {
+        test: /\.md$/,
+        use: [
+          {
+            loader: path.resolve(__dirname, './loader/md.js'),
+            options: {
+              name: 'leooo',
+              age: 18
+            }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'webpack-test',
+      filename: 'index.html',
+      template: './index.html'
+    }),
+    new LeoooPlugin()
+  ]
 }

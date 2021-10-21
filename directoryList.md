@@ -52,7 +52,6 @@
     |-- INTERVIEW
     |   |-- .DS_Store
     |   |-- index.md
-    |   |-- resume.md
     |-- JS
     |   |-- .DS_Store
     |   |-- babel
@@ -147,7 +146,6 @@
     |   |   |-- index.js
     |   |   |-- index.md
     |   |   |-- kmp.js
-    |   |   |-- possibility.js
     |   |   |-- test.js
     |   |-- java
     |   |   |-- HelloWorld.class
@@ -156,8 +154,12 @@
     |   |   |-- linux.md
     |   |   |-- network.md
     |   |-- nginx
+    |   |   |-- centos-init.conf
+    |   |   |-- index.html
+    |   |   |-- nginx-bak.conf
     |   |   |-- nginx.conf
     |   |   |-- nginx.md
+    |   |   |-- theshy.conf
     |   |-- puppeteer
     |   |   |-- index.js
     |   |   |-- index.md
@@ -173,8 +175,6 @@
     |   |-- react-portal.md
     |   |-- react-suspense.md
     |   |-- react-test.md
-    |-- SQL
-    |   |-- index-1.sql
     |-- VUE
         |-- vue-init.html
         |-- vue-init.js

@@ -27,22 +27,13 @@
 **(?=exp)** 关于问号前瞻
 
 ```js
-'bing abcing'
-  .match(/\b\w+(?=ing)/g)(
-    // ["b", "abc"]
+'1234567890'.replaceAll(/\B(?=(\d{3})+(?!\d))/g, ($0,$1)=>$0+',')
+String(num).replaceAll(/\d(?=(\d{3})+(\.|$))/g, '$&,')
 
-    /\b\w+(?:ing)/g
-  )
-  .match(
-    // ["bing", "abcing"]
-    'bingcvb abcingnpm'
-  )
-  .match(/(?<=ing)\w+\b/g)(
-    // ["cvb", "npm"]
-    'bingcvb abcingnpm'
-  )
-  .match(/(?=ing)\w+\b/g)
-// ["ingcvb", "ingnpm"]
+'bing abcing'.match(/\b\w+(?=ing)/g) // ["b", "abc"]
+'bing abcing'.match(/\b\w+(?:ing)/g) // ['bing', 'abcing']
+'bingcvb abcingnpm'.match(/(?<=ing)\w+\b/g) // ["cvb", "npm"]
+'bingcvb abcingnpm'.match(/(?=ing)\w+\b/g) // ['ingcvb', 'ingnpm']
 ```
 
 **正则匹配规则需要传参数**时需要调用 RegExp 构造函数显式神申明
@@ -61,7 +52,7 @@ slice(start, end) // 返回新的 原array不受影响
 splice(start, length, ...item) // 返回被删除的 原array会受影响
 ```
 
-#### canvas.toDataURL( ) 图片跨域问题
+#### canvas.toDataURL() 图片跨域问题
 
 - 转化为 base64 的方式
 - 获取 blob 的方式

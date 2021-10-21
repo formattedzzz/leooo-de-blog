@@ -1,3 +1,6 @@
+# js 实现复数类
+
+```js
 function Complex(R, I) {
   if (isNaN(R) || isNaN(I)) {
     throw new TypeError('Complex params require Number')
@@ -65,6 +68,11 @@ Complex.parse = function(s) {
 }
 Complex.parseRegExp = /^\{([\d\s]+[^,]*),([\d\s]+[^}]*)\}$/
 // console.log(/^\{([\d\s]+[^,]*),([\d\s]+[^}]*)\}$/.exec('{2,3}'));
+```
+
+测试
+
+```js
 // 示例代码
 var c = new Complex(2, 3)
 var d = new Complex(2, 5)
@@ -79,3 +87,4 @@ console.log(c.divide(d).toString(), Complex.parse('{2h, 09d}').mo())
 
 // 共轭复数 得出的结果是普通实数了
 console.log(new Complex(2, 3).multiply(new Complex(2, -3)))
+```
