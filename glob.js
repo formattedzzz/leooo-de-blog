@@ -46,8 +46,10 @@ console.log(tool.isPrimitive(obj))
  */
 let timerMap = {}
 function interval(cb, inter) {
-  const mark = Math.random().toString(36).slice(8)
-  const inner = function () {
+  const mark = Math.random()
+    .toString(36)
+    .slice(8)
+  const inner = function() {
     cb && cb()
     clearTimeout(interval[mark])
     interval[mark] = setTimeout(inner, inter)
@@ -75,7 +77,29 @@ class A {
   }
 }
 
-class B extends A {
-
-}
+class B extends A {}
 new B().log()
+
+Function.prototype.after = function(afterfunc) {
+  const self = this
+  return function() {
+    let result = self.apply(this, arguments)
+    if (result === 'next') {
+      result = afterfunc.apply(this, arguments)
+    }
+    return result
+  }
+}
+
+const add1 = function(a, b) {
+  console.log(a, b)
+  return 'next'
+}
+const add2 = function(a, b) {
+  console.log(a, b)
+  return 'next'
+}
+const add3 = function(a, b) {
+  console.log(a, b)
+}
+add1.after(add2).after(add3)
