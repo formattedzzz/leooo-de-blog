@@ -1,3 +1,31 @@
+# 多行文本溢出处理终极方式
+
+## CSS 大法
+
+```html
+<style>
+  .multi-clamp {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 3;
+    box-orient: vertical;
+  }
+</style>
+```
+
+缺点：只能显示省略号 不能自定义文本。且展开折叠需要通过 js 切换类名实现。
+
+## js 模拟处理
+
+要点：
+
+- 1、获取容器的 contentHeight 即内容高度 offsetHeight - border - padding
+- 2、获取行高。得出有多少行。如果行数不超出，直接 return
+- 3、确定 innerText 中到底是第几个字符开始换临界行。(利用二分法快速找出)
+- 4、操作容器 innerHTML 并初始化点击事件
+
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -59,8 +87,10 @@
           if (result === 0) return mid
         }
       }
+      // 具体实现
       class MultiClamp {
         constructor(element, config = params || {}) {
+          // 设置默认配置，并将用户配置添加到this
           Object.assign(
             this,
             {
@@ -175,3 +205,4 @@
     </script>
   </body>
 </html>
+```

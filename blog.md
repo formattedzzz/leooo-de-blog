@@ -14,6 +14,7 @@
 - [h5 `webworker` 处理复杂计算](https://github.com/formattedzzz/fe-notes/blob/master/src/webworker.md)
 - [h5 弹窗滚动穿透常见解法](https://github.com/formattedzzz/fe-notes/blob/master/src/popup.md)
 - [css 页面滚动特效总结一二](https://github.com/formattedzzz/fe-notes/blob/master/src/scroll.md)
+- [css 多行文本溢出处理终极方式](https://github.com/formattedzzz/fe-notes/blob/master/src/text-over.md)
 - [针对图片流加载优化的大致思路](https://github.com/formattedzzz/fe-notes/blob/master/src/image-flow.md)
 - [浏览器渲染基本机制](https://github.com/formattedzzz/fe-notes/blob/master/src/base-render.md)
 - [基于大对象的快照思路](https://github.com/formattedzzz/fe-notes/blob/master/src/todo.md)
