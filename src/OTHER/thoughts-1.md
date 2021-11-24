@@ -30,7 +30,7 @@ function LazyLoad(el, options) {
 
 LazyLoad.prototype = {
   loadImage() {
-    return throttle(function () {
+    return throttle(function() {
       let startIndex = 0
       while (startIndex < this.images.length) {
         const image = this.images[startIndex]
@@ -111,7 +111,7 @@ tcp 连接复用 会 catch 住一定的服务器资源
 
 ```js
 function logLoadInfo() {
-  setTimeout(function () {
+  setTimeout(function() {
     let t = performance.timing
     console.log(
       'DNS查询耗时' + (t.domainLookupEnd - t.domainLookupStart).toFixed(0),
@@ -202,7 +202,7 @@ function A(func) {
   func()
   arguments[0]()
 }
-A(function () {
+A(function() {
   console.log(this)
 })
 ```
@@ -243,7 +243,7 @@ delegate(
   document.querySelector('body'),
   '.list-group-item',
   'click',
-  function () {
+  function() {
     console.log('bingo')
   }
 )
@@ -343,7 +343,7 @@ const app = new Vue({
 /**
  * 挂载 Vue 渲染好的 HTML 元素到 #app 中  替换掉骨架屏
  */
-window.mount = function () {
+window.mount = function() {
   app.$mount('#app')
 }
 ```
@@ -368,7 +368,7 @@ const app = new Vue({
   template: '<App/>'
 })
 // 挂载 Vue 渲染好的 HTML 元素到 #app 中  替换掉骨架屏
-window.mount = function () {
+window.mount = function() {
   app.$mount('#app')
 }
 // 如果样式文件已经加载完成了  直接挂载
@@ -567,16 +567,16 @@ function ajax(options) {
     xhr = new ActiveXObject('Microsoft.XMLHTTP')
   }
   xhr.timeout = timeout
-  xhr.onreadystatechange = function () {
+  xhr.onreadystatechange = function() {
     if (xhr.readyState === 4 && xhr.status === 200) {
       console.log('everything-ok:', xhr)
       success && success(xhr.responseText)
     }
   }
-  xhr.onabort = function () {
+  xhr.onabort = function() {
     console.log('请求停止...')
   }
-  xhr.ontimeout = function () {
+  xhr.ontimeout = function() {
     console.log('请求超时...')
   }
   xhr.open(method, url, async)
@@ -596,11 +596,6 @@ var reqIns = ajax({ url, timeout: 100 })
 ```js
 function jsonp({ url, params, cb }) {
   return new Promise((resolve, reject) => {
-    window[cb] = function (data) {
-      // 声明全局变量
-      resolve(data)
-      document.body.removeChild(script)
-    }
     params = { ...params, cb }
     let arrs = []
     for (let key in params) {
@@ -609,6 +604,11 @@ function jsonp({ url, params, cb }) {
     let script = document.createElement('script')
     script.src = `${url}?${arrs.join('&')}`
     document.body.appendChild(script)
+    window[cb] = function(data) {
+      // 声明全局变量
+      resolve(data)
+      document.body.removeChild(script)
+    }
   })
 }
 ```
@@ -780,7 +780,7 @@ function loop(curTotal, curIndex) {
   //   loop(curTotal - pageCount, curIndex + pageCount);
   // });
   // 通过 `window.requestAnimationFrame` 接口让浏览器根据实际情况来调度分片
-  window.requestAnimationFrame(function () {
+  window.requestAnimationFrame(function() {
     for (let i = 0; i < pageCount; i++) {
       let li = document.createElement('li')
       li.innerText = curIndex + i + ' : ' + ~~(Math.random() * total)

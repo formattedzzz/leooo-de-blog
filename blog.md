@@ -7,6 +7,7 @@
 - [js promise 容易踩的坑](https://github.com/formattedzzz/fe-notes/blob/master/src/js-promise.md)
 - [js `toString` 跟 `valueOf`](https://github.com/formattedzzz/fe-notes/blob/master/src/js-tostring.md)
 - [js 定时任务扩展](https://github.com/formattedzzz/fe-notes/blob/master/src/js-timer.md)
+- [js generate函数处理异步任务](https://github.com/formattedzzz/fe-notes/blob/master/src/js-generate.md)
 - [sed 简明用法](https://github.com/formattedzzz/fe-notes/blob/master/src/shell-sed.md)
 - [ts 中的 `infer` 关键字](https://github.com/formattedzzz/fe-notes/blob/master/src/ts-infer.md)
 - [ts 联合类型约束](https://github.com/formattedzzz/fe-notes/blob/master/src/ts-union.md)

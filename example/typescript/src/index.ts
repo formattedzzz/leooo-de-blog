@@ -221,12 +221,3 @@ function swap<T, U>(tuple: [T, U]): [U, T] {
   return [tuple[1], tuple[0]];
 }
 swap<number, string>([7, 'seven']); // ['seven', 7]
-
-interface Date2 extends Date {
-  log(): void
-}
-class Date2Face extends Date {
-  log() { }
-}
-let date2: Date2 = new Date2Face()
-console.log(date2)

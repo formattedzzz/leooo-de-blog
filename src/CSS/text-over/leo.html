@@ -2,33 +2,69 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      .leo {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        padding-top: 12px;
-        padding-left: 12px;
-        background: #eee;
+    <style lang="css">
+      .box {
+        width: 1000px;
+        height: 500px;
+        display: grid;
+        grid-template-columns: 1fr 2fr auto;
+        grid-gap: 4px 8px;
+        /* grid-template-rows: repeat(4, 1fr); */
+        grid-template-rows: repeat(auto-fill, 100px);
+        background: #000 !important;
       }
-      .leo > div {
-        background: #fff;
-        width: auto;
-        flex-shrink: 0;
-        margin-bottom: 12px;
-        margin-right: 24px;
+      .box-c {
+        background: #666;
+      }
+      .box-c-4 {
+        grid-column: 1 / 3;
+        grid-row: 1 / 3;
       }
     </style>
   </head>
   <body>
-    <div class="leo">
-      <div>民警随即丝丝</div>
-      <div>民警随即丝丝测试框架</div>
-      <div>阿三开多久能看见</div>
-      <div>萨达茶大声疾呼</div>
-      <div>是看见你的数控机床呢</div>
+    <div class="box">
+      <div class="box-c box-c-4">1</div>
+      <div class="box-c">2</div>
+      <div class="box-c">3333333</div>
+      <div class="box-c">4</div>
+      <div class="box-c">5</div>
+      <div class="box-c">6</div>
+      <div class="box-c">7</div>
+      <div class="box-c">8</div>
+      <!-- <div class="box-c">9</div> -->
     </div>
+    <div id="error">error</div>
+    <div id="reject">reject</div>
   </body>
+  <script>
+    let a = 1
+    let b = 2
+    const c = 'nihao'
+    let d = function(pa, pb) {
+      var e = 3
+      console.log(pa + pb)
+      return () => {
+        console.log(e + c)
+      }
+    }
+    let f = d()
+    f()
+  </script>
+  <script>
+    window.addEventListener(
+      'error',
+      function() {
+        console.log(error, arguments)
+      },
+      true
+    )
+    window.addEventListener('unhandledrejection', function() {
+      console.log(error, arguments)
+    }, true)
+  </script>
+  <script src="./miaov.js"></script>
 </html>
