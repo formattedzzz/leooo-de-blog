@@ -2,7 +2,7 @@
 
 - [js 中奇葩的赋值](https://github.com/formattedzzz/fe-notes/blob/master/src/js-assign.md)
 - [js 实现复数类](https://github.com/formattedzzz/fe-notes/blob/master/src/js-complex.md)
-- [js 构造迭代器](https://github.com/formattedzzz/fe-notes/blob/master/src/js-iterator.md)
+- [js 对普通对象构造迭代器](https://github.com/formattedzzz/fe-notes/blob/master/src/js-iterator.md)
 - [js 基于场景值的触发器](https://github.com/formattedzzz/fe-notes/blob/master/src/js-event.md)
 - [js promise 容易踩的坑](https://github.com/formattedzzz/fe-notes/blob/master/src/js-promise.md)
 - [js `toString` 跟 `valueOf`](https://github.com/formattedzzz/fe-notes/blob/master/src/js-tostring.md)
@@ -12,10 +12,13 @@
 - [ts 中的 `infer` 关键字](https://github.com/formattedzzz/fe-notes/blob/master/src/ts-infer.md)
 - [ts 联合类型约束](https://github.com/formattedzzz/fe-notes/blob/master/src/ts-union.md)
 - [node `pipeline` 处理静态资源](https://github.com/formattedzzz/fe-notes/blob/master/src/node-pipe.md)
+
 - [h5 `webworker` 处理复杂计算](https://github.com/formattedzzz/fe-notes/blob/master/src/webworker.md)
 - [h5 弹窗滚动穿透常见解法](https://github.com/formattedzzz/fe-notes/blob/master/src/popup.md)
 - [css 页面滚动特效总结一二](https://github.com/formattedzzz/fe-notes/blob/master/src/scroll.md)
 - [css 多行文本溢出处理终极方式](https://github.com/formattedzzz/fe-notes/blob/master/src/text-over.md)
+- [css 移动端双sticky布局方案对比](https://github.com/formattedzzz/fe-notes/blob/master/src/todo.md)
+
 - [针对图片流加载优化的大致思路](https://github.com/formattedzzz/fe-notes/blob/master/src/image-flow.md)
 - [浏览器渲染基本机制](https://github.com/formattedzzz/fe-notes/blob/master/src/base-render.md)
 - [基于大对象的快照思路](https://github.com/formattedzzz/fe-notes/blob/master/src/todo.md)
@@ -23,7 +26,11 @@
 - [`git` `hooks`实现应用自动部署](https://github.com/formattedzzz/fe-notes/blob/master/src/git-hooks.md)
 - [[转] webpack 的异步加载原理及分包策略](https://segmentfault.com/a/1190000038180453)
 
-- [接口的幂等性测试](https://github.com/formattedzzz/fe-notes/blob/master/src/idempotency.md)
+- [接口的幂等性设计](https://github.com/formattedzzz/fe-notes/blob/master/src/idempotency.md)
+
+- [iOS jsbridge 通讯简要分析](https://github.com/formattedzzz/fe-notes/blob/master/src/jsbridge.md)
+
+- [面试题 多叉树获取ID路径(递归回溯)](https://github.com/formattedzzz/fe-notes/blob/master/src/multi-tree.md)
 
 - [go `select`语句](https://github.com/formattedzzz/fe-notes/blob/master/src/go-select.md)
 - [go `struct` 转 `map`](https://github.com/formattedzzz/fe-notes/blob/master/src/go-struct2map.md)

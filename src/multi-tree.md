@@ -1,3 +1,8 @@
+# 多叉树
+
+## 多叉树的遍历
+
+```js
 var treeData = [
   {
     id: 1,
@@ -132,9 +137,84 @@ function wideRange(treeData, id) {
   return { nodes, result }
 }
 
-// console.log(deepRange(treeData, 11112))
-// console.log(wideRange(treeData, 11112))
-console.log(getIdPath(treeData, 11121))
+console.log(deepRange(treeData, 11112))
+console.log(wideRange(treeData, 11111))
+
+// {
+//   nodes: [
+//     '1江西省',     '11赣州市',
+//     '111南康区',   '1111凤岗镇',
+//     '11111天子村', '11112长江村',
+//     '1112唐江镇',  '11121唐平村',
+//     '112经开区',   '12南昌市',
+//     '121昌东区',   '1211昌平镇',
+//     '1212昌柳镇',  '122红谷滩区',
+//     '2湖南省'
+//   ],
+//   result: '长江村'
+// }
+// {
+//   nodes: [
+//     '1江西省',     '2湖南省',
+//     '11赣州市',    '12南昌市',
+//     '111南康区',   '112经开区',
+//     '121昌东区',   '122红谷滩区',
+//     '1111凤岗镇',  '1112唐江镇',
+//     '1211昌平镇',  '1212昌柳镇',
+//     '11111天子村', '11112长江村',
+//     '11121唐平村'
+//   ],
+//   result: '天子村'
+// }
+```
+
+## 多叉树的还原
+
+```js
+const flatData = [
+  { parentid: null, id: 1, name: '江西省' },
+  { parentid: null, id: 2, name: '湖南省' },
+  { parentid: 1, id: 11, name: '赣州市' },
+  { parentid: 1, id: 12, name: '南昌市' },
+  { parentid: 11, id: 111, name: '南康区' },
+  { parentid: 11, id: 112, name: '经开区' },
+  { parentid: 12, id: 121, name: '昌东区' },
+  { parentid: 12, id: 122, name: '红谷滩区' },
+  { parentid: 111, id: 1111, name: '凤岗镇' },
+  { parentid: 111, id: 1112, name: '唐江镇' },
+  { parentid: 121, id: 1211, name: '昌平镇' },
+  { parentid: 121, id: 1212, name: '昌柳镇' },
+  { parentid: 1111, id: 11111, name: '天子村' },
+  { parentid: 1111, id: 11112, name: '长江村' },
+  { parentid: 1112, id: 11121, name: '唐平村' }
+]
+
+const buildTree = (flatData = []) => {
+  if (!flatData.length) return []
+  var treeData = []
+  var tempMap = new Map()
+  // 我们通过一个map结构的引用关系来扁平化层级关系
+  flatData.forEach(v => tempMap.set(v.id, v))
+  flatData.forEach(v => {
+    if (!tempMap.get(v.parentid)) {
+      tempMap.get(v.id).children = []
+      treeData.push(v)
+    } else {
+      const parentNode = tempMap.get(v.parentid)
+      parentNode.children
+        ? parentNode.children.push(v)
+        : (parentNode.children = [v])
+    }
+  })
+  return treeData
+}
+
+console.log(JSON.stringify(buildTree(flatData), null, 2))
+```
+
+## 多叉树获取 ID 路径
+
+```js
 function getIdPath(tree, target) {
   const nodeIdPath = []
   let res = []
@@ -167,44 +247,4 @@ function getIdPath(tree, target) {
     }
   }
 }
-
-// function getWeakMap() {
-//   const o1 = {}
-//   window.o1 = o1
-//   const weakmap = new WeakMap()
-//   weakmap.set(o1, {})
-//   return weakmap
-// }
-// const res = getWeakMap()
-// console.log(res)
-// window.o1 = null
-
-// function backtrack() {
-//   let res = []
-//   let used = []
-
-//   function dfs(depth, path) {
-//     // depth表示当前所在的阶段
-//     // 递归终止条件
-//     if (depth === len) {
-//       res.push(path)
-//       return
-//     }
-
-//     // 针对当前depth尝试所有可能的结果
-//     for (let i = 0; i < len; i++) {
-//       if (!used[i]) {
-//         // 此路不通的标记
-//         path.push(nums[i])
-//         used[i] = true
-
-//         // depth+1 前往下一个阶段
-//         dfs(depth + 1, path)
-
-//         // 重置本阶段状态，尝试本阶段的其他可能
-//         used[i] = false
-//         path.pop()
-//       }
-//     }
-//   }
-// }
+```
