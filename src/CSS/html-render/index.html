@@ -5,26 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script>
-      function initGtag() {
-        console.log('initGtag', dataLayer)
-        window.dataLayer = window.dataLayer || []
-        function gtag() {
-          dataLayer.push(arguments)
-        }
-        gtag('js', new Date())
-        gtag('config', 'UA-64451198-7')
+    <style>
+      .div1 {
+        width: 200px;
+        float: left;
+        height: 50vh;
+        background: #eee;
       }
-    </script>
-    <script
-      defer
-      src="https://www.googletagmanager.com/gtag/js?id=UA-64451198-7&a=9"
-      onload="initGtag()"
-    ></script>
+      .div2 {
+        position: relative;
+        background: #ddd5;
+      }
+      .div2 span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #f33;
+        font-size: 20px;
+      }
+    </style>
   </head>
   <body>
-    https://www.googletagmanager.com/gtag/js?id=UA-64451198-7&a=n
-    https://www.googletagmanager.com/gtag/js?id=UA-64451198-7&a=n
-    https://www.googletagmanager.com/gtag/js?id=UA-64451198-7&a=n
+    <div class="div1">
+      是计算机技术就是说你是是今生今世是计算机技术就是说你是是今生今世
+    </div>
+    <div class="div1">
+      是计算机技术就是说你是是今生今世是计算机技术就是说你是是今生今世
+    </div>
+    <div class="div2">
+      <span>nmoooooooo</span>
+      --是计算机技术就是说你是是今生今世是计算机技术就是说你是是今生今世是计算机技术就是说你是是今生今世是计算机技术就是说你是是今生今世是计算机技术就是说你是是今生今世--
+    </div>
   </body>
 </html>

@@ -1,6 +1,8 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const HtmlWebpackPlugin = require('html-webpack-plugin')
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const webpack = require('webpack')
 
 /**
  * @param {模块化原理}
@@ -65,38 +67,64 @@ class LeoooPlugin {
   }
 }
 
+// module.exports = {
+//   mode: 'production',
+//   entry: {
+//     app: './src-2/app.js'
+//   },
+//   output: {
+//     path: path.resolve(__dirname, 'dist')
+//     // libraryTarget: 'commonjs'
+//   },
+//   module: {
+//     rules: [
+//       {
+//         test: /\.md$/,
+//         use: [
+//           {
+//             loader: path.resolve(__dirname, './loader/md.js'),
+//             options: {
+//               name: 'leooo',
+//               age: 18
+//             }
+//           }
+//         ]
+//       }
+//     ]
+//   },
+//   plugins: [
+//     new CleanWebpackPlugin(),
+//     new HtmlWebpackPlugin({
+//       title: 'webpack-test',
+//       filename: 'index.html',
+//       template: './index.html'
+//     }),
+//     new LeoooPlugin()
+//   ]
+// }
+
+/**
+ * @param {vue-loader探究}
+ */
+
 module.exports = {
-  mode: 'production',
   entry: {
-    app: './src-2/app.js'
+    index: './src-3/index.vue'
   },
   output: {
     path: path.resolve(__dirname, 'dist')
-    // libraryTarget: 'commonjs'
   },
   module: {
     rules: [
       {
-        test: /\.md$/,
-        use: [
-          {
-            loader: path.resolve(__dirname, './loader/md.js'),
-            options: {
-              name: 'leooo',
-              age: 18
-            }
-          }
-        ]
-      }
+        test: /\.vue$/,
+        loader: require.resolve('vue-loader')
+      },
+      // {
+      //   test: /\.css$/,
+      //   loader: require.resolve('css-loader')
+      // }
     ]
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'webpack-test',
-      filename: 'index.html',
-      template: './index.html'
-    }),
-    new LeoooPlugin()
-  ]
+  plugins: [new VueLoaderPlugin()]
 }
