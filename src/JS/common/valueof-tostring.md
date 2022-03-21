@@ -104,6 +104,35 @@ Number(null) === 0;
 
   😀 打扰了...
 
+  ```js
+  // 分解
+  (!~+[] + {})[ --[~+""][+[]] * [~+[]] + ~~!+[] ]
+  + 
+  ({} + [])[[~!+[]] * ~+[]]
+
+  // 分解
+  ('false[object Object]')[ --[~+""][+[]] * [~+[]] + ~~!+[] ]
+  + 
+  ('[object Object]')[[~!+[]] * ~+[]]
+
+  // 分解
+  ('false[object Object]')[ --[-1][0] * [-1] + ~~true ]
+  + 
+  ('[object Object]')[[~true] * -1]
+
+  // 分解
+  ('false[object Object]')[ -2 * [-1] + 1 ]
+  + 
+  ('[object Object]')[[-2] * -1]
+
+  // 分解
+  ('false[object Object]')[3]
+  + 
+  ('[object Object]')[2]
+
+  // 'sb'
+  ```
+
 - 总之 见相关流程图
 
 ![process](https://user-gold-cdn.xitu.io/2020/4/21/1719d4f703af20a1?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)

@@ -31,6 +31,14 @@
 
 - [iOS jsbridge 通讯简要分析](https://github.com/formattedzzz/fe-notes/blob/master/src/jsbridge.md)
 
+- [多页面下浏览器通知的单例方案](https://github.com/formattedzzz/fe-notes/blob/master/src/todo.md)
+
+- [spa 页面下文字高亮的存储及复原方案](https://github.com/formattedzzz/fe-notes/blob/master/src/todo.md)
+
+- [浏览器插件给指定 tab 页发送数据的问题](https://github.com/formattedzzz/fe-notes/blob/master/src/todo.md)
+
+- [electron 运行内存过高问题排查](https://github.com/formattedzzz/fe-notes/blob/master/src/todo.md)
+
 - [面试题 多叉树获取 ID 路径(递归回溯)](https://github.com/formattedzzz/fe-notes/blob/master/src/multi-tree.md)
 
 - [go `select`语句](https://github.com/formattedzzz/fe-notes/blob/master/src/go-select.md)

@@ -119,7 +119,7 @@ console.log([...range(0, 5)]) // [0, 1, 2, 3, 4, 5]
 ## 同样的思想 如何让一个对象可以 for of 循环
 
 ```js
-Object.prototype[Symbol.iterator] = function() {
+Object.prototype[Symbol.iterator] = function () {
   const _keys = Object.keys(this)
   let _idx = 0
   return {
@@ -138,10 +138,10 @@ Object.prototype[Symbol.iterator] = function() {
 }
 
 // 或者可以分开定义 通过原型链访问到 next方法
-Object.prototype[Symbol.iterator] = function() {
+Object.prototype[Symbol.iterator] = function () {
   return this
 }
-Object.prototype.next = function() {
+Object.prototype.next = function () {
   const keys = Object.keys(this)
   if (this.__proto__._idx === undefined) {
     this.__proto__._idx = 0
@@ -175,7 +175,7 @@ console.log([...obj])
 ```js
 function reload(arr) {
   if (Array.isArray(arr)) {
-    arr[Symbol.iterator] = function*() {
+    arr[Symbol.iterator] = function* () {
       for (let i = 0; i < this.length; i++) {
         yield [this[i], i]
       }
@@ -196,7 +196,7 @@ function createCommonIterator(from, to, cb) {
   return {
     from,
     to,
-    [Symbol.iterator]: function*() {
+    [Symbol.iterator]: function* () {
       for (var i = this.from; i <= this.to; i++) {
         yield cb(i, this)
       }
@@ -229,7 +229,7 @@ let obj = {
   [s1]: 1,
   a: 2
 }
-// 声明的Symbol属性是不可枚举的 for - in 可以遍历自身属性和原型上的属性ß
+// 声明的Symbol属性是不可枚举的 for - in 可以遍历自身属性和原型上的属性
 for (let key in obj) {
   console.log(obj[key])
 }
@@ -286,7 +286,7 @@ let obj3 = {
     return 123
   }
 }
-console.log(obj++)
+console.log(obj3 + 1) // 124
 
 // Symbol.toStringTag
 let obj5 = {

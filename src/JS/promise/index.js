@@ -57,7 +57,7 @@ class Promise {
         }, 0);
       }
       if (this.status === "pending") {
-        // 记录-》解决异步
+        // 记录——解决异步
         this.onResolvedCallbacks.push(() => {
           setTimeout(() => {
             const x = onFulfilled(this.value);
