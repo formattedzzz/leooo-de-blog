@@ -1381,7 +1381,7 @@ history.go(-1)
 window.onpopstate = function () {}
 ```
 
-#### import    export
+#### import export
 
 ```js
 export let a = 12
@@ -1391,5 +1391,5 @@ export {a}
 
 // 导出重定向
 export {default} from './other-module'
-export * from './other-module'44
+export * from './other-module'
 ```
