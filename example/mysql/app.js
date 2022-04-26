@@ -20,7 +20,7 @@ const ECS_ALIYUN = {
 const ECS_BENDI = {
   host: 'localhost',
   user: 'root',
-  port: 3307,
+  port: 3306,
   database: 'leekbox',
   password: 'lfl730811'
 }
@@ -29,13 +29,16 @@ const ECS_BENDI = {
 // const connection = mysql.createConnection(ECS_ALIYUN)
 const connection = mysql.createConnection(ECS_BENDI)
 
-connection.query('select * from `leekbox`.`table1`;', function (err, results, fields) {
-  if (err) {
-    console.log(err)
-    return
+connection.query(
+  'select * from `leekbox`.`table1`;',
+  function (err, results, fields) {
+    if (err) {
+      console.log(err)
+      return
+    }
+    console.log(results)
   }
-  console.log(results)
-})
+)
 
 // constraint
 // connection.query(
@@ -53,12 +56,12 @@ connection.query('select * from `leekbox`.`table1`;', function (err, results, fi
 
 // app.get('/api/gender', (req, res, next) => {
 //   connection.query(
-//     `SELECT  c.id 
-//         ,c.user_id AS user_id 
-//         ,c.root_id 
-//         ,c.reply_id 
-//         ,u.name 
-//         ,c.content 
+//     `SELECT  c.id
+//         ,c.user_id AS user_id
+//         ,c.root_id
+//         ,c.reply_id
+//         ,u.name
+//         ,c.content
 //         ,c.create_at
 //     FROM \`baoer-comment\` c
 //     JOIN \`baoer-user\` u

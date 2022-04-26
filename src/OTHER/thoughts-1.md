@@ -729,7 +729,7 @@ class component extends Component {
 ## 怎么样做海量数据的高性能渲染（时间分片）
 
 ```js
-;<ul id="container"></ul>
+// <ul id="container"></ul>
 
 // 记录任务开始时间
 let now = Date.now()

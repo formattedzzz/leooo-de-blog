@@ -1,5 +1,13 @@
-public class HelloWorld {
-  public static void main(String[] argv) {
-    System.out.println("leooo");
+
+protected class Leooo {
+  String name;
+  int age;
+  public void Leooo(String name) {
+    name = name;
+    // age = age;
   }
+  public void log() {
+    System.out.println(name + age);
+  }
+
 }

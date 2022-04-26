@@ -18,6 +18,7 @@
 
 - [h5 `webworker` 处理复杂计算](https://github.com/formattedzzz/fe-notes/blob/master/src/webworker.md)
 - [h5 弹窗滚动穿透常见解法](https://github.com/formattedzzz/fe-notes/blob/master/src/popup.md)
+- [虚拟列表简易实现](https://github.com/formattedzzz/fe-notes/blob/master/src/virtual-list.md)
 - [css 页面滚动特效总结一二](https://github.com/formattedzzz/fe-notes/blob/master/src/scroll.md)
 - [css 多行文本溢出处理终极方式](https://github.com/formattedzzz/fe-notes/blob/master/src/text-over.md)
 - [css 移动端双 sticky 布局方案对比](https://github.com/formattedzzz/fe-notes/blob/master/src/todo.md)

@@ -6,6 +6,7 @@
     |-- go-struct2map.md
     |-- idempotency.md
     |-- image-flow.md
+    |-- inherit.md
     |-- js-assign.md
     |-- js-complex.md
     |-- js-event.md
@@ -15,9 +16,11 @@
     |-- js-timer.md
     |-- js-tostring.md
     |-- jsbridge.md
+    |-- middleware.md
     |-- multi-tree.md
     |-- node-pipe.md
     |-- popup.md
+    |-- promise.md
     |-- recurrence.md
     |-- scroll.md
     |-- shell-sed.md
