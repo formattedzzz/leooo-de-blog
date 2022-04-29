@@ -207,6 +207,27 @@ const kmp = (s1, s2) => {
 }
 
 /**
+ * @最长无重复子串
+ */
+function maxUnrepeat(s) {
+  const occ = new Set()
+  const n = s.length
+  let rk = -1
+  let ans = 0
+  for (let i = 0; i < n; ++i) {
+    if (i != 0) {
+      occ.delete(s.charAt(i - 1))
+    }
+    while (rk + 1 < n && !occ.has(s.charAt(rk + 1))) {
+      occ.add(s.charAt(rk + 1))
+      ++rk
+    }
+    ans = Math.max(ans, rk - i + 1)
+  }
+  return ans
+}
+
+/**
  * @两数之和
  */
 var twoSum = function (nums, target) {
@@ -299,4 +320,50 @@ var findKthLargest = function (nums, k) {
     a[i] = a[j]
     a[j] = temp
   }
+}
+
+/**
+ *
+ * @param {*} nums
+ * @param {*} k
+ * @returns
+ */
+function clacKCount(nums, k) {
+  let res = 0
+  for (let i = 0; i < nums.length; i++) {
+    const num_s = nums[i]
+    let left = k / num_s
+    if (left > 1) {
+      res++
+    } else {
+      continue
+    }
+    for (let k = i + 1; k < nums.length; k++) {
+      const num_e = nums[k]
+      left = left / num_e
+      if (left > 1) {
+        res++
+      } else {
+        break
+      }
+    }
+  }
+  return res
+}
+
+/**
+ * @跳跃的的最少步数
+ */
+var jump = function (nums) {
+  let cur = 0 // 已经跳到了哪一个下标
+  let next_max = 0 // 当前下标能跳到的最远下标
+  let step = 0
+  for (let idx = 0; idx < nums.length - 1; idx++) {
+    next_max = Math.max(next_max, idx + nums[idx])
+    if (cur == idx) {
+      cur = next_max
+      step++
+    }
+  }
+  return step
 }
