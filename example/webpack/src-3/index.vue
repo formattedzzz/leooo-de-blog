@@ -1,5 +1,8 @@
 <template>
-  <div class="page-demo" @click="count++">男男女女说{{count}}</div>
+  <div class="page-demo" @click="count++">
+    <span>count:{{count}}</span>
+    <button>{{count**2}}</button>
+  </div>
 </template>
 <script>
 export default {

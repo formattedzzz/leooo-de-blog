@@ -1,6 +1,7 @@
 |-- note
     |-- .DS_Store
     |-- base-render.md
+    |-- es6-iterator.md
     |-- git-hooks.md
     |-- go-select.md
     |-- go-struct2map.md
@@ -21,6 +22,7 @@
     |-- node-pipe.md
     |-- popup.md
     |-- promise.md
+    |-- prototype.md
     |-- recurrence.md
     |-- scroll.md
     |-- shell-sed.md
@@ -162,14 +164,6 @@
     |   |-- thoughts-3.md
     |   |-- todo.md
     |   |-- weapp-canvas.md
-    |   |-- algorithms
-    |   |   |-- index-1.js
-    |   |   |-- index-1.md
-    |   |   |-- index-2.js
-    |   |   |-- index.js
-    |   |   |-- index.md
-    |   |   |-- kmp.js
-    |   |   |-- test.js
     |   |-- java
     |   |   |-- HelloWorld.class
     |   |   |-- HelloWorld.java
@@ -192,16 +186,9 @@
     |       |-- open-safari.applescript
     |       |-- ssr.sh
     |-- REACT
-    |   |-- react-component.md
-    |   |-- react-hooks.md
-    |   |-- react-lifecircle.md
-    |   |-- react-portal.md
-    |   |-- react-suspense.md
-    |   |-- react-test.md
-    |-- VUE
-        |-- vue-init.html
-        |-- vue-init.js
-        |-- vue-init.md
-        |-- vue-keep-alive.js
-        |-- vue-keep-alive.md
-        |-- vue-review.md
+        |-- react-component.md
+        |-- react-hooks.md
+        |-- react-lifecircle.md
+        |-- react-portal.md
+        |-- react-suspense.md
+        |-- react-test.md

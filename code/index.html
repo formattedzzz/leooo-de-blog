@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <meta
+      content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0"
+      name="viewport"
+    />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link rel="modulepreload" href="./index0.js" as="script" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>hello world!</h1>
+    <button id="test">test</button>
+    <template id="caiBtn">
+      <style>
+        .cai-button {
+          display: inline-block;
+          padding: 4px 20px;
+          font-size: 14px;
+          line-height: 1.5715;
+          font-weight: 400;
+          border: 1px solid #1890ff;
+          border-radius: 2px;
+          background-color: #1890ff;
+          color: #fff;
+          box-shadow: 0 2px #00000004;
+        }
+        .cai-button-warning {
+          border: 1px solid #faad14;
+          background-color: #faad14;
+        }
+        .cai-button-danger {
+          border: 1px solid #ff4d4f;
+          background-color: #ff4d4f;
+        }
+      </style>
+      <h1>组件头部</h1>
+      <div class="cai-button">
+        <code>9527</code>
+        <slot name="btnText"></slot>
+      </div>
+    </template>
+    <script src="index.js"></script>
+    <cai-button type="primary">
+      <span slot="btnText"> 按钮 </span>
+    </cai-button>
+  </body>
+</html>

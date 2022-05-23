@@ -1,9 +1,5 @@
-import A from './lib/a'
-import C from './lib/a'
+import add from './add'
+import md from './api.md'
 
-A()
-console.log(C)
-
-import('./lib/b').then(module => {
-  console.log(module)
-})
+console.log(this, add(1, 9))
+console.log('md', md)
