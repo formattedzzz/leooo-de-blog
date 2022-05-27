@@ -261,9 +261,9 @@ const mergeTwoLists = function (list1, list2) {
 }
 
 /**
- * @回溯算法之全排列
+ * @回溯算法之全排列1 数组不重复
  */
-var permute = function (nums) {
+function permute(nums) {
   const res = []
   const len = nums.length
   // path 已经选了的数字
@@ -286,14 +286,38 @@ var permute = function (nums) {
   backTrack([])
   return res
 }
-permute([1, 2, 3])
-
 /**
- * @回溯算法之组合数
+ * @回溯算法之全排列2 数组有重复
  */
-var combinationSum = function (nums, target) {
+function permuteUnique(nums) {
+  let res = []
+  let selected = nums.slice().fill(false)
+  function bct(path = [], space = selected) {
+    if (path.length === nums.length) {
+      res.push(path.slice())
+      return
+    }
+    let added = new Set()
+    space.forEach((i, index) => {
+      if (i == true) return
+      if (!added.has(nums[index])) {
+        added.add(nums[index])
+        path.push(nums[index])
+        space[index] = true
+        bct(path, space)
+        space[index] = false
+        path.pop()
+      }
+    })
+  }
+  bct()
+  return res
+}
+/**
+ * @回溯算法之和为target的数组 如果想不到不及时剪枝
+ */
+function combinationSum(nums, target) {
   const res = []
-  const temp = {}
   // 未使用的数字 还需要凑多少
   function backTrack(used, tempSum) {
     if (tempSum < 0) return
@@ -317,11 +341,37 @@ var combinationSum = function (nums, target) {
   }
   return res
 }
+/**
+ * @回溯算法之和为target的数组 及时剪枝
+ */
+function combinationSum(candidates, target) {
+  const res = []
+  // 升序排序
+  candidates.sort((a, b) => a - b)
+  const search = (path, target, start) => {
+    if (target === 0) {
+      // 满足条件，拷贝一份放入结果数组
+      res.push([...path])
+      return
+    }
+    // 注意起点为start
+    for (let i = start; i < candidates.length; i++) {
+      // 剩余的目标数小于当前元素，后面的元素只会更大，直接放弃此轮
+      if (target < candidates[i]) return
+      path.push(candidates[i])
+      // 数字可以重复，所以传入i
+      search(path, target - candidates[i], i)
+      path.pop()
+    }
+  }
+  search([], target, 0)
+  return res
+}
 
 /**
- * @回溯算法之组合数变形
+ * @回溯算法之和为target的数组 每个数字只能用一次 这里的剪枝的过程有点抽象 不好理解
  */
-var combinationSum2 = function (nums, target) {
+function combinationSum2(nums, target) {
   nums.sort((L, R) => L - R)
   const res = []
 
@@ -346,4 +396,228 @@ var combinationSum2 = function (nums, target) {
 
   backTrack([], target, 0)
   return res
+}
+/**
+ * @回溯算法之nk组合 算法1
+ */
+function combine(n, k) {
+  const res = []
+  function bt(path, st) {
+    if (path.length == k) {
+      res.push(path)
+      return
+    }
+    const map = {}
+    path.forEach(p => {
+      map[p] = true
+    })
+    for (let i = st; i <= n; i++) {
+      if (map[i] == true) continue
+      bt([...path, i], i + 1)
+    }
+  }
+  bt([], 1)
+  return res
+}
+
+/**
+ * @回溯算法之nk组合 算法2
+ */
+var combine = function (n, k) {
+  const result = []
+  function bt(arr, st) {
+    if (arr.length == k) {
+      result.push(arr)
+      return
+    }
+    for (let i = st; i <= n; i++) {
+      arr.push(i)
+      dfs([...arr], i + 1)
+      arr.pop()
+    }
+  }
+  bt([], 1)
+  return result
+}
+/**
+ * @回溯算法之nk组合 算法3
+ */
+var combine = function (n, k) {
+  const ans = []
+  function dfs(cur, temp) {
+    // 剪枝：temp 长度加上区间 [cur, n] 的长度小于 k，不可能构造出长度为 k 的 temp
+    if (temp.length + (n - cur + 1) < k) {
+      return
+    }
+    // 记录合法的答案
+    if (temp.length == k) {
+      ans.push(temp)
+      return
+    }
+    // 考虑选择当前位置
+    dfs(cur + 1, [...temp, cur])
+    // 考虑不选择当前位置
+    dfs(cur + 1, temp)
+  }
+  dfs(1, [])
+  return ans
+}
+/**
+ * @回溯算法之子集 动态规划递推法
+ */
+function subsets(nums) {
+  const dp = new Array(nums.length).fill([])
+  dp[0] = [[], [nums[0]]]
+  for (let i = 1; i < nums.length; i++) {
+    const prev = dp[i - 1]
+    const prev_add_i = prev.map(sub => {
+      return [...sub, nums[i]]
+    })
+    dp[i] = [...prev, ...prev_add_i]
+  }
+  return dp[nums.length - 1]
+}
+/**
+ * @回溯算法之子集 回溯法
+ */
+function subsets(nums) {
+  let result = []
+  let path = []
+  function backtracking(st) {
+    console.log(st, path)
+    result.push(path.slice())
+    for (let i = st; i < nums.length; i++) {
+      // console.log({ st, i })
+      path.push(nums[i])
+      backtracking(i + 1)
+      path.pop()
+    }
+  }
+  backtracking(0)
+  return result
+}
+/**
+ * @回溯算法之子集2 有重复
+ */
+function subsets2(nums) {
+  nums.sort((L, R) => L - R)
+  const res = []
+  const path = []
+  function bt(st, path) {
+    console.log(st, path)
+    res.push([...path])
+    for (let i = st; i < nums.length; i++) {
+      if (i > st && nums[i] === nums[i - 1]) {
+        console.log({ st, i, path })
+        continue
+      }
+      path.push(nums[i])
+      bt(i + 1, path)
+      path.pop()
+    }
+  }
+  bt(0, path)
+  return res
+}
+// subsets([1, 2, 3])
+/**
+ * @回溯算法之计算所有递增子序列
+ */
+function findSubsequences(nums) {
+  let set = new Set()
+  function dfs(start, path) {
+    if (start >= nums.length) return
+    // 从start开始找  不小于当前path末尾的树，进下一层
+    for (let i = start; i < nums.length; i++) {
+      if (path.length === 0 || nums[i] >= path[path.length - 1]) {
+        path.push(nums[i])
+        // 中途碰上的长度>=2 的路径都算上
+        if (path.length >= 2) set.add(path.join(','))
+        dfs(i + 1, path)
+        path.pop()
+      }
+    }
+  }
+  dfs(0, [])
+  return Array.from(set).map(str => str.split(',').map(val => +val))
+}
+function findSubsequences(nums) {
+  const res = []
+  function back(start, curArr) {
+    if (curArr.length > 1) {
+      res.push([...curArr])
+    }
+    const map = new Map()
+    for (let i = start; i < nums.length; i++) {
+      if (
+        map.has(nums[i]) ||
+        (curArr.length && curArr[curArr.length - 1] > nums[i])
+      ) {
+        continue
+      }
+      map.set(nums[i], 1)
+      curArr.push(nums[i])
+      back(i + 1, curArr)
+      curArr.pop()
+    }
+  }
+  back(0, [])
+  return res
+}
+/**
+ * @回溯算法之电话号码组合数
+ */
+function teleNumber(numstr) {
+  if (!numstr) return []
+  const nums = numstr.trim().split('')
+  const map = {
+    1: [],
+    2: ['a', 'b', 'c'],
+    3: ['d', 'e', 'f'],
+    4: ['g', 'h', 'i'],
+    5: ['j', 'k', 'l'],
+    6: ['m', 'n', 'o'],
+    7: ['p', 'q', 'r', 's'],
+    8: ['t', 'u', 'v'],
+    9: ['w', 'x', 'y', 'z']
+  }
+  const res = []
+  function help(st, path) {
+    const letters = map[nums[st]]
+    if (path.length == nums.length) {
+      res.push(path.join(''))
+      return
+    }
+    for (let i = 0; i < letters.length; i++) {
+      path.push(letters[i])
+      help(st + 1, path)
+      path.pop()
+    }
+  }
+  help(0, [])
+  return res
+}
+// console.log(teleNumber('23'))
+/**
+ * @回溯算法之复原IP
+ */
+var restoreIpAddresses = function (s) {
+  let result = []
+  dfs(0, 0, '', '')
+  return result
+  function dfs(i, segI, seg, ip) {
+    if (i === s.length && segI === 3 && isValid(seg)) {
+      result.push(ip + seg)
+    } else if (i < s.length && segI <= 3) {
+      if (isValid(seg + s[i])) {
+        dfs(i + 1, segI, seg + s[i], ip)
+      }
+      if (seg.length > 0 && segI < 3) {
+        dfs(i + 1, segI + 1, '' + s[i], ip + seg + '.')
+      }
+    }
+  }
+  function isValid(seg) {
+    return seg <= 255 && (seg === '0' || seg[0] !== '0')
+  }
 }

@@ -64,7 +64,7 @@
  */
 
 /**
- * @手写请求并发器
+ * @请求通道并发器
  */
 // var tasks = new Array(20).fill(undefined).map((_, idx) => {
 //   return () => {

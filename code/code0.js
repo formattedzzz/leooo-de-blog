@@ -231,6 +231,35 @@ function intToRoman(num) {
   }
   return roman.join('')
 }
+/**
+ * @任务调度
+ */
+var leastInterval = function (tasks, n) {
+  let totalCount = tasks.length
+  let maxCount = 0 // 单个任务执行的最多次数
+  let count = 0 // 执行maxCount的任务数量
+  let taskMap = {}
+  for (let i = 0; i < totalCount; i++) {
+    if (taskMap[tasks[i]]) {
+      taskMap[tasks[i]]++
+    } else {
+      taskMap[tasks[i]] = 1
+    }
+  }
+  // console.log(taskMap)
+  for (let key in taskMap) {
+    if (taskMap[key] == maxCount) {
+      maxCount = taskMap[key]
+      count++
+    } else if (taskMap[key] > maxCount) {
+      maxCount = taskMap[key]
+      count = 1
+    }
+  }
+  // console.log(maxCount)
+  // console.log(count)
+  return Math.max((maxCount - 1) * (n + 1) + count, totalCount)
+}
 
 /**
  * @二叉树路径总和
@@ -243,6 +272,30 @@ function hasPathSum(root, sum) {
   if (!root.right) return hasPathSum(root.left, cur)
   return hasPathSum(root.left, cur) || hasPathSum(root.right, cur)
 }
+/**
+ * @二叉树路径总和为target的所有路径数组
+ */
+function pathSum(root, target) {
+  if (!root) return []
+  const res = []
+  function bt(node, path, target) {
+    const left = target - node.val
+    const path_add = [...path, node.val]
+    if (!node.left && !node.right && left == 0) {
+      res.push(path_add)
+      return
+    }
+    if (node.left) {
+      bt(node.left, path_add, left)
+    }
+    if (node.right) {
+      bt(node.right, path_add, left)
+    }
+  }
+  bt(root, [], target)
+  return res
+}
+
 /**
  * @二叉树最小深度
  */

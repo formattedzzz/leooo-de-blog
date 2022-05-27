@@ -15,8 +15,24 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        use: ['babel-loader'],
-        include: resolve('.')
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  modules: false,
+                  targets: {
+                    ie: '11'
+                  }
+                  // useBuiltIns: 'usage'
+                }
+              ]
+            ]
+          }
+        },
+        include: [resolve('.'), /node_modules/]
       },
       {
         test: /\.md$/,

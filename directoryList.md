@@ -1,7 +1,10 @@
 |-- note
     |-- .DS_Store
     |-- base-render.md
+    |-- canvas.md
+    |-- decorator.md
     |-- es6-iterator.md
+    |-- func-handle.md
     |-- git-hooks.md
     |-- go-select.md
     |-- go-struct2map.md
@@ -42,8 +45,6 @@
     |   |   |-- index.html
     |   |   |-- svg-css.html
     |   |   |-- z-index.html
-    |   |-- contain
-    |   |   |-- index.html
     |   |-- html-render
     |   |   |-- defer-async.html
     |   |   |-- index.html
@@ -66,19 +67,6 @@
     |   |-- dart.md
     |   |-- flutter.md
     |   |-- todo.md
-    |-- ELECTRON
-    |   |-- index.html
-    |   |-- index.js
-    |   |-- tray.png
-    |-- EXTENSION
-    |   |-- download.js
-    |   |-- icon.png
-    |   |-- index.html
-    |   |-- mainfest.json
-    |   |-- utils.js
-    |-- INTERVIEW
-    |   |-- .DS_Store
-    |   |-- index.md
     |-- JS
     |   |-- .DS_Store
     |   |-- babel
@@ -86,10 +74,7 @@
     |   |-- blob
     |   |   |-- index.html
     |   |   |-- index.md
-    |   |-- canvas
-    |   |   |-- index.md
     |   |-- common
-    |   |   |-- async-await.md
     |   |   |-- cookie.md
     |   |   |-- data-hijack.md
     |   |   |-- error-capture.md
@@ -102,7 +87,6 @@
     |   |   |-- es6-generator.md
     |   |   |-- es6-iterator.md
     |   |   |-- fetchmapurl.md
-    |   |   |-- func-handle.md
     |   |   |-- h5-worker.md
     |   |   |-- heap-stack.md
     |   |   |-- mp-login.md
@@ -110,16 +94,10 @@
     |   |   |-- prototype-chain.md
     |   |   |-- regexp-exec.md
     |   |   |-- singleTon.md
-    |   |   |-- sleep.md
-    |   |   |-- sparse-array.md
     |   |   |-- stack-flow.md
     |   |   |-- try-catch.md
     |   |   |-- umd-struct.md
     |   |   |-- valueof-tostring.md
-    |   |-- decorator
-    |   |   |-- index.js
-    |   |   |-- index.md
-    |   |   |-- index_prod.js
     |   |-- heap-sort
     |   |   |-- index.js
     |   |   |-- index.md
@@ -156,7 +134,6 @@
     |   |-- http2.md
     |   |-- nice-git.md
     |   |-- online-interview.md
-    |   |-- rest-client.md
     |   |-- security-policy.md
     |   |-- service-worker.md
     |   |-- thoughts-1.md
@@ -164,9 +141,6 @@
     |   |-- thoughts-3.md
     |   |-- todo.md
     |   |-- weapp-canvas.md
-    |   |-- java
-    |   |   |-- HelloWorld.class
-    |   |   |-- HelloWorld.java
     |   |-- linux
     |   |   |-- linux.md
     |   |   |-- network.md
