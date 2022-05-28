@@ -131,9 +131,9 @@ function generateParenthesis(n) {
  */
 // [1, 2, 3, 4, 5]
 // n = 2 p2 1 p3 1 p5 1 2-3-5 dp[n]=min(2,3,5)=2 p2++
-// n = 3 p2 2 p3 1 p5 1 4-3-5 fp[n]=min(4,3,5)=3 p3++
-// n = 4 p2 2 p3 2 p5 1 4-6-5 fp[n]=min(4,6,5)=4 p2++
-// n = 5 p2 3 p3 2 p5 1 6-6-5 fp[n]=min(6,6,5)=5 p5++
+// n = 3 p2 2 p3 1 p5 1 4-3-5 dp[n]=min(4,3,5)=3 p3++
+// n = 4 p2 2 p3 2 p5 1 4-6-5 dp[n]=min(4,6,5)=4 p2++
+// n = 5 p2 3 p3 2 p5 1 6-6-5 dp[n]=min(6,6,5)=5 p5++
 function nthUglyNumber(n) {
   const dp = new Array(n + 1).fill(0)
   dp[1] = 1

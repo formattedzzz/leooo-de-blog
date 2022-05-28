@@ -45,6 +45,7 @@
 - [electron 运行内存过高问题排查](https://github.com/formattedzzz/fe-notes/blob/master/src/todo.md)
 
 - [面试题 多叉树获取 ID 路径(递归回溯)](https://github.com/formattedzzz/fe-notes/blob/master/src/multi-tree.md)
+- [面试题 设计一个异步任务并发器](https://github.com/formattedzzz/fe-notes/blob/master/src/async-schedule.md)
 
 - [go `select`语句](https://github.com/formattedzzz/fe-notes/blob/master/src/go-select.md)
 - [go `struct` 转 `map`](https://github.com/formattedzzz/fe-notes/blob/master/src/go-struct2map.md)

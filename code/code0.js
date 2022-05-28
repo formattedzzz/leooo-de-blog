@@ -133,44 +133,38 @@ class LRUCache {
 /**
  * @第K个最大元素
  */
-function findKthLargest(nums, k) {
-  let heapSize = nums.length
-  buildMaxHeap(nums, heapSize) // 构建好了一个大顶堆
-  // 进行下沉 大顶堆是最大元素下沉到末尾
-  for (let i = nums.length - 1; i >= nums.length - k + 1; i--) {
-    swap(nums, 0, i)
-    --heapSize // 下沉后的元素不参与到大顶堆的调整
-    // 重新调整大顶堆
-    maxHeapify(nums, 0, heapSize)
+var findKthLargest = function (nums, k) {
+  const res = []
+  buildHeap(nums)
+  const n = nums.length
+  // 此处一定要是n, 不能是nums.length;因为nums大小在改变
+  for (let i = n - 1; i >= n - k; i--) {
+    ;[nums[0], nums[nums.length - 1]] = [nums[nums.length - 1], nums[0]]
+    res.push(nums.pop())
+    // 从堆顶0开始调整
+    headAdjust(0, nums.length, nums)
   }
-  return nums[0]
-  // 自下而上构建一颗大顶堆
-  function buildMaxHeap(nums, heapSize) {
-    for (let i = Math.floor(heapSize / 2) - 1; i >= 0; i--) {
-      maxHeapify(nums, i, heapSize)
-    }
-  }
-  // 从左向右，自上而下的调整节点
-  function maxHeapify(nums, i, heapSize) {
-    let l = i * 2 + 1
-    let r = i * 2 + 2
-    let largest = i
-    if (l < heapSize && nums[l] > nums[largest]) {
-      largest = l
-    }
-    if (r < heapSize && nums[r] > nums[largest]) {
-      largest = r
-    }
-    if (largest !== i) {
-      swap(nums, i, largest) // 进行节点调整
-      // 继续调整下面的非叶子节点
-      maxHeapify(nums, largest, heapSize)
+  return res.pop()
+  function buildHeap(nums) {
+    const n = nums.length
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+      headAdjust(i, n, nums)
     }
   }
-  function swap(a, i, j) {
-    let temp = a[i]
-    a[i] = a[j]
-    a[j] = temp
+  function headAdjust(i, n, nums) {
+    let left = 2 * i + 1
+    let right = left + 1
+    let large = i
+    if (left < n && nums[left] > nums[large]) {
+      large = left
+    }
+    if (right < n && nums[right] > nums[large]) {
+      large = right
+    }
+    if (large != i) {
+      ;[([nums[i], nums[large]] = [nums[large], nums[i]])]
+      headAdjust(large, n, nums)
+    }
   }
 }
 
@@ -260,172 +254,63 @@ var leastInterval = function (tasks, n) {
   // console.log(count)
   return Math.max((maxCount - 1) * (n + 1) + count, totalCount)
 }
-
 /**
- * @二叉树路径总和
+ * @统计可以被K整除的下标对数目
  */
-function hasPathSum(root, sum) {
-  if (!root) return false
-  var cur = sum - root.val
-  if (!root.left && !root.right && cur == 0) return true
-  if (!root.left) return hasPathSum(root.right, cur)
-  if (!root.right) return hasPathSum(root.left, cur)
-  return hasPathSum(root.left, cur) || hasPathSum(root.right, cur)
-}
-/**
- * @二叉树路径总和为target的所有路径数组
- */
-function pathSum(root, target) {
-  if (!root) return []
-  const res = []
-  function bt(node, path, target) {
-    const left = target - node.val
-    const path_add = [...path, node.val]
-    if (!node.left && !node.right && left == 0) {
-      res.push(path_add)
-      return
-    }
-    if (node.left) {
-      bt(node.left, path_add, left)
-    }
-    if (node.right) {
-      bt(node.right, path_add, left)
-    }
-  }
-  bt(root, [], target)
-  return res
-}
-
-/**
- * @二叉树最小深度
- */
-function minDepth(root) {
-  if (!root) return 0
-  if (!root.left && !root.right) return 1
-  if (!root.left) return minDepth(root.right) + 1
-  if (!root.right) return minDepth(root.left) + 1
-  return Math.min(minDepth(root.left), minDepth(root.right)) + 1
-}
-/**
- * @二叉树中序遍历 递归
- */
-function binaryMidEach1(root) {
-  const res = []
-  function viewNode(node) {
-    if (!node) return
-    if (node.left) viewNode(node.left)
-    res.push(node.val)
-    if (node.right) viewNode(node.right)
-  }
-  viewNode(root)
-  return res
-}
-/**
- * @二叉树中序遍历 深度遍历
- */
-function binaryMidEach2(root) {
-  const res = []
-  const stack = [root]
-  while (stack.length) {
-    const node = stack.shift()
-    if (!node) continue
-    if (node.left) {
-      if (node.right) stack.unshift(node.right)
-      stack.unshift(new TreeNode(node.val))
-      stack.unshift(node.left)
-    } else {
-      res.push(node.val)
-      if (node.right) stack.unshift(node.right)
-    }
-  }
-  return res
-}
-/**
- * @二叉树层序遍历 栈运用
- */
-function binaryLevelEach(root) {
-  if (!root) return []
-  const res = []
-  let stack = [root]
-  while (stack.length) {
-    const nextStack = []
-    const temp = []
-    stack.forEach(n => {
-      if (!n) return
-      temp.push(n.val)
-      if (n.left) nextStack.push(n.left)
-      if (n.right) nextStack.push(n.right)
-    })
-    stack = nextStack
-    res.push(temp)
-  }
-  return res
-}
-
-/**
- * @二叉树判断是否平衡
- */
-function binaryBalanced(root) {
-  if (!root) return true
-  if (Math.abs(depth(root.left) - depth(root.right)) > 1) return false
-  return binaryBalanced(root.left) && binaryBalanced(root.right)
-  // 求最大深度
-  function depth(node) {
-    if (!node) return 0
-    const left = depth(node.left)
-    const right = depth(node.right)
-    return Math.max(left, right) + 1
-  }
-}
-/**
- * @二叉树生成所有不同的二叉搜索树
- */
-function generateTrees(n) {
-  let m = new Map()
-  const findTree = function (l, r) {
-    let tree = []
-    if (l > r) {
-      tree.push(null)
-      return tree
-    }
-    let key = `${l}-${r}`
-    if (m.has(key)) return m.get(key)
-    for (let i = l; i <= r; i++) {
-      let leftTree = findTree(l, i - 1)
-      let rightTree = findTree(i + 1, r)
-      for (let lt of leftTree) {
-        for (let rt of rightTree) {
-          tree.push(new TreeNode(i, lt, rt))
-        }
+var countPairs = function (nums, k) {
+  const map = {}
+  let res = 0
+  for (let i = 0; i < nums.length; i++) {
+    const yue = gcd(nums[i], k)
+    for (const key in map) {
+      if ((yue * key) % k == 0) {
+        res += map[key]
       }
     }
-    m.set(key, tree)
-    return tree
+    if (map[yue]) {
+      map[yue]++
+    } else {
+      map[yue] = 1
+    }
   }
-  return findTree(1, n)
+  return res
+  function gcd(a, b) {
+    if (a < b) {
+      ;[a, b] = [b, a]
+    }
+    if (a % b == 0) {
+      return b
+    } else {
+      return gcd(b, a % b)
+    }
+  }
 }
 /**
- * @二叉树判断两颗树是否相同
+ * @检查数组对是否可以被k整除
  */
-function isSameTree(p, q) {
-  if (p === null && q === null) return true
-  if (p === null || q === null) return false
-  if (p.val != q.val) return false
-  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right)
-}
-/**
- * @二叉树判断两颗树是否对称
- */
-function isSymmetric(root) {
-  if (!root) return true
-  var leftAndRight = function (left, right) {
-    if (!left && !right) return true
-    if (!left || !right) return false
-    if (left.val != right.val) return false
-    return (
-      leftAndRight(left.left, right.right) &&
-      leftAndRight(left.right, right.left)
-    )
+var canArrange = function (arr, k) {
+  let m = new Map()
+  for (let i of arr) {
+    let mod = ((i % k) + k) % k
+    if (!m.has(mod)) m.set(mod, 1)
+    else m.set(mod, m.get(mod) + 1)
   }
-  return leftAndRight(root.left, root.right)
+  if (m.has(0) && m.get(0) % 2 !== 0) return false
+  if (k % 2 === 0 && m.has(k / 2) && m.get(k / 2) % 2 !== 0) return false
+  for (let [kk, vv] of m.entries()) {
+    if (kk !== 0 && (k % 2 !== 0 || kk !== k / 2)) {
+      if (vv !== m.get(k - kk)) return false
+    }
+  }
+  return true
+  // int[] mod = new int[k];
+  // for (int num : arr) {
+  //     ++mod[(num % k + k) % k];
+  // }
+  // for (int i = 1; i + i < k; ++i) {
+  //     if (mod[i] != mod[k - i]) {
+  //         return false;
+  //     }
+  // }
+  // return mod[0] % 2 == 0
 }
