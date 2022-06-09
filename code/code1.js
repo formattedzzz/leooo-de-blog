@@ -621,3 +621,25 @@ var restoreIpAddresses = function (s) {
     return seg <= 255 && (seg === '0' || seg[0] !== '0')
   }
 }
+
+/**
+ * @回溯算法之括号生成
+ */
+function generateParenthesis(n) {
+  const res = []
+
+  const dfs = (lRemain, rRemain, str) => {
+    if (str.length == 2 * n) {
+      res.push(str)
+      return
+    }
+    if (lRemain > 0) {
+      dfs(lRemain - 1, rRemain, str + '(')
+    }
+    if (lRemain < rRemain) {
+      dfs(lRemain, rRemain - 1, str + ')')
+    }
+  }
+  dfs(n, n, '')
+  return res
+}

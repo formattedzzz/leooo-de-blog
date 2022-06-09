@@ -1,7 +1,7 @@
 /**
  * @字符串计算器
  */
-var calculate = function (s) {
+var calculate1 = function (s) {
   let prev = 0
   let num = 0
   let sum = 0
@@ -40,6 +40,60 @@ var calculate = function (s) {
     }
   }
   return prev + sum
+}
+var calculate2 = function (s) {
+  const num = v => /\d/.test(v)
+  const mth = v => (v > 0 ? Math.floor(v) : Math.ceil(v))
+  const stack = []
+  let sign = '+'
+  let cur = ''
+  s = s.replace(/\s/g, '')
+  s += '*'
+  for (let i = 0; i < s.length; i++) {
+    const v = s[i]
+    if (num(v)) {
+      cur += v
+      continue
+    }
+    if (sign == '+') {
+      stack.push(cur * 1)
+    }
+    if (sign == '-') {
+      stack.push(`-${cur}` * 1)
+    }
+    if (sign == '*') {
+      stack.push(stack.pop() * Number(cur))
+    }
+    if (sign == '/') {
+      stack.push(mth(stack.pop() / Number(cur)))
+    }
+    sign = v
+    cur = ''
+  }
+  return stack.reduce((acc, next) => acc + next, 0)
+}
+/**
+ * @字符串计算器 (只有加减法但是带括号)
+ */
+function calculate3() {
+  let sign = [1] // 用于记录符号
+  let res = 0
+  let num = 0
+  let op = 1 //起始符号默认为正
+  for (let ch of s) {
+    if (ch >= '0' && ch <= '9') {
+      num = num * 10 + (ch - '0')
+      continue // 多位数时，取出完整的数值
+    }
+    res += op * num //遇到非数字，将计算一下到目前为止 结果res为多少
+    num = 0
+    if (ch == '+') op = sign.slice(-1)[0] //确定当前计算时，应该采用的符号
+    else if (ch == '-') op = -sign.slice(-1)[0]
+    else if (ch == '(') sign.push(op) //遇到（ ，把左括号之前的符号置于栈sign
+    else if (ch == ')') sign.pop() // 退出括号，弹出sign栈顶元素
+  }
+  res += op * num //计算最后一个数
+  return res
 }
 
 /**
@@ -219,33 +273,6 @@ function threeSum(nums) {
   }
   return ans
 }
-
-/**
- * @计算两个正序数组的中位数
- */
-function findMedianSortedArrays(nums1, nums2) {
-  const arr = []
-  while (nums1.length || nums2.length) {
-    if (nums1[0] === undefined) {
-      arr.push(nums2.shift())
-      continue
-    }
-    if (nums2[0] === undefined) {
-      arr.push(nums1.shift())
-      continue
-    }
-    if (nums1[0] <= nums2[0]) {
-      arr.push(nums1.shift())
-    } else {
-      arr.push(nums2.shift())
-    }
-  }
-  return arr.length % 2 === 1
-    ? arr[(arr.length - 1) / 2]
-    : (arr[arr.length / 2] + arr[arr.length / 2 - 1]) / 2
-}
-// console.log(findMedianSortedArrays([1, 2], [3, 4]))
-// console.log(findMedianSortedArrays([1, 3], [2]))
 
 /**
  * @乘积小于K的子数组个数

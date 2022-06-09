@@ -92,6 +92,35 @@ function checkPairs(str) {
 }
 
 /**
+ * @栈运用之单调栈解决每日温度问题
+ */
+function dailyTemperatures(temperatures) {
+  const stack = [0]
+  const res = new Array(temperatures.length).fill(0)
+  for (let i = 1; i < temperatures.length; i++) {
+    if (!stack.length) {
+      stack.push(i)
+      continue
+    }
+    const last_idx = stack[stack.length - 1]
+    if (temperatures[i] <= temperatures[last_idx]) {
+      stack.push(i)
+      continue
+    }
+    res[last_idx] = i - stack.pop()
+    while (
+      stack.length &&
+      temperatures[i] > temperatures[stack[stack.length - 1]]
+    ) {
+      const last_idx = stack.pop()
+      res[last_idx] = i - last_idx
+    }
+    stack.push(i)
+  }
+  return res
+}
+
+/**
  * @滑动窗口之盛水最多的容器
  */
 function maxArea(nums) {
@@ -137,52 +166,6 @@ function maxContain(height) {
   }
   return sum
 }
-
-/**
- * @判断直线上的点
- */
-function maxPoints(points) {
-  if (points.length <= 2) return points.length
-  const ID_2_AB = {}
-  let res = 0
-  for (let idx1 = 0; idx1 < points.length - 1; idx1++) {
-    const dot1 = points[idx1]
-    for (let idx2 = idx1 + 1; idx2 < points.length; idx2++) {
-      const dot2 = points[idx2]
-      ID_2_AB[`${idx1}-${idx2}`] = calcAB(dot1, dot2)
-    }
-  }
-  Object.keys(ID_2_AB).forEach(key => {
-    const S = +key.split('-')[0]
-    const E = +key.split('-')[1]
-    const L = ID_2_AB[key]
-    if (E - S < 2) return
-    let temp = 0
-    for (let idx = S + 1; idx < E; idx++) {
-      const middot = points[idx]
-      if (check(middot, L)) temp++
-    }
-    if (temp > res) res = temp
-  })
-  return res + 2
-  function calcAB([x1, y1], [x2, y2]) {
-    if (x1 === x2) return { a: Infinity, b: x1 }
-    let a = (y2 - y1) / (x2 - x1)
-    let b = y1 - a * x1
-    return { a, b }
-  }
-  function check([x1, y1], { a, b }) {
-    if (a === Infinity) return Math.abs(x1 - b) < 1e-10
-    return Math.abs(x1 * a + b - y1) < 1e-10
-  }
-}
-// maxPoints([
-//   [-184, -551],
-//   [-105, -467],
-//   [-90, -394],
-//   [-60, -248],
-//   [115, 359],
-// ])
 
 /**
  * @买卖股票1

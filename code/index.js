@@ -267,3 +267,15 @@
 /**
  * @default
  */
+
+function SUM() {
+  return [...arguments].reduce((acc, next) => {
+    return acc + next
+  }, 0)
+}
+function ADD(A, B) {
+  return A + B
+}
+
+// function parse(exp = 'SUM(A1, ADD(D3,E4))') {}
+// function parse(exp = 'SUM(A1, ADD(D3,E4))') {}

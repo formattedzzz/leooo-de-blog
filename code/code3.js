@@ -105,28 +105,6 @@ function lenLongestFibSubseq(arr) {
 }
 
 /**
- * @递归算法之括号生成
- */
-function generateParenthesis(n) {
-  const res = []
-
-  const dfs = (lRemain, rRemain, str) => {
-    if (str.length == 2 * n) {
-      res.push(str)
-      return
-    }
-    if (lRemain > 0) {
-      dfs(lRemain - 1, rRemain, str + '(')
-    }
-    if (lRemain < rRemain) {
-      dfs(lRemain, rRemain - 1, str + ')')
-    }
-  }
-  dfs(n, n, '')
-  return res
-}
-
-/**
  * @数学归纳法之第n个丑数
  */
 // [1, 2, 3, 4, 5]

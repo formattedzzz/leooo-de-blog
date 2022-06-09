@@ -5,8 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "export page=$1 && echo $page",
-    "dev": "NODE_ENV=development webpack --config ./src-1/webpack.config.js",
-    "prod": "NODE_ENV=production webpack --config ./src-1/webpack.config.js"
+    "dev": "NODE_ENV=development webpack --config ./src-3/webpack.config.js",
+    "prod": "NODE_ENV=production webpack --config ./src-3/webpack.config.js"
   },
   "keywords": [],
   "author": "",
