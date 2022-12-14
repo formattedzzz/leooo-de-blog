@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "chrome-http2-log-parser": "^0.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mysql2": "^2.2.5"
   },
   "devDependencies": {
